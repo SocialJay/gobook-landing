@@ -2,9 +2,9 @@ import logo from "./assets/logo.svg";
 import hero from "./assets/hero.png";
 import middle from "./assets/middle.png";
 import do1 from "./assets/whatwedo/1.svg";
-import do2 from "./assets/whatwedo/1.svg";
-import do3 from "./assets/whatwedo/1.svg";
-import do4 from "./assets/whatwedo/1.svg";
+import do2 from "./assets/whatwedo/2.svg";
+import do3 from "./assets/whatwedo/3.svg";
+import do4 from "./assets/whatwedo/4.svg";
 import { Marquee } from "./components/ui/marquee";
 import ReviewCard from "./components/ui/ReviewCard";
 import step1 from "./assets/steps/step1.svg";
@@ -74,21 +74,26 @@ export default function App() {
         </div>
         <div>
           <ul className="flex gap-1">
-            <li className="py-2 px-4 text-sm leading-5 text-[#1E293B] font-medium">
-              Who we are
+            <li className="py-2 px-4 flex items-center">
+              <a href="#whowedo" className="text-sm leading-5 text-[#1E293B] font-medium">What we do</a>
             </li>
-            <li className="py-2 px-4 text-sm leading-5 text-[#1E293B] font-medium">
-              Features
+            <li className="py-2 px-4 flex items-center">
+              <a href="#features" className="text-sm leading-5 text-[#1E293B] font-medium">Features</a>
             </li>
-            <li className="py-2 px-4 text-sm leading-5 text-[#1E293B] font-medium">
-              Pricing
+            <li className="py-2 px-4 flex items-center">
+              <a href="#pricing" className="text-sm leading-5 text-[#1E293B] font-medium">Pricing</a>
             </li>
-            <li className="py-2 px-4 text-sm leading-5 text-[#1E293B] font-medium">
-              FAQ
+            <li className="py-2 px-4 flex items-center">
+              <a href="#faq" className="text-sm leading-5 text-[#1E293B] font-medium">FAQ</a>
             </li>
           </ul>
         </div>
-        <div className="border border-[#E2E8F0] rounded-[8px] text-[#1E293B] text-sm font-medium px-4 py-2">Become a Host</div>
+        <a
+          href="http://app.gobook.lk"
+          className="border border-[#E2E8F0] rounded-[8px] text-[#1E293B] text-sm font-medium px-4 py-2"
+        >
+          Become a Host
+        </a>
       </header>
       <main className="pt-[180px]">
         <section className="flex flex-col gap-4 mx-auto max-w-[1140px]">
@@ -101,9 +106,12 @@ export default function App() {
               Launch your branded booking platform in minutes, not months.
             </p>
           </div>
-          <button className="block mx-auto bg-[#0F172A] text-[#F8FAFC] font-semibold text-sm min-w-20 p-4 rounded-lg">
+          <a
+            className="block mx-auto bg-[#0F172A] text-[#F8FAFC] font-semibold text-sm min-w-20 p-4 rounded-lg"
+            href="http://app.gobook.lk"
+          >
             Create Your First Event
-          </button>
+          </a>
         </section>
         <section className="mx-auto max-w-[1140px] pt-16">
           <img src={hero} alt="Hero" />
@@ -137,7 +145,7 @@ export default function App() {
         <section>
           <img src={middle} alt="Middle" className="cover w-full" />
         </section>
-        <section className="max-w-[1400px] mx-auto py-30 text-center flex flex-col gap-16">
+        <section id="whowedo" className="max-w-[1400px] mx-auto py-30 text-center flex flex-col gap-16">
           <div className="flex flex-col gap-4">
             <h4 className="uppercase font-medium text-[#1E293B] text-sm">
               What we do
@@ -287,11 +295,11 @@ export default function App() {
               </div>
             </div>
           </div>
-          <div className="p-4 min-w-20 w-fit mx-auto border border-[#E2E8F0] rounded-lg text-[#1E293B] text-sm font-medium leading-5">
+          <a href="#pricing" className="p-4 min-w-20 w-fit mx-auto border border-[#E2E8F0] rounded-lg text-[#1E293B] text-sm font-medium leading-5">
             Pick a plan that fits you
-          </div>
+          </a>
         </section>
-        <section className="max-w-[1200px] mx-auto py-16 text-center gap-16 flex flex-col">
+        <section id="features" className="max-w-[1200px] mx-auto py-16 text-center gap-16 flex flex-col">
           <div className="flex flex-col gap-4">
             <h4 className="uppercase font-medium text-[#1E293B] text-sm">
               Features
@@ -356,7 +364,7 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section className="text-center flex flex-col py-30 gap-12 max-w-[1400px] mx-auto items-center">
+        <section id="pricing" className="text-center flex flex-col py-30 gap-12 max-w-[1400px] mx-auto items-center">
           <div className="flex flex-col gap-4">
             <h4 className="uppercase font-medium text-[#1E293B] text-sm">
               Pricing
@@ -431,9 +439,12 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              <div className="bg-[#0F172A] py-2 px-4 text-[#F8FAFC] text-sm font-medium w-full text-center rounded-lg">
+              <a
+                className="bg-[#0F172A] py-2 px-4 text-[#F8FAFC] text-sm font-medium w-full text-center rounded-lg"
+                href="http://app.gobook.lk"
+              >
                 Get Started
-              </div>
+              </a>
             </div>
 
             <div className="h-[556px] p-6 border border-[#E2E8F0] rounded-[12px] w-[409px] text-left justify-between flex flex-col">
@@ -530,7 +541,7 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section className="text-center flex flex-col gap-12 py-12">
+        <section id="faq" className="text-center flex flex-col gap-12 py-12">
           <div className="flex flex-col gap-4">
             <h4 className="uppercase font-medium text-[#1E293B] text-sm">
               Faq
@@ -550,14 +561,8 @@ export default function App() {
                 <AccordionTrigger>What is Gobook?</AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    Our flagship product combines cutting-edge technology with
-                    sleek design. Built with premium materials, it offers
-                    unparalleled performance and reliability.
-                  </p>
-                  <p>
-                    Key features include advanced processing capabilities, and
-                    an intuitive user interface designed for both beginners and
-                    experts.
+                    Gobook is a customizable online booking platform designed to
+                    simplify scheduling and management.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -565,16 +570,9 @@ export default function App() {
                 <AccordionTrigger>
                   Can I fully brand the booking platform as my own?
                 </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
+                <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    We offer worldwide shipping through trusted courier
-                    partners. Standard delivery takes 3-5 business days, while
-                    express shipping ensures delivery within 1-2 business days.
-                  </p>
-                  <p>
-                    All orders are carefully packaged and fully insured. Track
-                    your shipment in real-time through our dedicated tracking
-                    portal.
+                    Yes, you can white-label Gobook to match your brand identity.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -582,16 +580,9 @@ export default function App() {
                 <AccordionTrigger>
                   How long does it take to get started?
                 </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
+                <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    We stand behind our products with a comprehensive 30-day
-                    return policy. If you&apos;re not completely satisfied,
-                    simply return the item in its original condition.
-                  </p>
-                  <p>
-                    Our hassle-free return process includes free return shipping
-                    and full refunds processed within 48 hours of receiving the
-                    returned item.
+                    You can set up and start using Gobook within minutes.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -599,16 +590,9 @@ export default function App() {
                 <AccordionTrigger>
                   Can I integrate payments and manage transactions?
                 </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
+                <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    We stand behind our products with a comprehensive 30-day
-                    return policy. If you&apos;re not completely satisfied,
-                    simply return the item in its original condition.
-                  </p>
-                  <p>
-                    Our hassle-free return process includes free return shipping
-                    and full refunds processed within 48 hours of receiving the
-                    returned item.
+                    Yes, Gobook supports seamless payment integration and transaction management.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -616,16 +600,9 @@ export default function App() {
                 <AccordionTrigger>
                   Will I be able to track bookings, customer and revenue?
                 </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
+                <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    We stand behind our products with a comprehensive 30-day
-                    return policy. If you&apos;re not completely satisfied,
-                    simply return the item in its original condition.
-                  </p>
-                  <p>
-                    Our hassle-free return process includes free return shipping
-                    and full refunds processed within 48 hours of receiving the
-                    returned item.
+                    Absolutely, Gobook provides real-time tracking of bookings, customers, and revenue.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -633,16 +610,9 @@ export default function App() {
                 <AccordionTrigger>
                   Is there support if I run into issues?
                 </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance">
+                <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    We stand behind our products with a comprehensive 30-day
-                    return policy. If you&apos;re not completely satisfied,
-                    simply return the item in its original condition.
-                  </p>
-                  <p>
-                    Our hassle-free return process includes free return shipping
-                    and full refunds processed within 48 hours of receiving the
-                    returned item.
+                    Yes, our support team is always available to assist you.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -650,7 +620,7 @@ export default function App() {
           </div>
           <div className="text-[#475569] text-lg font-medium leading-9">
             Still have questions? DM us on{" "}
-            <span className="font-bold">Instagram</span>
+            <a href="https://www.instagram.com/gobook.official" className="font-bold">Instagram</a>
           </div>
         </section>
         <section className="py-16 max-w-[1440px] w-full max-h-[800px] h-full text-center mx-auto">
@@ -663,19 +633,33 @@ export default function App() {
                   className="w-[174px] h-[120px]"
                 />
               </div>
-              <div className="text-[#1E293B] font-semibold text-6xl leading-[72px] font-instrument">For everyone from<br />entrepreneurs to enterprise</div>
+              <div className="text-[#1E293B] font-semibold text-6xl leading-[72px] font-instrument">
+                For everyone from
+                <br />
+                entrepreneurs to enterprise
+              </div>
             </div>
-            <div className="bg-[#0F172A] rounded-[8px] p-4 min-w-20 w-fit mx-auto text-[#F8FAFC] text-sm font-semibold leading-[21px] mt-4">
+            <a href="http://app.gobook.lk" className="bg-[#0F172A] rounded-[8px] p-4 min-w-20 w-fit mx-auto text-[#F8FAFC] text-sm font-semibold leading-[21px] mt-4">
               Get started free
-            </div>
+            </a>
           </div>
         </section>
         <footer className="max-w-[1400px] mx-auto flex justify-between py-16">
-          <p className="text-sm font-normal leading-5 text-[#A1A1AA]">Copyright © 2025 gobook</p>
+          <p className="text-sm font-normal leading-5 text-[#A1A1AA]">
+            Copyright © 2025 gobook
+          </p>
           <ul className="flex gap-8">
-            <li className="text-[#A1A1AA] text-sm leading-5"><a href="mailto:support@gobook.lk">Contact us</a></li>
-            <li className="text-[#A1A1AA] text-sm leading-5"><a href="https://app.clickup.com/90151503629/docs/2kyq5hrd-715">Privacy Policy</a></li>
-            <li className="text-[#A1A1AA] text-sm leading-5">Terms & Conditions</li>
+            <li className="text-[#A1A1AA] text-sm leading-5">
+              <a href="mailto:support@gobook.lk">Contact us</a>
+            </li>
+            <li className="text-[#A1A1AA] text-sm leading-5">
+              <a href="https://app.clickup.com/90151503629/docs/2kyq5hrd-715">
+                Privacy Policy
+              </a>
+            </li>
+            <li className="text-[#A1A1AA] text-sm leading-5">
+              Terms & Conditions
+            </li>
           </ul>
         </footer>
       </main>
