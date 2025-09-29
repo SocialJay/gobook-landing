@@ -949,58 +949,307 @@ export default function App() {
                   primaryButtonLabel="Agree"
                 >
                   <DialogHeader>
-                    <DialogDescription className="flex flex-col gap-4 h-[497px]">
+                    <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto">
                       <div className="flex flex-col gap-1">
-                        <div className="text-sm font-semibold text-[rgba(51,65,85,1)]">
+                        <div className="text-sm font-semibold text-[#1E293B]">
                           Effective Date: {format(Date.now(), "yyyy/MM/dd")}
                         </div>
-                        <p className="text-sm font-normal text-[rgba(51,65,85,1)]">
+                        <p className="text-sm font-normal text-[#475569]">
                           By using Gobook (“we,” “us,” or “our”), you (“Tenant”
-                          or “Customer”) agree to these Terms & Conditions. If
-                          you do not agree with any part of these terms, please
-                          do not use our platform or services.
+                          ) agree to these Terms & Conditions. If you do not
+                          agree with any part of these terms, please do not use
+                          our platform or services.
                         </p>
                       </div>
                       <div>
-                        1. Use of Platform
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          1. Use of Platform
+                        </span>
                         <ul className="list-disc pl-5">
-                          <li>
-                            Our platform allows Customers to book services
-                            provided by Tenants.
+                          <li className="text-[#475569]">
+                            Our platform enables Tenants to offer their services
+                            for booking.
                           </li>
-                          <li>
+                          <li className="text-[#475569]">
                             All use of the platform must comply with applicable
                             laws and these Terms.
                           </li>
-                          <li>
-                            Users must provide accurate and complete information
-                            when registering and making bookings.
+                          <li className="text-[#475569]">
+                            Tenants must provide accurate and complete
+                            information when registering and managing their
+                            services.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        2. Tenant Terms
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          2. Tenant Terms
+                        </span>
                         <ul className="list-disc pl-5">
-                          <li>
-                            Payment to Tenants: Tenants receive the revenue
-                            generated from bookings minus a 4% platform service
-                            fee, credited to their billing account on a weekly
-                            basis.
+                          <li className="text-[#475569]">
+                            <b>Payment to Tenants:</b> Tenants receive the
+                            revenue generated from bookings minus platform
+                            service fee, credited to their billing account on a
+                            weekly basis.
                           </li>
-                          <li>
-                            Setup Costs: We do not charge any setup fees to
-                            Tenants.
+                          <li className="text-[#475569]">
+                            <b>Setup Costs:</b> We do not charge any setup fees
+                            to Tenants.
                           </li>
-                          <li>
-                            Tenants are responsible for fulfilling bookings and
-                            delivering the services as agreed with Customers.
+                          <li className="text-[#475569]">
+                            <b>Service Fulfilment:</b> Tenants are solely
+                            responsible for fulfilling bookings and delivering
+                            the services they list on the platform.
                           </li>
-                          <li>
-                            Tenants are permitted to access Customers’ data only
-                            for internal use related to service delivery. Misuse
-                            of data is strictly prohibited.
+                          <li className="text-[#475569]">
+                            <b>Customer Data Access:</b> Tenants may only access
+                            customer data for internal use directly related to
+                            service delivery. Misuse of data is strictly
+                            prohibited.
                           </li>
                         </ul>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          3. Fees and Billing
+                        </span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            Platform service fees are deducted automatically
+                            from each transaction.
+                          </li>
+                          <li className="text-[#475569]">
+                            Tenants’ net earnings (after deduction of service
+                            fees) are credited to their billing account weekly.
+                          </li>
+                          <li className="text-[#475569]">
+                            All fees are inclusive of platform service charges.
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          4. Purchase Policy
+                        </span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            <b>Payment Methods:</b>
+                            GoBook accepts Visa, MasterCard, American Express,
+                            select Debit Cards, and Net Banking. Other payment
+                            methods may be added from time to time.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>Who You Are Buying From:</b> GoBook acts as the
+                            agent on behalf of service providers (“Tenants”) who
+                            list their services on the platform. When you make a
+                            booking, GoBook handles the transaction and collects
+                            payment on behalf of the Tenant.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>Pricing and Availability:</b> GoBook facilitates
+                            bookings on behalf of Tenants and does not control
+                            the inventory, availability, or pricing of the
+                            services listed.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>
+                              Internet Handling Fees and Order Processing Fees:
+                            </b>{" "}
+                            Tickets purchased on GoBook are subject to a per
+                            ticket internet handling fee and a non-refundable
+                            per order processing fee.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>Order Confirmation:</b> If you do not receive a
+                            confirmation number (via a confirmation page or
+                            email) after submitting your payment information, or
+                            if you experience an error message or service
+                            interruption during the booking process, it is your
+                            responsibility to verify your booking through your
+                            booking history or by contacting our Customer
+                            Support. Only you may be aware of any issues that
+                            occur during the booking process. GoBook will not be
+                            responsible for any losses (monetary or otherwise)
+                            if you assume a booking was not placed due to not
+                            receiving confirmation.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>Refunds and Exchanges:</b> Before completing your
+                            booking, please carefully review all details. GoBook
+                            is unable to process exchanges or refunds after a
+                            booking has been confirmed, or for lost, stolen,
+                            damaged, or destroyed tickets or booking
+                            confirmations.
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* 5. Cancellation Policy */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          5. Cancellation Policy
+                        </span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            <b>Tenant-Initiated Cancellations:</b> If a Tenant
+                            cancels a booking or event, the customer is entitled
+                            to a full refund of the booking amount. The Tenant
+                            is responsible for any transaction fees or costs
+                            incurred during the refund process. GoBook will
+                            facilitate the refund on behalf of the Tenant but
+                            shall not be liable for such cancellations.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>Customer-Initiated Cancellations:</b> Refunds for
+                            customer cancellations will be subject to the
+                            Tenant’s individual cancellation policy. If no
+                            policy is provided, bookings will be considered
+                            non-refundable.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>Force Majeure Events:</b> In cases of events
+                            beyond reasonable control (natural disasters,
+                            restrictions, strikes, pandemics), GoBook and the
+                            Tenant are not liable for non-performance. Refunds
+                            or credits depend on the Tenant’s policy.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>Transaction Fees:</b> Transaction fees charged by
+                            third-party processors are generally non-refundable.
+                            For Tenant cancellations, Tenants bear the cost so
+                            customers receive a full refund.
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* 6. Billing Information Verification */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          6. Billing Information Verification
+                        </span>
+                        <p className="text-[#475569]">
+                          Some bookings may be processed only after your billing
+                          address and other billing information have been
+                          verified. Incorrect billing details can delay
+                          processing. If we cannot reach you, GoBook may cancel
+                          the booking and allow another customer to book the
+                          service.
+                        </p>
+                      </div>
+
+                      {/* 7. Delivery */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          7. Delivery
+                        </span>
+                        <p className="text-[#475569]">
+                          GoBook offers multiple delivery options, which may
+                          vary depending on the service or event. Currently:
+                        </p>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            <b>Email Confirmation:</b> Booking confirmation will
+                            be sent via email.
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* 8. Cancelled/Postponed Events */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          8. Cancelled / Postponed Events
+                        </span>
+                        <p className="text-[#475569]">
+                          Occasionally, services may be canceled or postponed by
+                          the Tenant. The Tenant is fully responsible for
+                          refunds as per their own policy. GoBook facilitates
+                          the refund process but does not assume liability.
+                        </p>
+                      </div>
+
+                      {/* 9. Data Use and Privacy */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          9. Data Use and Privacy
+                        </span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            Personal information is collected and processed in
+                            accordance with our Privacy Policy.
+                          </li>
+                          <li className="text-[#475569]">
+                            Tenants must comply with data protection rules and
+                            may not use customer data outside service delivery.
+                          </li>
+                          <li className="text-[#475569]">
+                            Misuse of personal data may result in suspension or
+                            termination of access.
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* 10. Limitation of Liability */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          10. Limitation of Liability
+                        </span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            The platform acts solely as a facilitator; we do not
+                            provide services directly.
+                          </li>
+                          <li className="text-[#475569]">
+                            We are not liable for any loss, damage, or disputes
+                            from services offered by Tenants.
+                          </li>
+                          <li className="text-[#475569]">
+                            Use of the platform is at your own risk.
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* 11. Termination */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          11. Termination
+                        </span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            We reserve the right to suspend or terminate Tenant
+                            accounts for violations of these Terms.
+                          </li>
+                          <li className="text-[#475569]">
+                            Termination does not relieve Tenants of outstanding
+                            fees.
+                          </li>
+                        </ul>
+                      </div>
+
+                      {/* 12. Changes to Terms */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          12. Changes to Terms
+                        </span>
+                        <p className="text-[#475569]">
+                          We may update these Terms from time to time. Material
+                          changes will be communicated via the platform or
+                          email. Continued use of the platform constitutes
+                          acceptance of the updated Terms.
+                        </p>
+                      </div>
+
+                      {/* 13. Governing Law */}
+                      <div>
+                        <span className="text-sm font-semibold text-[#1E293B]">
+                          13. Governing Law
+                        </span>
+                        <p className="text-[#475569]">
+                          These Terms are governed by and construed in
+                          accordance with the laws of the Democratic Socialist
+                          Republic of Sri Lanka. Any disputes shall be subject
+                          to the exclusive jurisdiction of the courts of
+                          Colombo, Sri Lanka.
+                        </p>
                       </div>
                     </DialogDescription>
                   </DialogHeader>
