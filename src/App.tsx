@@ -35,40 +35,34 @@ import { format } from "date-fns";
 export default function App() {
   const reviews = [
     {
-      name: "Jack",
-      username: "Founder & CEO at StartUp Grid",
-      body: "We can’t handle last-minute changes smoothly.",
-      img: "https://avatar.vercel.sh/jack",
+      name: "Shobian",
+      username: "Aura Entertainment",
+      body: "With other platforms, we struggled with high fees and even system crashes during bookings.",
     },
     {
-      name: "Jill",
-      username: "Founder & CEO at StartUp Grid",
-      body: "We can’t customise the ticketing flow to match our brand.",
-      img: "https://avatar.vercel.sh/jill",
+      name: "Pravien Mahalingam",
+      username: "Blaze Entertainment",
+      body: "Our biggest concern was always the attendee experience.",
     },
     {
-      name: "John",
-      username: "Founder & CEO at StartUp Grid",
-      body: "I'm at a loss for words. This is amazing. I love it.",
-      img: "https://avatar.vercel.sh/john",
+      name: "Abithaaran",
+      username: "247 Moments",
+      body: "Other platforms limited flexibility and delayed payments.",
     },
     {
-      name: "Jack",
-      username: "Founder & CEO at StartUp Grid",
-      body: "I've never seen anything like this before. It's amazing. I love it.",
-      img: "https://avatar.vercel.sh/jack",
+      name: "Pravien Mahalingam",
+      username: "Blaze Entertainment",
+      body: "Our biggest concern was always the attendee experience.",
     },
     {
-      name: "Jill",
-      username: "Founder & CEO at StartUp Grid",
-      body: "I don't know what to say. I'm speechless. This is amazing.",
-      img: "https://avatar.vercel.sh/jill",
+      name: "Abithaaran",
+      username: "247 Moments",
+      body: "Other platforms limited flexibility and delayed payments.",
     },
     {
-      name: "John",
-      username: "Founder & CEO at StartUp Grid",
-      body: "I'm at a loss for words. This is amazing. I love it.",
-      img: "https://avatar.vercel.sh/john",
+      name: "Shobian",
+      username: "Aura Entertainment",
+      body: "With other platforms, we struggled with high fees and even system crashes during bookings.",
     },
   ];
   const firstRow = reviews.slice(0, reviews.length / 2);
