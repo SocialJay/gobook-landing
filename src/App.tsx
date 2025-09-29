@@ -1,6 +1,6 @@
 import logo from "./assets/logo.svg";
 import hero from "./assets/hero.png";
-import middle from "./assets/middle.png";
+// import middle from "./assets/middle.png";
 import do1 from "./assets/whatwedo/1.svg";
 import do2 from "./assets/whatwedo/2.svg";
 import do3 from "./assets/whatwedo/3.svg";
@@ -76,10 +76,10 @@ export default function App() {
 
   return (
     <>
-      <header className="max-w-[1140px] mx-auto flex items-center justify-between py-2">
-        <div>
+      <header className="fixed left-0 right-0 bg-[#FCFCFD] backdrop-blur-[0px] max-w-[1140px] mx-auto flex items-center justify-between py-2">
+        <a href="/">
           <img src={logo} alt="Logo" />
-        </div>
+        </a>
         <div>
           <ul className="flex gap-1">
             <li className="py-2 px-4 flex items-center">
@@ -173,9 +173,9 @@ export default function App() {
             <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
           </div>
         </section>
-        <section>
+        {/* <section>
           <img src={middle} alt="Middle" className="cover w-full" />
-        </section>
+        </section> */}
         <section
           id="whowedo"
           className="max-w-[1400px] mx-auto py-30 text-center flex flex-col gap-16"
@@ -513,11 +513,11 @@ export default function App() {
                 <div className="flex flex-col gap-[7.5px]">
                   <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
                     <CheckIcon weight="regular" color="#1E293B" size={15} /> 3
-                    Admin
+                    Admins
                   </div>
                   <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
                     <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Branding (logo, Sub domain)
+                    Branding (logo, Custom domain)
                   </div>
                   <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
                     <CheckIcon weight="regular" color="#1E293B" size={15} />
@@ -533,10 +533,6 @@ export default function App() {
                   </div>
                   <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
                     <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Branding (logo, Sub domain)
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
                     Payment gateway integration
                   </div>
                   <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
@@ -549,7 +545,7 @@ export default function App() {
                   </div>
                   <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
                     <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Transaction Fee: Up to 3.99%
+                    Transaction Fee: Up to 3.49%
                   </div>
                   <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
                     <CheckIcon weight="regular" color="#1E293B" size={15} />
@@ -578,9 +574,12 @@ export default function App() {
                 </p>
               </div>
               <div>
-                <div className="bg-white border border-[#E2E8F0] py-2 px-4 text-[#1E293B] text-sm font-medium w-fit text-center rounded-lg">
+                <a
+                  href="mailto:support@gobook.lk"
+                  className="bg-white border border-[#E2E8F0] py-2 px-4 text-[#1E293B] text-sm font-medium w-fit text-center rounded-lg"
+                >
                   Contact Support
-                </div>
+                </a>
               </div>
             </div>
             <div className="flex-1">
@@ -718,64 +717,158 @@ export default function App() {
                   Privacy Policy
                 </DialogTrigger>
                 <DialogContent
-                  title="Terms & Conditions"
-                  subTitle="This information will be deleted from this page"
+                  title="Privacy Policy"
+                  subTitle=""
                   showCloseButton={false}
                   primaryButtonLabel="Confirm"
                 >
                   <DialogHeader>
-                    <DialogDescription className="flex flex-col gap-4 h-[497px]">
+                    <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto">
                       <div className="flex flex-col gap-1">
-                        <div className="text-sm font-semibold text-[rgba(51,65,85,1)]">
+                        <div className="text-sm font-semibold text-[#1E293B]">
                           Effective Date: {format(Date.now(), "yyyy/MM/dd")}
                         </div>
-                        <p className="text-sm font-normal text-[rgba(51,65,85,1)]">
-                          By using Gobook (“we,” “us,” or “our”), you (“Tenant”
-                          or “Customer”) agree to these Terms & Conditions. If
-                          you do not agree with any part of these terms, please
-                          do not use our platform or services.
+                        <p className="text-sm font-normal text-[#475569]">
+                          Gobook (“we,” “us,” or “our”) values your privacy and
+                          is committed to protecting the personal data of all
+                          users (“you”) who access our platform, including
+                          Tenants offering services and Customers booking
+                          services. This Privacy Policy explains how we collect,
+                          use, store, and share your information, and your
+                          rights regarding that data. By using our platform, you
+                          agree to the practices described herein.
                         </p>
                       </div>
                       <div>
-                        1. Use of Platform
+                        <span className="text-sm font-normal text-[#1E293B]">1. Information We Collect</span>
+                        <p className="text-[#475569]">We collect personal and non-personal information necessary to provide our platform services, including:</p>
                         <ul className="list-disc pl-5">
-                          <li>
-                            Our platform allows Customers to book services
-                            provided by Tenants.
+                          <li className="text-[#475569]">
+                            <b>Personal Information:</b> Name, email, phone number, billing address, and other details provided when creating an account or making a booking.
                           </li>
-                          <li>
-                            All use of the platform must comply with applicable
-                            laws and these Terms.
+                          <li className="text-[#475569]">
+                            <b>Booking/Service Information:</b> Details of services booked or offered, dates, times, and notes shared between Tenants and Customers.
                           </li>
-                          <li>
-                            Users must provide accurate and complete information
-                            when registering and making bookings.
+                          <li className="text-[#475569]">
+                            <b>Payment Information:</b> Processed via secure third-party payment providers; full payment credentials are not stored by us.
+                          </li>
+                          <li className="text-[#475569]">
+                            <b>Usage Data:</b> IP address, device, browser type, and activity patterns collected via cookies or similar technologies for analytics and improving our platform.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        2. Tenant Terms
+                        <span className="text-sm font-normal text-[#1E293B]">2. How We Use Your Information</span>
+                        <p className="text-[#475569]">We use your information to:</p>
                         <ul className="list-disc pl-5">
-                          <li>
-                            Payment to Tenants: Tenants receive the revenue
-                            generated from bookings minus a 4% platform service
-                            fee, credited to their billing account on a weekly
-                            basis.
+                          <li className="text-[#475569]">
+                            Process bookings and manage services.
                           </li>
-                          <li>
-                            Setup Costs: We do not charge any setup fees to
-                            Tenants.
+                          <li className="text-[#475569]">
+                            Communicate confirmations, updates, and notifications.
                           </li>
-                          <li>
-                            Tenants are responsible for fulfilling bookings and
-                            delivering the services as agreed with Customers.
+                          <li className="text-[#475569]">
+                            Provide customer and tenant support.
                           </li>
-                          <li>
-                            Tenants are permitted to access Customers’ data only
-                            for internal use related to service delivery. Misuse
-                            of data is strictly prohibited.
+                          <li className="text-[#475569]">
+                            Personalize and improve the platform experience.
+                          </li>
+                          <li className="text-[#475569]">
+                            Comply with legal obligations.
                           </li>
                         </ul>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">3. Data Access and Sharing</span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            <b>Tenants</b> may access Customer information <b>only for service delivery purposes.</b> Misuse of data is prohibited.
+                          </li>
+                          <li className="text-[#475569]">
+                            We may share necessary information with third-party service providers (e.g., payment processors) <b>only to facilitate platform operations.</b>
+                          </li>
+                          <li className="text-[#475569]">
+                            We do not sell, trade, or share personal information for unrelated commercial purposes.
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">4. Data Security and Storage</span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            Reasonable technical, administrative, and physical measures are implemented to protect data.
+                          </li>
+                          <li className="text-[#475569]">
+                            Data is stored on secure servers or trusted third-party cloud providers.
+                          </li>
+                          <li className="text-[#475569]">
+                            No system is completely secure; use of our platform is at your own risk.
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">5. Retention of Data</span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            Personal information is retained while accounts are active or as needed for service delivery.
+                          </li>
+                          <li className="text-[#475569]">
+                            Booking and transaction data may be retained for legal compliance, reporting, or operational purposes.
+                          </li>
+                          <li className="text-[#475569]">
+                            Users may request deletion of personal data, subject to legal and contractual obligations.
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">6. Cookies and Tracking</span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            Cookies and similar technologies are used to monitor usage, maintain sessions, and personalize content.
+                          </li>
+                          <li className="text-[#475569]">
+                            Users can manage or disable cookies via browser settings, but some features may not function correctly without them.
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">7. Your Rights</span>
+                        <p className="text-[#475569]">Depending on your jurisdiction, you may have rights to:</p>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            Access and obtain a copy of your personal data.
+                          </li>
+                          <li className="text-[#475569]">
+                            Correct or delete your personal data.
+                          </li>
+                          <li className="text-[#475569]">
+                            Object to or restrict processing of your personal data.
+                          </li>
+                          <li className="text-[#475569]">
+                            Withdraw consent for marketing communications.
+                          </li>
+                        </ul>
+                        <p className="text-[#475569]">Contact us at support@gobook.lk to exercise your rights.</p>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">8. Children’s Privacy</span>
+                        <ul className="list-disc pl-5">
+                          <li className="text-[#475569]">
+                            Our platform is not intended for children under 16.
+                          </li>
+                          <li className="text-[#475569]">
+                            We do not knowingly collect personal information from minors.
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">9. Changes to this Privacy Policy</span>
+                        <p className="text-[#475569]">We may update this Privacy Policy periodically. Material changes will be communicated via the platform or email. Continued use of the platform constitutes acceptance of the updated policy.</p>
+                      </div>
+                      <div>
+                        <span className="text-sm font-normal text-[#1E293B]">10. Contact Us</span>
+                        <p className="text-[#475569]">For questions or concerns regarding this Privacy Policy or your personal data:</p>
+                        <b>Gobook Email:</b> support@gobook.lk
                       </div>
                     </DialogDescription>
                   </DialogHeader>
@@ -789,9 +882,9 @@ export default function App() {
                 </DialogTrigger>
                 <DialogContent
                   title="Terms & Conditions"
-                  subTitle="This information will be deleted from this page"
+                  subTitle="Please review and agree our Terms & Conditions to continue."
                   showCloseButton={false}
-                  primaryButtonLabel="Confirm"
+                  primaryButtonLabel="Agree"
                 >
                   <DialogHeader>
                     <DialogDescription className="flex flex-col gap-4 h-[497px]">
