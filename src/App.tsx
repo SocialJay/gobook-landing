@@ -23,6 +23,14 @@ import {
   AccordionTrigger,
 } from "./components/ui/accordion";
 import logoBlock from "./assets/logo-block.png";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTrigger,
+} from "./components/ui/Dialog";
+import { format } from "date-fns";
 
 export default function App() {
   const reviews = [
@@ -75,16 +83,36 @@ export default function App() {
         <div>
           <ul className="flex gap-1">
             <li className="py-2 px-4 flex items-center">
-              <a href="#whowedo" className="text-sm leading-5 text-[#1E293B] font-medium">What we do</a>
+              <a
+                href="#whowedo"
+                className="text-sm leading-5 text-[#1E293B] font-medium"
+              >
+                What we do
+              </a>
             </li>
             <li className="py-2 px-4 flex items-center">
-              <a href="#features" className="text-sm leading-5 text-[#1E293B] font-medium">Features</a>
+              <a
+                href="#features"
+                className="text-sm leading-5 text-[#1E293B] font-medium"
+              >
+                Features
+              </a>
             </li>
             <li className="py-2 px-4 flex items-center">
-              <a href="#pricing" className="text-sm leading-5 text-[#1E293B] font-medium">Pricing</a>
+              <a
+                href="#pricing"
+                className="text-sm leading-5 text-[#1E293B] font-medium"
+              >
+                Pricing
+              </a>
             </li>
             <li className="py-2 px-4 flex items-center">
-              <a href="#faq" className="text-sm leading-5 text-[#1E293B] font-medium">FAQ</a>
+              <a
+                href="#faq"
+                className="text-sm leading-5 text-[#1E293B] font-medium"
+              >
+                FAQ
+              </a>
             </li>
           </ul>
         </div>
@@ -100,7 +128,10 @@ export default function App() {
           <div className="flex flex-col gap-4 pb-4">
             <h1 className="text-6xl font-semibold tracking-[-0.02em] text-[#1E293B] text-center font-instrument">
               Every booking should <br />
-              build <span>your brand.</span>
+              build{" "}
+              <span className="bg-gradient-to-r from-[#FFB969] via-[#ED8CA3] via-[#CB81DB] via-[#E99DC9] to-[#A676D7] bg-clip-text text-transparent">
+                your brand.
+              </span>
             </h1>
             <p className="text-center text-[#475569] font-medium text-xl leading-9">
               Launch your branded booking platform in minutes, not months.
@@ -145,7 +176,10 @@ export default function App() {
         <section>
           <img src={middle} alt="Middle" className="cover w-full" />
         </section>
-        <section id="whowedo" className="max-w-[1400px] mx-auto py-30 text-center flex flex-col gap-16">
+        <section
+          id="whowedo"
+          className="max-w-[1400px] mx-auto py-30 text-center flex flex-col gap-16"
+        >
           <div className="flex flex-col gap-4">
             <h4 className="uppercase font-medium text-[#1E293B] text-sm">
               What we do
@@ -295,11 +329,17 @@ export default function App() {
               </div>
             </div>
           </div>
-          <a href="#pricing" className="p-4 min-w-20 w-fit mx-auto border border-[#E2E8F0] rounded-lg text-[#1E293B] text-sm font-medium leading-5">
+          <a
+            href="#pricing"
+            className="p-4 min-w-20 w-fit mx-auto border border-[#E2E8F0] rounded-lg text-[#1E293B] text-sm font-medium leading-5"
+          >
             Pick a plan that fits you
           </a>
         </section>
-        <section id="features" className="max-w-[1200px] mx-auto py-16 text-center gap-16 flex flex-col">
+        <section
+          id="features"
+          className="max-w-[1200px] mx-auto py-16 text-center gap-16 flex flex-col"
+        >
           <div className="flex flex-col gap-4">
             <h4 className="uppercase font-medium text-[#1E293B] text-sm">
               Features
@@ -364,7 +404,10 @@ export default function App() {
             </div>
           </div>
         </section>
-        <section id="pricing" className="text-center flex flex-col py-30 gap-12 max-w-[1400px] mx-auto items-center">
+        <section
+          id="pricing"
+          className="text-center flex flex-col py-30 gap-12 max-w-[1400px] mx-auto items-center"
+        >
           <div className="flex flex-col gap-4">
             <h4 className="uppercase font-medium text-[#1E293B] text-sm">
               Pricing
@@ -384,13 +427,18 @@ export default function App() {
             <div className="p-6 h-[556px] border border-[#E2E8F0] rounded-[12px] w-[409px] justify-between text-left flex flex-col">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-1">
-                    <h3 className="uppercase font-semibold text-[#1E293B] text-[16px]">
-                      Starter
-                    </h3>
-                    <p className="text-[#475569] text-sm font-semibold">
-                      For Solo Entrepreneur
-                    </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-col gap-1">
+                      <h3 className="uppercase font-semibold text-[#1E293B] text-[16px]">
+                        Starter
+                      </h3>
+                      <p className="text-[#475569] text-sm font-semibold">
+                        For Solo Entrepreneur
+                      </p>
+                    </div>
+                    <div className="py-2 px-3 rounded-[12px] bg-gradient-to-r from-[#FFB969] via-[#ED8CA3] via-[#CB81DB] via-[#E99DC9] to-[#A676D7] text-sm text-[#FCFCFD] font-semibold leading-[21px]">
+                      Popular
+                    </div>
                   </div>
                   <div className="text-5xl text-[#171717] font-semibold">
                     Free
@@ -455,7 +503,7 @@ export default function App() {
                       Pro
                     </h3>
                     <p className="text-[#475569] text-sm font-semibold">
-                      For Solo Entrepreneur
+                      For Businesses
                     </p>
                   </div>
                   <div className="text-5xl text-[#171717] font-semibold">
@@ -509,9 +557,12 @@ export default function App() {
                   </div>
                 </div>
               </div>
-              <div className="bg-white border border-[#E2E8F0] py-2 px-4 text-[#1E293B] text-sm font-medium w-full text-center rounded-lg">
+              <a
+                href="mailto:support@gobook.lk"
+                className="bg-white border border-[#E2E8F0] py-2 px-4 text-[#1E293B] text-sm font-medium w-full text-center rounded-lg"
+              >
                 Contact Support
-              </div>
+              </a>
             </div>
           </div>
           <div className="border border-[#E2E8F0] rounded-[12px] p-6 max-w-[844px] w-full flex gap-12">
@@ -572,7 +623,8 @@ export default function App() {
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    Yes, you can white-label Gobook to match your brand identity.
+                    Yes, you can white-label Gobook to match your brand
+                    identity.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -581,9 +633,7 @@ export default function App() {
                   How long does it take to get started?
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-left">
-                  <p>
-                    You can set up and start using Gobook within minutes.
-                  </p>
+                  <p>You can set up and start using Gobook within minutes.</p>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
@@ -592,7 +642,8 @@ export default function App() {
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    Yes, Gobook supports seamless payment integration and transaction management.
+                    Yes, Gobook supports seamless payment integration and
+                    transaction management.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -602,7 +653,8 @@ export default function App() {
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-4 text-left">
                   <p>
-                    Absolutely, Gobook provides real-time tracking of bookings, customers, and revenue.
+                    Absolutely, Gobook provides real-time tracking of bookings,
+                    customers, and revenue.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -620,7 +672,12 @@ export default function App() {
           </div>
           <div className="text-[#475569] text-lg font-medium leading-9">
             Still have questions? DM us on{" "}
-            <a href="https://www.instagram.com/gobook.official" className="font-bold">Instagram</a>
+            <a
+              href="https://www.instagram.com/gobook.official"
+              className="font-bold"
+            >
+              Instagram
+            </a>
           </div>
         </section>
         <section className="py-16 max-w-[1440px] w-full max-h-[800px] h-full text-center mx-auto">
@@ -639,7 +696,10 @@ export default function App() {
                 entrepreneurs to enterprise
               </div>
             </div>
-            <a href="http://app.gobook.lk" className="bg-[#0F172A] rounded-[8px] p-4 min-w-20 w-fit mx-auto text-[#F8FAFC] text-sm font-semibold leading-[21px] mt-4">
+            <a
+              href="http://app.gobook.lk"
+              className="bg-[#0F172A] rounded-[8px] p-4 min-w-20 w-fit mx-auto text-[#F8FAFC] text-sm font-semibold leading-[21px] mt-4"
+            >
               Get started free
             </a>
           </div>
@@ -652,13 +712,145 @@ export default function App() {
             <li className="text-[#A1A1AA] text-sm leading-5">
               <a href="mailto:support@gobook.lk">Contact us</a>
             </li>
-            <li className="text-[#A1A1AA] text-sm leading-5">
-              <a href="https://app.clickup.com/90151503629/docs/2kyq5hrd-715">
-                Privacy Policy
-              </a>
+            <li>
+              <Dialog>
+                <DialogTrigger className="text-[#A1A1AA] text-sm leading-5 cursor-pointer">
+                  Privacy Policy
+                </DialogTrigger>
+                <DialogContent
+                  title="Terms & Conditions"
+                  subTitle="This information will be deleted from this page"
+                  showCloseButton={false}
+                  primaryButtonLabel="Confirm"
+                >
+                  <DialogHeader>
+                    <DialogDescription className="flex flex-col gap-4 h-[497px]">
+                      <div className="flex flex-col gap-1">
+                        <div className="text-sm font-semibold text-[rgba(51,65,85,1)]">
+                          Effective Date: {format(Date.now(), "yyyy/MM/dd")}
+                        </div>
+                        <p className="text-sm font-normal text-[rgba(51,65,85,1)]">
+                          By using Gobook (“we,” “us,” or “our”), you (“Tenant”
+                          or “Customer”) agree to these Terms & Conditions. If
+                          you do not agree with any part of these terms, please
+                          do not use our platform or services.
+                        </p>
+                      </div>
+                      <div>
+                        1. Use of Platform
+                        <ul className="list-disc pl-5">
+                          <li>
+                            Our platform allows Customers to book services
+                            provided by Tenants.
+                          </li>
+                          <li>
+                            All use of the platform must comply with applicable
+                            laws and these Terms.
+                          </li>
+                          <li>
+                            Users must provide accurate and complete information
+                            when registering and making bookings.
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        2. Tenant Terms
+                        <ul className="list-disc pl-5">
+                          <li>
+                            Payment to Tenants: Tenants receive the revenue
+                            generated from bookings minus a 4% platform service
+                            fee, credited to their billing account on a weekly
+                            basis.
+                          </li>
+                          <li>
+                            Setup Costs: We do not charge any setup fees to
+                            Tenants.
+                          </li>
+                          <li>
+                            Tenants are responsible for fulfilling bookings and
+                            delivering the services as agreed with Customers.
+                          </li>
+                          <li>
+                            Tenants are permitted to access Customers’ data only
+                            for internal use related to service delivery. Misuse
+                            of data is strictly prohibited.
+                          </li>
+                        </ul>
+                      </div>
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </li>
-            <li className="text-[#A1A1AA] text-sm leading-5">
-              Terms & Conditions
+            <li>
+              <Dialog>
+                <DialogTrigger className="text-[#A1A1AA] text-sm leading-5 cursor-pointer">
+                  Terms & Conditions
+                </DialogTrigger>
+                <DialogContent
+                  title="Terms & Conditions"
+                  subTitle="This information will be deleted from this page"
+                  showCloseButton={false}
+                  primaryButtonLabel="Confirm"
+                >
+                  <DialogHeader>
+                    <DialogDescription className="flex flex-col gap-4 h-[497px]">
+                      <div className="flex flex-col gap-1">
+                        <div className="text-sm font-semibold text-[rgba(51,65,85,1)]">
+                          Effective Date: {format(Date.now(), "yyyy/MM/dd")}
+                        </div>
+                        <p className="text-sm font-normal text-[rgba(51,65,85,1)]">
+                          By using Gobook (“we,” “us,” or “our”), you (“Tenant”
+                          or “Customer”) agree to these Terms & Conditions. If
+                          you do not agree with any part of these terms, please
+                          do not use our platform or services.
+                        </p>
+                      </div>
+                      <div>
+                        1. Use of Platform
+                        <ul className="list-disc pl-5">
+                          <li>
+                            Our platform allows Customers to book services
+                            provided by Tenants.
+                          </li>
+                          <li>
+                            All use of the platform must comply with applicable
+                            laws and these Terms.
+                          </li>
+                          <li>
+                            Users must provide accurate and complete information
+                            when registering and making bookings.
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        2. Tenant Terms
+                        <ul className="list-disc pl-5">
+                          <li>
+                            Payment to Tenants: Tenants receive the revenue
+                            generated from bookings minus a 4% platform service
+                            fee, credited to their billing account on a weekly
+                            basis.
+                          </li>
+                          <li>
+                            Setup Costs: We do not charge any setup fees to
+                            Tenants.
+                          </li>
+                          <li>
+                            Tenants are responsible for fulfilling bookings and
+                            delivering the services as agreed with Customers.
+                          </li>
+                          <li>
+                            Tenants are permitted to access Customers’ data only
+                            for internal use related to service delivery. Misuse
+                            of data is strictly prohibited.
+                          </li>
+                        </ul>
+                      </div>
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </li>
           </ul>
         </footer>
