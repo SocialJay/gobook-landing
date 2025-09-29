@@ -76,52 +76,54 @@ export default function App() {
 
   return (
     <>
-      <header className="fixed left-0 right-0 bg-[#FCFCFD] backdrop-blur-[0px] max-w-[1140px] mx-auto flex items-center justify-between py-2">
-        <a href="/">
-          <img src={logo} alt="Logo" />
-        </a>
-        <div>
-          <ul className="flex gap-1">
-            <li className="py-2 px-4 flex items-center">
-              <a
-                href="#whowedo"
-                className="text-sm leading-5 text-[#1E293B] font-medium"
-              >
-                What we do
-              </a>
-            </li>
-            <li className="py-2 px-4 flex items-center">
-              <a
-                href="#features"
-                className="text-sm leading-5 text-[#1E293B] font-medium"
-              >
-                Features
-              </a>
-            </li>
-            <li className="py-2 px-4 flex items-center">
-              <a
-                href="#pricing"
-                className="text-sm leading-5 text-[#1E293B] font-medium"
-              >
-                Pricing
-              </a>
-            </li>
-            <li className="py-2 px-4 flex items-center">
-              <a
-                href="#faq"
-                className="text-sm leading-5 text-[#1E293B] font-medium"
-              >
-                FAQ
-              </a>
-            </li>
-          </ul>
+      <header className="fixed left-0 right-0 bg-white z-[999] backdrop-blur-[0px] py-2">
+        <div className="max-w-[1140px] mx-auto flex items-center justify-between">
+          <a href="/">
+            <img src={logo} alt="Logo" />
+          </a>
+          <div>
+            <ul className="flex gap-1">
+              <li className="py-2 px-4 flex items-center">
+                <a
+                  href="#whowedo"
+                  className="text-sm leading-5 text-[#1E293B] font-medium"
+                >
+                  What we do
+                </a>
+              </li>
+              <li className="py-2 px-4 flex items-center">
+                <a
+                  href="#features"
+                  className="text-sm leading-5 text-[#1E293B] font-medium"
+                >
+                  Features
+                </a>
+              </li>
+              <li className="py-2 px-4 flex items-center">
+                <a
+                  href="#pricing"
+                  className="text-sm leading-5 text-[#1E293B] font-medium"
+                >
+                  Pricing
+                </a>
+              </li>
+              <li className="py-2 px-4 flex items-center">
+                <a
+                  href="#faq"
+                  className="text-sm leading-5 text-[#1E293B] font-medium"
+                >
+                  FAQ
+                </a>
+              </li>
+            </ul>
+          </div>
+          <a
+            href="http://app.gobook.lk"
+            className="border border-[#E2E8F0] rounded-[8px] text-[#1E293B] text-sm font-medium px-4 py-2"
+          >
+            Become a Host
+          </a>
         </div>
-        <a
-          href="http://app.gobook.lk"
-          className="border border-[#E2E8F0] rounded-[8px] text-[#1E293B] text-sm font-medium px-4 py-2"
-        >
-          Become a Host
-        </a>
       </header>
       <main className="pt-[180px]">
         <section className="flex flex-col gap-4 mx-auto max-w-[1140px]">
@@ -740,32 +742,51 @@ export default function App() {
                         </p>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">1. Information We Collect</span>
-                        <p className="text-[#475569]">We collect personal and non-personal information necessary to provide our platform services, including:</p>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          1. Information We Collect
+                        </span>
+                        <p className="text-[#475569]">
+                          We collect personal and non-personal information
+                          necessary to provide our platform services, including:
+                        </p>
                         <ul className="list-disc pl-5">
                           <li className="text-[#475569]">
-                            <b>Personal Information:</b> Name, email, phone number, billing address, and other details provided when creating an account or making a booking.
+                            <b>Personal Information:</b> Name, email, phone
+                            number, billing address, and other details provided
+                            when creating an account or making a booking.
                           </li>
                           <li className="text-[#475569]">
-                            <b>Booking/Service Information:</b> Details of services booked or offered, dates, times, and notes shared between Tenants and Customers.
+                            <b>Booking/Service Information:</b> Details of
+                            services booked or offered, dates, times, and notes
+                            shared between Tenants and Customers.
                           </li>
                           <li className="text-[#475569]">
-                            <b>Payment Information:</b> Processed via secure third-party payment providers; full payment credentials are not stored by us.
+                            <b>Payment Information:</b> Processed via secure
+                            third-party payment providers; full payment
+                            credentials are not stored by us.
                           </li>
                           <li className="text-[#475569]">
-                            <b>Usage Data:</b> IP address, device, browser type, and activity patterns collected via cookies or similar technologies for analytics and improving our platform.
+                            <b>Usage Data:</b> IP address, device, browser type,
+                            and activity patterns collected via cookies or
+                            similar technologies for analytics and improving our
+                            platform.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">2. How We Use Your Information</span>
-                        <p className="text-[#475569]">We use your information to:</p>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          2. How We Use Your Information
+                        </span>
+                        <p className="text-[#475569]">
+                          We use your information to:
+                        </p>
                         <ul className="list-disc pl-5">
                           <li className="text-[#475569]">
                             Process bookings and manage services.
                           </li>
                           <li className="text-[#475569]">
-                            Communicate confirmations, updates, and notifications.
+                            Communicate confirmations, updates, and
+                            notifications.
                           </li>
                           <li className="text-[#475569]">
                             Provide customer and tenant support.
@@ -779,61 +800,89 @@ export default function App() {
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">3. Data Access and Sharing</span>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          3. Data Access and Sharing
+                        </span>
                         <ul className="list-disc pl-5">
                           <li className="text-[#475569]">
-                            <b>Tenants</b> may access Customer information <b>only for service delivery purposes.</b> Misuse of data is prohibited.
+                            <b>Tenants</b> may access Customer information{" "}
+                            <b>only for service delivery purposes.</b> Misuse of
+                            data is prohibited.
                           </li>
                           <li className="text-[#475569]">
-                            We may share necessary information with third-party service providers (e.g., payment processors) <b>only to facilitate platform operations.</b>
+                            We may share necessary information with third-party
+                            service providers (e.g., payment processors){" "}
+                            <b>only to facilitate platform operations.</b>
                           </li>
                           <li className="text-[#475569]">
-                            We do not sell, trade, or share personal information for unrelated commercial purposes.
+                            We do not sell, trade, or share personal information
+                            for unrelated commercial purposes.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">4. Data Security and Storage</span>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          4. Data Security and Storage
+                        </span>
                         <ul className="list-disc pl-5">
                           <li className="text-[#475569]">
-                            Reasonable technical, administrative, and physical measures are implemented to protect data.
+                            Reasonable technical, administrative, and physical
+                            measures are implemented to protect data.
                           </li>
                           <li className="text-[#475569]">
-                            Data is stored on secure servers or trusted third-party cloud providers.
+                            Data is stored on secure servers or trusted
+                            third-party cloud providers.
                           </li>
                           <li className="text-[#475569]">
-                            No system is completely secure; use of our platform is at your own risk.
+                            No system is completely secure; use of our platform
+                            is at your own risk.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">5. Retention of Data</span>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          5. Retention of Data
+                        </span>
                         <ul className="list-disc pl-5">
                           <li className="text-[#475569]">
-                            Personal information is retained while accounts are active or as needed for service delivery.
+                            Personal information is retained while accounts are
+                            active or as needed for service delivery.
                           </li>
                           <li className="text-[#475569]">
-                            Booking and transaction data may be retained for legal compliance, reporting, or operational purposes.
+                            Booking and transaction data may be retained for
+                            legal compliance, reporting, or operational
+                            purposes.
                           </li>
                           <li className="text-[#475569]">
-                            Users may request deletion of personal data, subject to legal and contractual obligations.
+                            Users may request deletion of personal data, subject
+                            to legal and contractual obligations.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">6. Cookies and Tracking</span>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          6. Cookies and Tracking
+                        </span>
                         <ul className="list-disc pl-5">
                           <li className="text-[#475569]">
-                            Cookies and similar technologies are used to monitor usage, maintain sessions, and personalize content.
+                            Cookies and similar technologies are used to monitor
+                            usage, maintain sessions, and personalize content.
                           </li>
                           <li className="text-[#475569]">
-                            Users can manage or disable cookies via browser settings, but some features may not function correctly without them.
+                            Users can manage or disable cookies via browser
+                            settings, but some features may not function
+                            correctly without them.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">7. Your Rights</span>
-                        <p className="text-[#475569]">Depending on your jurisdiction, you may have rights to:</p>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          7. Your Rights
+                        </span>
+                        <p className="text-[#475569]">
+                          Depending on your jurisdiction, you may have rights
+                          to:
+                        </p>
                         <ul className="list-disc pl-5">
                           <li className="text-[#475569]">
                             Access and obtain a copy of your personal data.
@@ -842,32 +891,51 @@ export default function App() {
                             Correct or delete your personal data.
                           </li>
                           <li className="text-[#475569]">
-                            Object to or restrict processing of your personal data.
+                            Object to or restrict processing of your personal
+                            data.
                           </li>
                           <li className="text-[#475569]">
                             Withdraw consent for marketing communications.
                           </li>
                         </ul>
-                        <p className="text-[#475569]">Contact us at support@gobook.lk to exercise your rights.</p>
+                        <p className="text-[#475569]">
+                          Contact us at support@gobook.lk to exercise your
+                          rights.
+                        </p>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">8. Children’s Privacy</span>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          8. Children’s Privacy
+                        </span>
                         <ul className="list-disc pl-5">
                           <li className="text-[#475569]">
                             Our platform is not intended for children under 16.
                           </li>
                           <li className="text-[#475569]">
-                            We do not knowingly collect personal information from minors.
+                            We do not knowingly collect personal information
+                            from minors.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">9. Changes to this Privacy Policy</span>
-                        <p className="text-[#475569]">We may update this Privacy Policy periodically. Material changes will be communicated via the platform or email. Continued use of the platform constitutes acceptance of the updated policy.</p>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          9. Changes to this Privacy Policy
+                        </span>
+                        <p className="text-[#475569]">
+                          We may update this Privacy Policy periodically.
+                          Material changes will be communicated via the platform
+                          or email. Continued use of the platform constitutes
+                          acceptance of the updated policy.
+                        </p>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">10. Contact Us</span>
-                        <p className="text-[#475569]">For questions or concerns regarding this Privacy Policy or your personal data:</p>
+                        <span className="text-sm font-normal text-[#1E293B]">
+                          10. Contact Us
+                        </span>
+                        <p className="text-[#475569]">
+                          For questions or concerns regarding this Privacy
+                          Policy or your personal data:
+                        </p>
                         <b>Gobook Email:</b> support@gobook.lk
                       </div>
                     </DialogDescription>
