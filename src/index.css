@@ -20,6 +20,7 @@
 body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
+  background-color: #0d0d0d;
 }
 
 @theme inline{
@@ -53,3 +54,27 @@ body {
     display: none;  /* Chrome, Safari and Opera */
   }
 }
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-mobile {
+  display: flex;
+  width: max-content;
+  animation: scroll-marquee 20s linear infinite;
+}
+
+.marquee-mobile.reverse {
+  animation-direction: reverse;
+}
+
+.pause-marquee .marquee-mobile {
+  animation-play-state: paused;
+}
+
