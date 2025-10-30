@@ -616,7 +616,7 @@ React.useEffect(() => {
             </button>
           </section>
 
-          <footer className="w-full bg-black text-[#A3A3A3] py-6 px-6 sm:px-80 mt-2 sm:mt-25 flex flex-col sm:flex-row items-center sm:justify-between gap-6 sm:gap-0 text-left sm:text-left">
+          <footer className="w-full bg-black text-[#A3A3A3] py-6 px-6 xl:px-80 mt-2 xl:mt-25 flex flex-col xl:flex-row items-center xl:justify-between gap-6 xl:gap-0 text-left xl:text-left max-[1200px]:flex-col max-[1200px]:gap-6 max-[1200px]:items-center max-[1200px]:justify-center">
             <div className="flex items-center justify-center sm:justify-start text-sm text-[#A3A3A3]">
               <a href="#" className="text-[#60A5FA] hover:underline">
                 Become a Host
