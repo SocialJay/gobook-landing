@@ -47,11 +47,11 @@ body {
 
 @layer utilities {
   .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
   }
   .scrollbar-hide::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari and Opera */
+    display: none; 
   }
 }
 
@@ -66,15 +66,19 @@ body {
 
 .marquee-mobile {
   display: flex;
+  flex-wrap: nowrap;
   width: max-content;
-  animation: scroll-marquee 20s linear infinite;
+  animation: scroll-marquee 25s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .marquee-mobile.reverse {
-  animation-direction: reverse;
+  animation: scroll-marquee 25s linear infinite reverse;
 }
 
 .pause-marquee .marquee-mobile {
   animation-play-state: paused;
 }
+
 

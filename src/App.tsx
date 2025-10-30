@@ -248,6 +248,7 @@ export default function App() {
               </div>
             </section>
           </div>
+
           <section className="max-w-[1200px] mx-auto flex flex-col gap-6 py-20">
             <div className="flex justify-center">
               <div className="flex overflow-x-auto gap-2 pb-3 snap-x snap-mandatory scrollbar-hide max-w-full">
@@ -259,6 +260,7 @@ export default function App() {
               </div>
             </div>
           </section>
+
           <section className="max-w-[1200px] mx-auto flex flex-col gap-8 py-10">
             <div className="flex flex-col gap-4 pb-2">
               <div className="flex flex-col items-center gap-4 px-4">
@@ -296,7 +298,7 @@ export default function App() {
                 <div className="pointer-events-none absolute inset-y-0 right-0 w-[500px] bg-gradient-to-l from-[#050505] to-transparent" />
               </div>
 
-              <div className="sm:hidden w-full flex flex-col items-center justify-center gap-4 px-4 py-6 overflow-hidden">
+              <div className="sm:hidden w-full flex flex-col items-center justify-center gap-4 px-4 py-6">
                 <div
                   className="w-full flex flex-col items-center justify-center gap-6"
                   onTouchStart={(e) => e.currentTarget.classList.add("pause-marquee")}
@@ -340,7 +342,7 @@ export default function App() {
               </div>
             </div>
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-              <div className="w-full max-w-[250px] h-[240px] sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
                 <img src={do1} alt="No Setup Fee" className="w-14 h-14 sm:w-17 sm:h-17" />
                 <div className="flex flex-col items-center text-center gap-1 mt-3">
                   <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
@@ -352,7 +354,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="w-full max-w-[250px] h-[240px] sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
                 <img src={do2} alt="Build your own platform" className="w-14 h-14 sm:w-17 sm:h-17" />
                 <div className="flex flex-col items-center text-center gap-1 mt-3">
                   <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
@@ -364,7 +366,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="w-full max-w-[250px] h-[240px]  sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+              <div className="w-full max-w-[250px] h-[200px] py-6  sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
                 <img src={do3} alt="Know your customers" className="w-14 h-14 sm:w-17 sm:h-17" />
                 <div className="flex flex-col items-center text-center gap-1 mt-3">
                   <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
@@ -376,7 +378,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="w-full max-w-[250px] h-[240px] sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
                 <img src={do4} alt="Get paid faster" className="w-14 h-14 sm:w-17 sm:h-17" />
                 <div className="flex flex-col items-center text-center gap-1 mt-3">
                   <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
