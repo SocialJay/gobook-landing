@@ -321,7 +321,7 @@ export default function App() {
                   <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
                     No Setup fee
                   </h4>
-                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter">
+                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
                     Start selling without any upfront costs.
                   </p>
                 </div>
@@ -333,7 +333,7 @@ export default function App() {
                   <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
                     Build your own platform
                   </h4>
-                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter">
+                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
                     Launch a fully branded booking system in 2 minutes.
                   </p>
                 </div>
@@ -345,7 +345,7 @@ export default function App() {
                   <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
                     Know your customers
                   </h4>
-                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter">
+                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
                     Gain insights with real-time analytics and reporting.
                   </p>
                 </div>
@@ -353,11 +353,11 @@ export default function App() {
 
               <div className="w-full max-w-[250px] h-[240px] sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
                 <img src={do4} alt="Get paid faster" className="w-14 h-14 sm:w-17 sm:h-17" />
-                <div className="flex flex-col items-center text-center gap-1">
+                <div className="flex flex-col items-center text-center gap-1 mt-3">
                   <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
                     Get paid faster
                   </h4>
-                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter">
+                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
                     Secure, seamless transactions straight to your account.
                   </p>
                 </div>
