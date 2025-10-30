@@ -588,7 +588,7 @@ export default function App() {
             </button>
           </section>
 
-          <footer className="w-full bg-black text-[#A3A3A3] py-6 px-6 sm:px-80 mt-2 sm:mt-25 flex flex-col sm:flex-row items-center sm:justify-between gap-6 sm:gap-0 text-center sm:text-left">
+          <footer className="w-full bg-black text-[#A3A3A3] py-6 px-6 sm:px-80 mt-2 sm:mt-25 flex flex-col sm:flex-row items-center sm:justify-between gap-6 sm:gap-0 text-left sm:text-left">
             <div className="flex items-center justify-center sm:justify-start text-sm text-[#A3A3A3]">
               <a href="#" className="text-[#60A5FA] hover:underline">
                 Become a Host
@@ -838,6 +838,130 @@ export default function App() {
                   <DialogTrigger className="hover:text-white transition-colors duration-200 cursor-pointer">
                     Terms & Conditions
                   </DialogTrigger>
+                  <DialogContent
+                    title="Terms & Conditions"
+                    subTitle=""
+                    showCloseButton={false}
+                    className="bg-[#0d0d0d] border border-[rgba(140,140,140,0.2)]"
+                  >
+                    <DialogHeader>
+                      <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto text-[#9a9b9c]">
+                        <div className="flex flex-col gap-1">
+                          <div className="text-sm font-semibold">
+                            Effective Date: {format(Date.now(), "yyyy/MM/dd")}
+                          </div>
+                          <p className="text-sm font-normal">
+                            By using Gobook (“we,” “us,” or “our”), you (“Tenant”) agree to these Terms & Conditions. 
+                            If you do not agree with any part of these terms, please do not use our platform or services.
+                          </p>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">1. Use of Platform</span>
+                          <ul className="list-disc pl-5">
+                            <li>Our platform enables Tenants to offer their services for booking.</li>
+                            <li>All use of the platform must comply with applicable laws and these Terms.</li>
+                            <li>Tenants must provide accurate and complete information when registering and managing their services.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">2. Tenant Terms</span>
+                          <ul className="list-disc pl-5">
+                            <li><b>Payment to Tenants:</b> Tenants receive revenue generated from bookings minus platform service fee, credited weekly.</li>
+                            <li><b>Setup Costs:</b> We do not charge any setup fees to Tenants.</li>
+                            <li><b>Service Fulfilment:</b> Tenants are solely responsible for fulfilling bookings and delivering services.</li>
+                            <li><b>Customer Data Access:</b> Tenants may only access customer data for internal use directly related to service delivery. Misuse is strictly prohibited.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">3. Fees and Billing</span>
+                          <ul className="list-disc pl-5">
+                            <li>Platform service fees are deducted automatically from each transaction.</li>
+                            <li>Tenants’ net earnings are credited to their billing account weekly.</li>
+                            <li>All fees are inclusive of platform service charges.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">4. Purchase Policy</span>
+                          <ul className="list-disc pl-5">
+                            <li><b>Payment Methods:</b> GoBook accepts Visa, MasterCard, American Express, select Debit Cards, and Net Banking.</li>
+                            <li><b>Who You Are Buying From:</b> GoBook acts as an agent on behalf of service providers (“Tenants”).</li>
+                            <li><b>Pricing and Availability:</b> GoBook does not control the inventory or pricing of services listed.</li>
+                            <li><b>Internet Handling Fees and Order Processing Fees:</b> Bookings may include applicable fees per order or per ticket.</li>
+                            <li><b>Order Confirmation:</b> If you do not receive confirmation, verify via booking history or contact support.</li>
+                            <li><b>Refunds and Exchanges:</b> Bookings are final once confirmed. No refunds or exchanges for lost or damaged tickets.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">5. Cancellation Policy</span>
+                          <ul className="list-disc pl-5">
+                            <li><b>Tenant-Initiated:</b> Customers receive full refunds. Tenants bear any transaction costs.</li>
+                            <li><b>Customer-Initiated:</b> Refunds depend on Tenant’s cancellation policy.</li>
+                            <li><b>Force Majeure:</b> Neither party is liable for events beyond reasonable control.</li>
+                            <li><b>Transaction Fees:</b> Third-party transaction fees are generally non-refundable.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">6. Billing Information Verification</span>
+                          <p>Bookings may require verified billing details. Incorrect data can lead to cancellation.</p>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">7. Delivery</span>
+                          <ul className="list-disc pl-5">
+                            <li><b>Email Confirmation:</b> Booking confirmations will be sent via email.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">8. Cancelled / Postponed Events</span>
+                          <p>Tenants are fully responsible for refunds as per their own policy. GoBook facilitates but is not liable.</p>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">9. Data Use and Privacy</span>
+                          <ul className="list-disc pl-5">
+                            <li>Personal information is handled according to our Privacy Policy.</li>
+                            <li>Tenants must comply with data protection rules and may not misuse customer data.</li>
+                            <li>Misuse may lead to suspension or termination.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">10. Limitation of Liability</span>
+                          <ul className="list-disc pl-5">
+                            <li>The platform acts solely as a facilitator.</li>
+                            <li>We are not liable for any damages from services offered by Tenants.</li>
+                            <li>Use of the platform is at your own risk.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">11. Termination</span>
+                          <ul className="list-disc pl-5">
+                            <li>We may suspend or terminate Tenant accounts for violations.</li>
+                            <li>Termination does not relieve outstanding fees.</li>
+                          </ul>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">12. Changes to Terms</span>
+                          <p>We may update these Terms periodically. Continued use means acceptance of the updated Terms.</p>
+                        </div>
+
+                        <div>
+                          <span className="text-sm font-normal">13. Governing Law</span>
+                          <p>These Terms are governed by the laws of the Democratic Socialist Republic of Sri Lanka. 
+                            Disputes fall under the jurisdiction of Colombo courts.</p>
+                        </div>
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
                 </Dialog>
             </div>
           </footer>
