@@ -1,4 +1,6 @@
-import logo from "./assets/logo.svg";
+import logo from "./assets/navigation/logo.svg";
+import gobook from "./assets/navigation/gobook.svg";
+import avatarUser from "./assets/navigation/avatar.png"
 // import hero from "./assets/hero.png";
 // import middle from "./assets/middle.png";
 import do1 from "./assets/whatwedo/1.svg";
@@ -26,13 +28,13 @@ import {
 import { format } from "date-fns";
 import stadium from "./assets/marketplace/hero.png";
 import { FiMenu } from "react-icons/fi";
-// import EventCard from "./components/ui/eventCard";
 import { events } from "./sampleData/Events";
 import avatar from "./assets/marketplace/ReviewCards/avatar.jpg";
 import type { EventItem } from "./sampleData/Events";
 import { faqs } from "./sampleData/faq";
 import logo3D from "./assets/marketplace/3Dlogo.png";
-import logo3Dback from "./assets/marketplace/3Dlogoback.png"
+import logo3Dback from "./assets/marketplace/3Dlogoback.png";
+import React from "react";
 
 function EventCard({ event } : { event: EventItem }) {
   return (
@@ -153,6 +155,14 @@ export default function App() {
   ];
   const firstRow = reviews.slice(0, reviews.length / 2);
   const secondRow = reviews.slice(reviews.length / 2);
+  const [scrolled, setScrolled] = React.useState(false);
+
+React.useEffect(() => {
+  const handleScroll = () => setScrolled(window.scrollY > 10);
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
   return (
     <>
@@ -168,11 +178,24 @@ export default function App() {
             backgroundSize: "cover",
           }}
         />
-        <header className="fixed left-0 right-0 bg-transparent z-20 backdrop-blur-[0px] py-2">
-          <div className="max-w-[1140px] mx-auto flex items-center justify-between px-4 sm:px-6">
-            <a href="/" aria-label="Home" className="w-[120px] sm:w-auto">
-              <img src={logo} alt="Gobook" className="w-full h-auto" />
+        <header
+          className={cn(
+            "fixed left-0 right-0 z-20 transition-all duration-300",
+            scrolled
+              ? "bg-[rgba(255,255,255,0.02)] backdrop-blur-[200px] border-b border-transparent [border-image:linear-gradient(90deg,rgba(130,133,138,0)_0%,rgba(226,232,240,0.04)_20%,rgba(226,232,240,0.1)_50%,rgba(226,232,240,0.04)_80%,rgba(130,133,138,0)_100%)_1]"
+              : "bg-transparent backdrop-blur-[0px] border-b-0"
+          )}
+        >
+          <div className="max-w-[1140px] mx-auto flex items-center justify-between px-4 sm:px-6 py-1">
+            <a
+              href="/"
+              aria-label="Home"
+              className="w-[120px] sm:w-auto flex items-center gap-2"
+            >
+              <img src={logo} alt="logo" className="w-6 h-6 object-contain" />
+              <img src={gobook} alt="Gobook" className="h-5 object-contain" />
             </a>
+
             <div className="flex items-center gap-3 sm:gap-6">
               <a
                 href="http://app.gobook.lk"
@@ -182,17 +205,22 @@ export default function App() {
               </a>
               <button
                 aria-label="Account"
-                className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center"
+                className="w-8 h-8 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-white/10"
               >
-                <span className="text-xs text-white/90">A</span>
+                <img
+                  src={avatarUser}
+                  alt="User profile"
+                  className="w-full h-full object-cover"
+                />
               </button>
+
               <button aria-label="Menu" className="p-2 rounded-md hover:bg-white/5">
                 <FiMenu className="w-6 h-6 sm:w-7 sm:h-7 text-[#A1A1AA]" />
               </button>
             </div>
-
           </div>
         </header>
+
         <main className="pt-[180px] bg-transparent relative z-10 w-full">
           <div className="w-full overflow-x-hidden">
             <section className="flex flex-col gap-4 mx-auto max-w-[1140px] relative z-20 px-4 sm:px-6">
