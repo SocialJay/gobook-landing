@@ -6,12 +6,9 @@ import do2 from "./assets/whatwedo/2.svg";
 import do3 from "./assets/whatwedo/3.svg";
 import do4 from "./assets/whatwedo/4.svg";
 import { Marquee } from "./components/ui/marquee";
-import ReviewCard from "./components/ui/ReviewCard";
 import { CheckIcon } from "@phosphor-icons/react";
 import { Info } from "lucide-react";
-
-
-// import pricingBanner from "./assets/pricing-banner.png";
+import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
@@ -29,10 +26,90 @@ import {
 import { format } from "date-fns";
 import stadium from "./assets/marketplace/hero.png";
 import { FiMenu } from "react-icons/fi";
-import EventCard from "./components/ui/eventCard";
+// import EventCard from "./components/ui/eventCard";
 import { events } from "./sampleData/Events";
 import avatar from "./assets/marketplace/ReviewCards/avatar.jpg";
+import type { EventItem } from "./sampleData/Events";
+import { faqs } from "./sampleData/faq";
+import logo3D from "./assets/marketplace/3Dlogo.png";
+import logo3Dback from "./assets/marketplace/3Dlogoback.png"
 
+function EventCard({ event } : { event: EventItem }) {
+  return (
+      <div 
+          tabIndex={0}
+          className={
+            "p-2 cursor-pointer transform-gpu will-change-transform transition-transform duration-500 ease-in-out origin-center " +
+            "bg-transparent hover:bg-gray-100/10 rounded-md transition-colors"
+          }
+      >
+        <div className="inline-flex flex-col w-full max-w-[240px]">
+          <div className="flex flex-col gap-3">
+            <div className="h-[311px] overflow-hidden rounded-md bg-[#111] flex items-center justify-center">
+                <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-[235px] h-[311px] object-cover transition-transform duration-500 ease-in-out hover:scale-105"
+                />
+            </div>
+            <div className="px-0">
+              <div className="text-white text-lg font-semibold leading-tight">
+                {event.title}
+              </div>
+              <div className="text-gray-400 text-sm font-semibold mt-1">
+                {event.venue}, {event.date}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  );
+}
+
+function ReviewCard({
+  name,
+  username,
+  body,
+  avatar,
+}: {
+  name: string;
+  username: string;
+  body: string;
+  avatar?: string;
+}) {
+  return (
+    <figure
+      className={cn(
+        "w-fit min-w-[200px] max-w-[300px]",
+        "h-[180px] sm:h-[203px] p-4 sm:p-6",
+        "bg-[rgba(52,51,51,0.3)] rounded-[14px]",
+        "border border-[rgba(140,140,140,0.12)] flex flex-col justify-between"
+      )}
+    >
+      <div className="flex-1 overflow-hidden">
+        <p className="text-[#A3A3A3] text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[22px] break-words line-clamp-5 sm:line-clamp-6">
+          {body}
+        </p>
+      </div>
+
+      <div className="flex items-center gap-2 mt-3 sm:mt-0">
+        <img
+          src={avatar}
+          alt={name}
+          className="w-8 h-8 sm:w-10 sm:h-10 min-w-[32px] min-h-[32px] rounded-full object-cover"
+        />
+        <div className="flex flex-col items-start">
+          <span className="text-[#A3A3A3] text-[12px] sm:text-[14px] font-semibold leading-[18px] sm:leading-[21px]">
+            {name}
+          </span>
+          <span className="text-[#737373] text-[10px] sm:text-[12px] font-normal leading-4 sm:leading-5">
+            {username}
+          </span>
+        </div>
+      </div>
+    </figure>
+  );
+}
 
 export default function App() {
   const reviews = [
@@ -165,23 +242,31 @@ export default function App() {
 
               </div>
             </div>
-            <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-              <Marquee pauseOnHover className="[--duration:20s]">
-                {firstRow.map((review) => (
-                  <div className="scale-90 sm:scale-100">
-                    <ReviewCard key={review.username} {...review} />
-                  </div>
+            <div className="relative w-full flex flex-col items-center justify-center overflow-hidden">
+              <div className="hidden sm:flex flex-col w-full items-center justify-center">
+                <Marquee pauseOnHover className="[--duration:20s]">
+                  {firstRow.map((review) => (
+                    <div key={review.username} className="scale-90 sm:scale-100">
+                      <ReviewCard {...review} />
+                    </div>
+                  ))}
+                </Marquee>
+                <Marquee reverse pauseOnHover className="[--duration:20s]">
+                  {secondRow.map((review) => (
+                    <div key={review.username} className="scale-90 sm:scale-100">
+                      <ReviewCard {...review} />
+                    </div>
+                  ))}
+                </Marquee>
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-[500px] bg-gradient-to-r from-[#050505] to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-[500px] bg-gradient-to-l from-[#050505] to-transparent" />
+              </div>
+
+              <div className="flex flex-col gap-4 sm:hidden px-4 py-6 items-center">
+                {reviews.slice(0, 4).map((review) => (
+                  <ReviewCard key={review.username} {...review} />
                 ))}
-              </Marquee>
-              <Marquee reverse pauseOnHover className="[--duration:20s]">
-                {secondRow.map((review) => (
-                  <div className="scale-90 sm:scale-100">
-                    <ReviewCard key={review.username} {...review} />
-                  </div>
-                ))}
-              </Marquee>
-              <div className="hidden sm:block pointer-events-none absolute inset-y-0 left-0 w-[500px] bg-gradient-to-r from-[#050505] to-transparent" />
-              <div className="hidden sm:block pointer-events-none absolute inset-y-0 right-0 w-[500px] bg-gradient-to-l from-[#050505] to-transparent" />
+              </div>
             </div>
           </section>
          
@@ -274,8 +359,8 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row justify-center gap-6 mt-6 items-stretch">
-              <div className="flex flex-col justify-between w-[410px] min-h-[580px] p-8 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[12px] backdrop-blur-sm">
+            <div className="flex flex-col sm:flex-row justify-center gap-6 mt-6 items-stretch px-4">
+              <div className="flex flex-col justify-between w-full sm:w-[410px] p-6 sm:p-8 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[12px] backdrop-blur-sm">
                 <div className="flex flex-col gap-4 w-full pl-4">
                   <div className="flex justify-between items-center w-full">
                     <div className="flex flex-col gap-1">
@@ -326,7 +411,7 @@ export default function App() {
                   Get Started
                 </button>
               </div>
-              <div className="flex flex-col justify-between w-[410px] min-h-[580px] p-8 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[12px] backdrop-blur-sm">
+              <div className="flex flex-col justify-between w-full sm:w-[410px] p-6 sm:p-8 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[12px] backdrop-blur-sm">
                 <div className="flex flex-col gap-6 w-full pl-4">
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-1">
@@ -374,12 +459,47 @@ export default function App() {
               </div>
             </div>
           </section>
-          <section id="faq" className="text-center flex flex-col gap-12 py-12">
-            <div className="flex flex-col gap-4">
-              <h4 className="uppercase font-medium text-[#1E293B] text-sm">
-                Faq
-              </h4>
-              <h2 className="text-6xl font-semibold tracking-[-0.02em] font-instrument text-[#1E293B] text-center">
+          
+          <section className="w-full flex justify-center mt-6 px-4">
+            <div className="w-full max-w-[844px] flex flex-col md:flex-row justify-between bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[12px] p-6 sm:p-8 gap-2 md:gap-15">
+              
+              <div className="flex-1 flex flex-col justify-between gap-4 text-left order-2 md:order-1 mt-6 md:mt-0">
+                <div className="flex flex-col gap-3 p-1">
+                  <h3 className="text-white text-[22px] sm:text-[24px] font-Inter font-semibold leading-snug">
+                    Hosting a large or complex event?
+                  </h3>
+                  <p className="text-[#A3A3A3] text-[13px] sm:text-[14px] font-Inter leading-[20px]">
+                    We offer tailored plans for event pros with unique needs. Get personalised support,
+                    customised pricing, and more by partnering with our sales team.
+                  </p>
+                </div>
+
+                <button className="w-full md:w-fit px-4 py-2 bg-[#27272A] border border-[#3F3F46] text-[#F5F5F5] text-[14px] font-Inter font-medium rounded-[8px] hover:bg-[#3F3F46] transition-all duration-200 mx-auto md:mx-0">
+                  Contact Support
+                </button>
+              </div>
+
+              <div className="flex-1 relative w-full md:w-[280px] h-[220px] md:h-[280px] rounded-[12px] overflow-hidden flex justify-center items-center bg-gradient-to-b from-[#0A0A0A] to-[#1A1A1A] order-1 md:order-2">
+                <img
+                  src={logo3Dback}
+                  alt="Gradient Background"
+                  className="absolute inset-0 w-full h-full object-cover rounded-[12px] opacity-20"
+                />
+                <img
+                  src={logo3D}
+                  alt="3D Ticket Logo"
+                  className="relative z-10 w-[190px] sm:w-[250px] h-auto object-contain"
+                />
+              </div>
+            </div>
+          </section>
+
+          <section className="w-full flex flex-col items-center justify-center gap-12 py-20 px-6">
+            <div className="flex flex-col items-center gap-4 text-center">
+              <p className="uppercase text-[#A3A3A3] text-[14px] font-Inter font-medium tracking-[0.7px]">
+                FAQ
+              </p>
+              <h2 className="text-[#F5F5F5] text-[36px] sm:text-[60px] font-instrument font-semibold leading-[42px] sm:leading-[72px]">
                 Early Doubts
               </h2>
             </div>
@@ -390,128 +510,91 @@ export default function App() {
                 className="w-full flex flex-col gap-3"
                 defaultValue="item-1"
               >
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>What is Gobook?</AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-4 text-left">
-                    <p>
-                      Gobook is a customizable online booking platform designed to
-                      simplify scheduling and management.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>
-                    Can I fully brand the booking platform as my own?
-                  </AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-4 text-left">
-                    <p>
-                      Yes, you can white-label Gobook to match your brand
-                      identity.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger>
-                    How long does it take to get started?
-                  </AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-4 text-left">
-                    <p>You can set up and start using Gobook within minutes.</p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-4">
-                  <AccordionTrigger>
-                    Can I integrate payments and manage transactions?
-                  </AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-4 text-left">
-                    <p>
-                      Yes, Gobook supports seamless payment integration and
-                      transaction management.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-5">
-                  <AccordionTrigger>
-                    Will I be able to track bookings, customer and revenue?
-                  </AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-4 text-left">
-                    <p>
-                      Absolutely, Gobook provides real-time tracking of bookings,
-                      customers, and revenue.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-6">
-                  <AccordionTrigger>
-                    Is there support if I run into issues?
-                  </AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-4 text-left">
-                    <p>
-                      Yes, our support team is always available to assist you.
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index + 1}`}>
+                    <AccordionTrigger className="text-[#A3A3A3] text-[14px] font-semibold  rounded-[10px] px-6 py-4 transition-all">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="flex flex-col gap-4 text-left px-6 pb-4 text-[#737373]">
+                      <p>{faq.answer}</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
               </Accordion>
             </div>
-            <div className="text-[#475569] text-lg font-medium leading-9">
-              Still have questions? DM us on{" "}
-              <a
-                href="https://www.instagram.com/gobook.official"
-                className="font-bold"
-              >
-                Instagram
-              </a>
+            <div className="flex flex-col items-center justify-center text-center">
+              <span className="text-[#737373] text-[14px] font-Inter font-normal leading-[20px]">
+                Still have questions?{" "}
+                <a
+                  href="https://www.instagram.com/gobook.official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#93C5FD] text-[14px] font-Inter font-normal leading-[20px] hover:underline cursor-pointer"
+                >
+                  DM us on Instagram
+                </a>
+              </span>
             </div>
           </section>
-          <section className="py-16 max-w-[1440px] w-full max-h-[800px] h-full text-center mx-auto">
-            <div className="py-16">
-              <div className="pb-6 flex flex-col gap-6">
-                <div className="flex justify-center">
-                  <img
-                    src={logoBlock}
-                    alt="Gobook Logo"
-                    className="w-[174px] h-[120px]"
-                  />
-                </div>
-                <div className="text-[#1E293B] font-semibold text-6xl leading-[72px] font-instrument">
-                  For everyone from
-                  <br />
-                  entrepreneurs to enterprise
-                </div>
+
+          <section className="w-full flex flex-col items-center justify-center text-center py-16 sm:py-20 px-4 bg-black">
+            <div className="flex flex-col items-center justify-center gap-2 sm:gap-4 mb-8">         
+              <div className="flex flex-col items-center justify-center sm:hidden">
+                <img
+                  src={logoBlock} 
+                  alt="Gobook icon"
+                  className="w-[174px] h-[120px] mb-2"
+                />
               </div>
-              <a
-                href="http://app.gobook.lk"
-                className="bg-[#0F172A] rounded-[8px] p-4 min-w-20 w-fit mx-auto text-[#F8FAFC] text-sm font-semibold leading-[21px] mt-4"
-              >
-                Get started free
-              </a>
+              <img
+                src={logoBlock}
+                alt="Gobook logo"
+                className="hidden sm:block w-[174px] h-[48px] sm:h-[120px]"
+              />
             </div>
+            <h3 className="text-white text-[40px] sm:text-[60px] font-semibold leading-tight max-w-[880px] mb-8 font-Instrument">
+              For everyone from <br className="sm:hidden" />
+              entrepreneurs to enterprise
+            </h3>
+            <button className="sm:w-auto sm:px-4 px-23 py-2 bg-white text-[#111] text-[14px] font-medium rounded-[8px] hover:bg-gray-100 transition-all duration-200">
+              Get started free
+            </button>
           </section>
-          <footer className="max-w-[1400px] mx-auto flex justify-between py-16">
-            <p className="text-sm font-normal leading-5 text-[#A1A1AA]">
-              Copyright © 2025 gobook
-            </p>
-            <ul className="flex gap-8">
-              <li className="text-[#A1A1AA] text-sm leading-5">
-                <a href="mailto:support@gobook.lk">Contact us</a>
-              </li>
-              <li>
+
+          <footer className="w-full bg-black text-[#A3A3A3] py-6 px-6 sm:px-80 mt-2 sm:mt-25 flex flex-col sm:flex-row items-center sm:justify-between gap-6 sm:gap-0 text-center sm:text-left">
+            <div className="flex items-center justify-center sm:justify-start text-sm text-[#A3A3A3]">
+              <a href="#" className="text-[#60A5FA] hover:underline">
+                Become a Host
+              </a>
+              <span className="mx-1.5">•</span>
+              <span>with gobook</span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-4 text-sm">
+              <a
+                href="mailto:support@gobook.lk"
+                className="hover:text-white transition-colors duration-200"
+              >
+                Contact us
+              </a>
+              
                 <Dialog>
-                  <DialogTrigger className="text-[#A1A1AA] text-sm leading-5 cursor-pointer">
+                  <DialogTrigger className="hover:text-white transition-colors duration-200 cursor-pointer">
                     Privacy Policy
                   </DialogTrigger>
                   <DialogContent
                     title="Privacy Policy"
                     subTitle=""
                     showCloseButton={false}
-                    primaryButtonLabel="Confirm"
+                    className="bg-[#0d0d0d] border border-[rgba(140,140,140,0.2)]"
                   >
                     <DialogHeader>
-                      <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto">
+                      <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto text-[#9a9b9c]">
                         <div className="flex flex-col gap-1">
-                          <div className="text-sm font-semibold text-[#1E293B]">
+                          <div className="text-sm font-semibold">
                             Effective Date: {format(Date.now(), "yyyy/MM/dd")}
                           </div>
-                          <p className="text-sm font-normal text-[#475569]">
+                          <p className="text-sm font-normal">
                             Gobook (“we,” “us,” or “our”) values your privacy and
                             is committed to protecting the personal data of all
                             users (“you”) who access our platform, including
@@ -523,30 +606,30 @@ export default function App() {
                           </p>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal">
                             1. Information We Collect
                           </span>
-                          <p className="text-[#475569]">
+                          <p>
                             We collect personal and non-personal information
                             necessary to provide our platform services, including:
                           </p>
                           <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
+                            <li>
                               <b>Personal Information:</b> Name, email, phone
                               number, billing address, and other details provided
                               when creating an account or making a booking.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               <b>Booking/Service Information:</b> Details of
                               services booked or offered, dates, times, and notes
                               shared between Tenants and Customers.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               <b>Payment Information:</b> Processed via secure
                               third-party payment providers; full payment
                               credentials are not stored by us.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               <b>Usage Data:</b> IP address, device, browser type,
                               and activity patterns collected via cookies or
                               similar technologies for analytics and improving our
@@ -555,101 +638,101 @@ export default function App() {
                           </ul>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal">
                             2. How We Use Your Information
                           </span>
-                          <p className="text-[#475569]">
+                          <p>
                             We use your information to:
                           </p>
                           <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
+                            <li>
                               Process bookings and manage services.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               Communicate confirmations, updates, and
                               notifications.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               Provide customer and tenant support.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               Personalize and improve the platform experience.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               Comply with legal obligations.
                             </li>
                           </ul>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal">
                             3. Data Access and Sharing
                           </span>
                           <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
+                            <li>
                               <b>Tenants</b> may access Customer information{" "}
                               <b>only for service delivery purposes.</b> Misuse of
                               data is prohibited.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               We may share necessary information with third-party
                               service providers (e.g., payment processors){" "}
                               <b>only to facilitate platform operations.</b>
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               We do not sell, trade, or share personal information
                               for unrelated commercial purposes.
                             </li>
                           </ul>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal">
                             4. Data Security and Storage
                           </span>
                           <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
+                            <li>
                               Reasonable technical, administrative, and physical
                               measures are implemented to protect data.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               Data is stored on secure servers or trusted
                               third-party cloud providers.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               No system is completely secure; use of our platform
                               is at your own risk.
                             </li>
                           </ul>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal">
                             5. Retention of Data
                           </span>
                           <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
+                            <li>
                               Personal information is retained while accounts are
                               active or as needed for service delivery.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               Booking and transaction data may be retained for
                               legal compliance, reporting, or operational
                               purposes.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               Users may request deletion of personal data, subject
                               to legal and contractual obligations.
                             </li>
                           </ul>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal">
                             6. Cookies and Tracking
                           </span>
                           <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
+                            <li>
                               Cookies and similar technologies are used to monitor
                               usage, maintain sessions, and personalize content.
                             </li>
-                            <li className="text-[#475569]">
+                            <li>
                               Users can manage or disable cookies via browser
                               settings, but some features may not function
                               correctly without them.
@@ -657,52 +740,52 @@ export default function App() {
                           </ul>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal">
                             7. Your Rights
                           </span>
-                          <p className="text-[#475569]">
+                          <p>
                             Depending on your jurisdiction, you may have rights
                             to:
                           </p>
                           <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
+                            <li>
                               Access and obtain a copy of your personal data.
                             </li>
-                            <li className="text-[#475569]">
+                            <li className="text-[#9a9b9c]">
                               Correct or delete your personal data.
                             </li>
-                            <li className="text-[#475569]">
+                            <li className="text-[#9a9b9c]">
                               Object to or restrict processing of your personal
                               data.
                             </li>
-                            <li className="text-[#475569]">
+                            <li className="text-[#9a9b9c]">
                               Withdraw consent for marketing communications.
                             </li>
                           </ul>
-                          <p className="text-[#475569]">
+                          <p className="text-[#9a9b9c]">
                             Contact us at support@gobook.lk to exercise your
                             rights.
                           </p>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal text-[#9a9b9c]">
                             8. Children’s Privacy
                           </span>
                           <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
+                            <li className="text-[#9a9b9c]">
                               Our platform is not intended for children under 16.
                             </li>
-                            <li className="text-[#475569]">
+                            <li className="text-[#9a9b9c]">
                               We do not knowingly collect personal information
                               from minors.
                             </li>
                           </ul>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal text-[#9a9b9c]">
                             9. Changes to this Privacy Policy
                           </span>
-                          <p className="text-[#475569]">
+                          <p className="text-[#9a9b9c]">
                             We may update this Privacy Policy periodically.
                             Material changes will be communicated via the platform
                             or email. Continued use of the platform constitutes
@@ -710,10 +793,10 @@ export default function App() {
                           </p>
                         </div>
                         <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
+                          <span className="text-sm font-normal text-[#9a9b9c]">
                             10. Contact Us
                           </span>
-                          <p className="text-[#475569]">
+                          <p className="text-[#9a9b9c]">
                             For questions or concerns regarding this Privacy
                             Policy or your personal data:
                           </p>
@@ -723,327 +806,13 @@ export default function App() {
                     </DialogHeader>
                   </DialogContent>
                 </Dialog>
-              </li>
-              <li>
+                
                 <Dialog>
-                  <DialogTrigger className="text-[#A1A1AA] text-sm leading-5 cursor-pointer">
+                  <DialogTrigger className="hover:text-white transition-colors duration-200 cursor-pointer">
                     Terms & Conditions
                   </DialogTrigger>
-                  <DialogContent
-                    title="Terms & Conditions"
-                    subTitle="Please review and agree our Terms & Conditions to continue."
-                    showCloseButton={false}
-                    primaryButtonLabel="Agree"
-                  >
-                    <DialogHeader>
-                      <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto">
-                        <div className="flex flex-col gap-1">
-                          <div className="text-sm font-semibold text-[#1E293B]">
-                            Effective Date: {format(Date.now(), "yyyy/MM/dd")}
-                          </div>
-                          <p className="text-sm font-normal text-[#475569]">
-                            By using Gobook (“we,” “us,” or “our”), you (“Tenant”
-                            ) agree to these Terms & Conditions. If you do not
-                            agree with any part of these terms, please do not use
-                            our platform or services.
-                          </p>
-                        </div>
-                        <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
-                            1. Use of Platform
-                          </span>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              Our platform enables Tenants to offer their services
-                              for booking.
-                            </li>
-                            <li className="text-[#475569]">
-                              All use of the platform must comply with applicable
-                              laws and these Terms.
-                            </li>
-                            <li className="text-[#475569]">
-                              Tenants must provide accurate and complete
-                              information when registering and managing their
-                              services.
-                            </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
-                            2. Tenant Terms
-                          </span>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              <b>Payment to Tenants:</b> Tenants receive the
-                              revenue generated from bookings minus platform
-                              service fee, credited to their billing account on a
-                              weekly basis.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Setup Costs:</b> We do not charge any setup fees
-                              to Tenants.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Service Fulfilment:</b> Tenants are solely
-                              responsible for fulfilling bookings and delivering
-                              the services they list on the platform.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Customer Data Access:</b> Tenants may only access
-                              customer data for internal use directly related to
-                              service delivery. Misuse of data is strictly
-                              prohibited.
-                            </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
-                            3. Fees and Billing
-                          </span>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              Platform service fees are deducted automatically
-                              from each transaction.
-                            </li>
-                            <li className="text-[#475569]">
-                              Tenants’ net earnings (after deduction of service
-                              fees) are credited to their billing account weekly.
-                            </li>
-                            <li className="text-[#475569]">
-                              All fees are inclusive of platform service charges.
-                            </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <span className="text-sm font-normal text-[#1E293B]">
-                            4. Purchase Policy
-                          </span>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              <b>Payment Methods:</b>
-                              GoBook accepts Visa, MasterCard, American Express,
-                              select Debit Cards, and Net Banking. Other payment
-                              methods may be added from time to time.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Who You Are Buying From:</b> GoBook acts as the
-                              agent on behalf of service providers (“Tenants”) who
-                              list their services on the platform. When you make a
-                              booking, GoBook handles the transaction and collects
-                              payment on behalf of the Tenant.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Pricing and Availability:</b> GoBook facilitates
-                              bookings on behalf of Tenants and does not control
-                              the inventory, availability, or pricing of the
-                              services listed.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>
-                                Internet Handling Fees and Order Processing Fees:
-                              </b>{" "}
-                              Tickets purchased on GoBook are subject to a per
-                              ticket internet handling fee and a non-refundable
-                              per order processing fee.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Order Confirmation:</b> If you do not receive a
-                              confirmation number (via a confirmation page or
-                              email) after submitting your payment information, or
-                              if you experience an error message or service
-                              interruption during the booking process, it is your
-                              responsibility to verify your booking through your
-                              booking history or by contacting our Customer
-                              Support. Only you may be aware of any issues that
-                              occur during the booking process. GoBook will not be
-                              responsible for any losses (monetary or otherwise)
-                              if you assume a booking was not placed due to not
-                              receiving confirmation.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Refunds and Exchanges:</b> Before completing your
-                              booking, please carefully review all details. GoBook
-                              is unable to process exchanges or refunds after a
-                              booking has been confirmed, or for lost, stolen,
-                              damaged, or destroyed tickets or booking
-                              confirmations.
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* 5. Cancellation Policy */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            5. Cancellation Policy
-                          </span>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              <b>Tenant-Initiated Cancellations:</b> If a Tenant
-                              cancels a booking or event, the customer is entitled
-                              to a full refund of the booking amount. The Tenant
-                              is responsible for any transaction fees or costs
-                              incurred during the refund process. GoBook will
-                              facilitate the refund on behalf of the Tenant but
-                              shall not be liable for such cancellations.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Customer-Initiated Cancellations:</b> Refunds for
-                              customer cancellations will be subject to the
-                              Tenant’s individual cancellation policy. If no
-                              policy is provided, bookings will be considered
-                              non-refundable.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Force Majeure Events:</b> In cases of events
-                              beyond reasonable control (natural disasters,
-                              restrictions, strikes, pandemics), GoBook and the
-                              Tenant are not liable for non-performance. Refunds
-                              or credits depend on the Tenant’s policy.
-                            </li>
-                            <li className="text-[#475569]">
-                              <b>Transaction Fees:</b> Transaction fees charged by
-                              third-party processors are generally non-refundable.
-                              For Tenant cancellations, Tenants bear the cost so
-                              customers receive a full refund.
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* 6. Billing Information Verification */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            6. Billing Information Verification
-                          </span>
-                          <p className="text-[#475569]">
-                            Some bookings may be processed only after your billing
-                            address and other billing information have been
-                            verified. Incorrect billing details can delay
-                            processing. If we cannot reach you, GoBook may cancel
-                            the booking and allow another customer to book the
-                            service.
-                          </p>
-                        </div>
-
-                        {/* 7. Delivery */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            7. Delivery
-                          </span>
-                          <p className="text-[#475569]">
-                            GoBook offers multiple delivery options, which may
-                            vary depending on the service or event. Currently:
-                          </p>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              <b>Email Confirmation:</b> Booking confirmation will
-                              be sent via email.
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* 8. Cancelled/Postponed Events */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            8. Cancelled / Postponed Events
-                          </span>
-                          <p className="text-[#475569]">
-                            Occasionally, services may be canceled or postponed by
-                            the Tenant. The Tenant is fully responsible for
-                            refunds as per their own policy. GoBook facilitates
-                            the refund process but does not assume liability.
-                          </p>
-                        </div>
-
-                        {/* 9. Data Use and Privacy */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            9. Data Use and Privacy
-                          </span>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              Personal information is collected and processed in
-                              accordance with our Privacy Policy.
-                            </li>
-                            <li className="text-[#475569]">
-                              Tenants must comply with data protection rules and
-                              may not use customer data outside service delivery.
-                            </li>
-                            <li className="text-[#475569]">
-                              Misuse of personal data may result in suspension or
-                              termination of access.
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* 10. Limitation of Liability */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            10. Limitation of Liability
-                          </span>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              The platform acts solely as a facilitator; we do not
-                              provide services directly.
-                            </li>
-                            <li className="text-[#475569]">
-                              We are not liable for any loss, damage, or disputes
-                              from services offered by Tenants.
-                            </li>
-                            <li className="text-[#475569]">
-                              Use of the platform is at your own risk.
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* 11. Termination */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            11. Termination
-                          </span>
-                          <ul className="list-disc pl-5">
-                            <li className="text-[#475569]">
-                              We reserve the right to suspend or terminate Tenant
-                              accounts for violations of these Terms.
-                            </li>
-                            <li className="text-[#475569]">
-                              Termination does not relieve Tenants of outstanding
-                              fees.
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* 12. Changes to Terms */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            12. Changes to Terms
-                          </span>
-                          <p className="text-[#475569]">
-                            We may update these Terms from time to time. Material
-                            changes will be communicated via the platform or
-                            email. Continued use of the platform constitutes
-                            acceptance of the updated Terms.
-                          </p>
-                        </div>
-
-                        {/* 13. Governing Law */}
-                        <div>
-                          <span className="text-sm font-semibold text-[#1E293B]">
-                            13. Governing Law
-                          </span>
-                          <p className="text-[#475569]">
-                            These Terms are governed by and construed in
-                            accordance with the laws of the Democratic Socialist
-                            Republic of Sri Lanka. Any disputes shall be subject
-                            to the exclusive jurisdiction of the courts of
-                            Colombo, Sri Lanka.
-                          </p>
-                        </div>
-                      </DialogDescription>
-                    </DialogHeader>
-                  </DialogContent>
                 </Dialog>
-              </li>
-            </ul>
+            </div>
           </footer>
         </main>
       </div>
