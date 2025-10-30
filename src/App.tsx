@@ -262,11 +262,38 @@ export default function App() {
                 <div className="pointer-events-none absolute inset-y-0 right-0 w-[500px] bg-gradient-to-l from-[#050505] to-transparent" />
               </div>
 
-              <div className="flex flex-col gap-4 sm:hidden px-4 py-6 items-center">
-                {reviews.slice(0, 4).map((review) => (
-                  <ReviewCard key={review.username} {...review} />
-                ))}
+              <div className="sm:hidden w-full flex flex-col items-center justify-center gap-4 px-4 py-6 overflow-hidden">
+                <div className="w-full overflow-x-auto scrollbar-hide">
+                  <div className="flex items-center justify-start gap-4 px-0">
+                    {[...firstRow, ...firstRow].map((review, index) => (
+                      <div
+                        key={`${review.username}-${index}`}
+                        className="flex-shrink-0 mx-2"
+                      >
+                        <ReviewCard {...review} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="w-full overflow-x-auto scrollbar-hide">
+                  <div className="flex items-center justify-start gap-4 px-0">
+                    {[...secondRow, ...secondRow].map((review, index) => (
+                      <div
+                        key={`${review.username}-${index}`}
+                        className="flex-shrink-0 mx-2"
+                      >
+                        <ReviewCard {...review} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
+
+
+
+
+
+
             </div>
           </section>
          
