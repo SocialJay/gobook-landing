@@ -1,8 +1,6 @@
 import logo from "./assets/navigation/logo.svg";
 import gobook from "./assets/navigation/gobook.svg";
 import avatarUser from "./assets/navigation/avatar.png"
-// import hero from "./assets/hero.png";
-// import middle from "./assets/middle.png";
 import do1 from "./assets/whatwedo/1.svg";
 import do2 from "./assets/whatwedo/2.svg";
 import do3 from "./assets/whatwedo/3.svg";
