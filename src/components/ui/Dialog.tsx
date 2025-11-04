@@ -50,7 +50,7 @@ function DialogContent({
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
   subTitle: string;
-  primaryButtonLabel: string;
+  primaryButtonLabel?: string;
 }) {
   return (
     <DialogPortal data-slot="dialog-portal">
@@ -64,14 +64,21 @@ function DialogContent({
         {...props}
       >
         <DialogTitle>
-          <h2 className="text-lg font-semibold text-[rgba(51,65,85,1)]">{title}</h2>
-          <p className="text-sm font-normal text-[rgba(100,116,139,1)]">{subTitle}</p>
+          <h2 className="text-lg font-semibold text-[#ffffff]">{title}</h2>
+          <p className="text-sm font-normal text-[#b2b3b3]">{subTitle}</p>
         </DialogTitle>
         {children}
+        {primaryButtonLabel && (
         <DialogFooter className="w-full flex justify-between">
-          <DialogClose><Button hierarchy="secondary" className="w-fit">Back</Button></DialogClose>
-          <DialogClose><Button hierarchy="primary" className="w-fit">{primaryButtonLabel}</Button></DialogClose>
-        </DialogFooter>
+            <DialogClose>
+              <Button hierarchy="secondary" className="w-fit">Back</Button>
+            </DialogClose>
+            <DialogClose>
+              <Button hierarchy="primary" className="w-fit">{primaryButtonLabel}</Button>
+            </DialogClose>
+          </DialogFooter>
+        )}
+
         {showCloseButton && (
           <DialogPrimitive.Close
             data-slot="dialog-close"
@@ -89,7 +96,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn("flex flex-col gap-2 text-center sm:text-left", className)}
+      className={cn("flex flex-col gap-2 sm:text-left", className)}
       {...props}
     />
   );

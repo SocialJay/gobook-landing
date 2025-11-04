@@ -20,6 +20,7 @@
 body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
+  background-color: #0d0d0d;
 }
 
 @theme inline{
@@ -43,3 +44,41 @@ body {
     }
   }
 }
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; 
+  }
+}
+
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-mobile {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
+  animation: scroll-marquee 25s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.marquee-mobile.reverse {
+  animation: scroll-marquee 25s linear infinite reverse;
+}
+
+.pause-marquee .marquee-mobile {
+  animation-play-state: paused;
+}
+
+

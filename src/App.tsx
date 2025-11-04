@@ -1,21 +1,14 @@
-import logo from "./assets/logo.svg";
-import hero from "./assets/hero.png";
-// import middle from "./assets/middle.png";
+import logo from "./assets/navigation/logo.svg";
+import gobook from "./assets/navigation/gobook.svg";
+import avatarUser from "./assets/navigation/avatar.png"
 import do1 from "./assets/whatwedo/1.svg";
 import do2 from "./assets/whatwedo/2.svg";
 import do3 from "./assets/whatwedo/3.svg";
 import do4 from "./assets/whatwedo/4.svg";
 import { Marquee } from "./components/ui/marquee";
-import ReviewCard from "./components/ui/ReviewCard";
-import step1 from "./assets/steps/step1.svg";
-import step2 from "./assets/steps/step2.svg";
-import step3 from "./assets/steps/step3.svg";
-import { CheckIcon, ClockIcon } from "@phosphor-icons/react";
-import feat1 from "./assets/features/feat1.svg";
-import feat2 from "./assets/features/feat2.svg";
-import feat3 from "./assets/features/feat3.svg";
-import feat4 from "./assets/features/feat4.svg";
-import pricingBanner from "./assets/pricing-banner.png";
+import { CheckIcon } from "@phosphor-icons/react";
+import { Info } from "lucide-react";
+import { cn } from "@/lib/utils";
 import {
   Accordion,
   AccordionContent,
@@ -31,6 +24,92 @@ import {
   DialogTrigger,
 } from "./components/ui/Dialog";
 import { format } from "date-fns";
+import stadium from "./assets/marketplace/hero.png";
+import { FiMenu } from "react-icons/fi";
+import { events } from "./sampleData/Events";
+import avatar1 from "./assets/marketplace/ReviewCards/avatar1.jpg";
+import avatar2 from "./assets/marketplace/ReviewCards/avatar2.jpg";
+import avatar3 from "./assets/marketplace/ReviewCards/avatar3.jpg";
+import avatar4 from "./assets/marketplace/ReviewCards/avatar4.jpg";
+import type { EventItem } from "./sampleData/Events";
+import { faqs } from "./sampleData/faq";
+import logo3D from "./assets/marketplace/3Dlogo.png";
+import logo3Dback from "./assets/marketplace/3Dlogoback.png";
+import React from "react";
+
+function EventCard({ event }: { event: EventItem }) {
+  return (
+    <div
+      tabIndex={0}
+      className="p-2 cursor-pointer transform-gpu will-change-transform transition-transform duration-500 ease-in-out origin-center bg-transparent hover:bg-gray-100/10 active:bg-gray-100/10 rounded-md transition-colors"
+    >
+      <div className="inline-flex flex-col w-full max-w-[240px]">
+        <div className="flex flex-col gap-3">
+          <div className="h-[311px] overflow-hidden rounded-md bg-[#111] flex items-center justify-center">
+            <img
+              src={event.image}
+              alt={event.title}
+              className="w-[235px] h-[311px] object-cover transition-transform duration-500 ease-in-out hover:scale-105 active:scale-105"
+            />
+          </div>
+          <div className="px-0">
+            <div className="text-white text-lg font-semibold leading-tight">
+              {event.title}
+            </div>
+            <div className="text-gray-400 text-sm font-semibold mt-1">
+              {event.venue}, {event.date}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ReviewCard({
+  name,
+  username,
+  body,
+  avatar,
+}: {
+  name: string;
+  username: string;
+  body: string;
+  avatar?: string;
+}) {
+  return (
+    <figure
+      className={cn(
+        "w-fit min-w-[200px] max-w-[300px]",
+        "h-[180px] sm:h-[203px] p-4 sm:p-6",
+        "bg-[rgba(52,51,51,0.3)] rounded-[14px]",
+        "border border-[rgba(140,140,140,0.12)] flex flex-col justify-between"
+      )}
+    >
+      <div className="flex-1 overflow-hidden">
+        <p className="text-[#A3A3A3] text-[14px] sm:text-[16px] font-medium leading-[20px] sm:leading-[22px] break-words line-clamp-5 sm:line-clamp-6">
+          {body}
+        </p>
+      </div>
+
+      <div className="flex items-center gap-2 mt-3 sm:mt-0">
+        <img
+          src={avatar}
+          alt={name}
+          className="w-8 h-8 sm:w-10 sm:h-10 min-w-[32px] min-h-[32px] rounded-full object-cover"
+        />
+        <div className="flex flex-col items-start">
+          <span className="text-[#A3A3A3] text-[12px] sm:text-[14px] font-semibold leading-[18px] sm:leading-[21px]">
+            {name}
+          </span>
+          <span className="text-[#737373] text-[10px] sm:text-[12px] font-normal leading-4 sm:leading-5">
+            {username}
+          </span>
+        </div>
+      </div>
+    </figure>
+  );
+}
 
 export default function App() {
   const reviews = [
@@ -38,693 +117,536 @@ export default function App() {
       name: "Shobian",
       username: "Aura Entertainment",
       body: "With other platforms, we struggled with high fees and even system crashes during bookings.",
+      avatar: avatar1,
+
     },
     {
       name: "Pravien Mahalingam",
       username: "Blaze Entertainment",
       body: "Our biggest concern was always the attendee experience.",
+      avatar: avatar2,
     },
     {
       name: "Abithaaran",
       username: "247 Moments",
       body: "Other platforms limited flexibility and delayed payments.",
+      avatar: avatar3,
     },
     {
       name: "Pravien Mahalingam",
       username: "Blaze Entertainment",
       body: "Our biggest concern was always the attendee experience.",
+      avatar: avatar2,
     },
     {
       name: "Abithaaran",
       username: "247 Moments",
       body: "Other platforms limited flexibility and delayed payments.",
+      avatar: avatar3,
     },
     {
       name: "Shobian",
       username: "Aura Entertainment",
       body: "With other platforms, we struggled with high fees and even system crashes during bookings.",
+      avatar: avatar1,
+    },
+    {
+      name: "Dineth Gunasekare",
+      username: "Plan Bee by SUSA",
+      body: "Third Party Platforms are High fees, poor marketing, and unreliable ticket links, not worth the hassle.",
+      avatar: avatar4,
     },
   ];
   const firstRow = reviews.slice(0, reviews.length / 2);
   const secondRow = reviews.slice(reviews.length / 2);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
     <>
-      <header className="fixed left-0 right-0 bg-white z-[999] backdrop-blur-[0px] py-2">
-        <div className="max-w-[1140px] mx-auto flex items-center justify-between">
-          <a href="/">
-            <img src={logo} alt="Logo" />
-          </a>
-          <div>
-            <ul className="flex gap-1">
-              <li className="py-2 px-4 flex items-center">
-                <a
-                  href="#whowedo"
-                  className="text-sm leading-5 text-[#1E293B] font-medium"
-                >
-                  What we do
-                </a>
-              </li>
-              <li className="py-2 px-4 flex items-center">
-                <a
-                  href="#features"
-                  className="text-sm leading-5 text-[#1E293B] font-medium"
-                >
-                  Features
-                </a>
-              </li>
-              <li className="py-2 px-4 flex items-center">
-                <a
-                  href="#pricing"
-                  className="text-sm leading-5 text-[#1E293B] font-medium"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li className="py-2 px-4 flex items-center">
-                <a
-                  href="#faq"
-                  className="text-sm leading-5 text-[#1E293B] font-medium"
-                >
-                  FAQ
-                </a>
-              </li>
-            </ul>
-          </div>
-          <a
-            href="http://app.gobook.lk"
-            className="border border-[#E2E8F0] rounded-[8px] text-[#1E293B] text-sm font-medium px-4 py-2"
-          >
-            Become a Host
-          </a>
-        </div>
-      </header>
-      <main className="pt-[180px]">
-        <section className="flex flex-col gap-4 mx-auto max-w-[1140px]">
-          <div className="flex flex-col gap-4 pb-4">
-            <h1 className="text-6xl font-semibold tracking-[-0.02em] text-[#1E293B] text-center font-instrument">
-              Every booking should <br />
-              build{" "}
-              <span className="bg-gradient-to-r from-[#FFB969] via-[#ED8CA3] via-[#CB81DB] via-[#E99DC9] to-[#A676D7] bg-clip-text text-transparent">
-                your brand.
-              </span>
-            </h1>
-            <p className="text-center text-[#475569] font-medium text-xl leading-9">
-              Launch your branded booking platform in minutes, not months.
-            </p>
-          </div>
-          <a
-            className="block mx-auto bg-[#0F172A] text-[#F8FAFC] font-semibold text-sm min-w-20 p-4 rounded-lg"
-            href="http://app.gobook.lk"
-          >
-            Create Your First Event
-          </a>
-        </section>
-        <section className="mx-auto max-w-[1140px] pt-16">
-          <img src={hero} alt="Hero" />
-        </section>
-        <section className="max-w-[1200px] mx-auto flex flex-col gap-8 py-30">
-          <div className="flex flex-col gap-4">
-            <h4 className="uppercase font-medium text-sm text-center">
-              know your worth
-            </h4>
-            <h2 className="text-6xl font-semibold tracking-[-0.02em] font-instrument text-[#1E293B] text-center">
-              Why paying extra for
-              <br />
-              third-party platforms?
-            </h2>
-          </div>
-          <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-            <Marquee pauseOnHover className="[--duration:20s]">
-              {firstRow.map((review) => (
-                <ReviewCard key={review.username} {...review} />
-              ))}
-            </Marquee>
-            <Marquee reverse pauseOnHover className="[--duration:20s]">
-              {secondRow.map((review) => (
-                <ReviewCard key={review.username} {...review} />
-              ))}
-            </Marquee>
-            <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r"></div>
-            <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
-          </div>
-        </section>
-        {/* <section>
-          <img src={middle} alt="Middle" className="cover w-full" />
-        </section> */}
-        <section
-          id="whowedo"
-          className="max-w-[1400px] mx-auto py-30 text-center flex flex-col gap-16"
+      <div className="relative min-h-screen overflow-x-hidden bg-black">
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 pointer-events-none z-0"
+          style={{
+            height: "100vh",
+            backgroundImage: `url(${stadium})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center top",
+            backgroundSize: "cover",
+          }}
+        />
+        <header
+          className={cn(
+            "fixed left-0 right-0 z-20 transition-all duration-300",
+            scrolled
+              ? "bg-[rgba(255,255,255,0.02)] backdrop-blur-[200px] border-b border-transparent [border-image:linear-gradient(90deg,rgba(130,133,138,0)_0%,rgba(226,232,240,0.04)_20%,rgba(226,232,240,0.1)_50%,rgba(226,232,240,0.04)_80%,rgba(130,133,138,0)_100%)_1]"
+              : "bg-transparent backdrop-blur-[0px] border-b-0"
+          )}
         >
-          <div className="flex flex-col gap-4">
-            <h4 className="uppercase font-medium text-[#1E293B] text-sm">
-              What we do
-            </h4>
-            <h2 className="text-6xl font-semibold tracking-[-0.02em] font-instrument text-[#1E293B] text-center">
-              Own your brand and customer
-              <br />
-              experience. end to end.
-            </h2>
-          </div>
-          <div className="flex justify-between">
-            <div className="max-w-[300px] flex flex-col justify-center items-center gap-6">
-              <img src={do1} className="w-16 h-16" />
-              <div className="flex flex-col gap-2">
-                <h4 className="text-2xl font-semibold text-[#1E293B]">
-                  No Setup fee
-                </h4>
-                <p className="text-[#475569] text-sm font-semibold">
-                  Start selling without any upfront costs.
-                </p>
-              </div>
-            </div>
+          <div className="max-w-[1140px] mx-auto flex items-center justify-between px-4 sm:px-6 py-1">
+            <a
+              href="/"
+              aria-label="Home"
+              className="w-[120px] sm:w-auto flex items-center gap-2"
+            >
+              <img src={logo} alt="logo" className="w-6 h-6 object-contain" />
+              <img src={gobook} alt="Gobook" className="h-5 object-contain" />
+            </a>
 
-            <div className="max-w-[300px] flex flex-col justify-center items-center gap-6">
-              <img src={do2} className="w-16 h-16" />
-              <div className="flex flex-col gap-2">
-                <h4 className="text-2xl font-semibold text-[#1E293B]">
-                  Build your own platform
-                </h4>
-                <p className="text-[#475569] text-sm font-semibold">
-                  Launch a fully branded booking system in 2 minutes.
-                </p>
-              </div>
-            </div>
+            <div className="flex items-center gap-3 sm:gap-6">
+              <a
+                href="http://app.gobook.lk"
+                className="text-sm text-[white] font-medium hidden sm:inline-block"
+              >
+                Host your Event
+              </a>
+              <button
+                aria-label="Account"
+                className="w-8 h-8 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-white/10"
+              >
+                <img
+                  src={avatarUser}
+                  alt="User profile"
+                  className="w-full h-full object-cover"
+                />
+              </button>
 
-            <div className="max-w-[300px] flex flex-col justify-center items-center gap-6">
-              <img src={do3} className="w-16 h-16" />
-              <div className="flex flex-col gap-2">
-                <h4 className="text-2xl font-semibold text-[#1E293B]">
-                  Know your customers
-                </h4>
-                <p className="text-[#475569] text-sm font-semibold">
-                  Gain insights with real-time analytics and reporting.
-                </p>
-              </div>
-            </div>
-
-            <div className="max-w-[300px] flex flex-col justify-center items-center gap-6">
-              <img src={do4} className="w-16 h-16" />
-              <div className="flex flex-col gap-2">
-                <h4 className="text-2xl font-semibold text-[#1E293B]">
-                  Get paid faster
-                </h4>
-                <p className="text-[#475569] text-sm font-semibold">
-                  Secure, seamless transactions straight to your account.
-                </p>
-              </div>
+              <button aria-label="Menu" className="p-2 rounded-md hover:bg-white/5">
+                <FiMenu className="w-6 h-6 sm:w-7 sm:h-7 text-[#A1A1AA]" />
+              </button>
             </div>
           </div>
-        </section>
-        <section className="max-w-[1400px] mx-auto py-30 text-center">
-          <div className="flex flex-col gap-12 py-16 px-8">
-            <div className="flex flex-col gap-4">
-              <h4 className="uppercase font-medium text-[#1E293B] text-sm">
-                instant setup
-              </h4>
-              <h2 className="text-6xl font-semibold tracking-[-0.02em] font-instrument text-[#1E293B] text-center">
-                Ready, set, launch.
-                <br />~ 60 seconds.
-              </h2>
-            </div>
-            <div className="flex gap-12 justify-center">
-              <div className="flex flex-col gap-4 w-fit">
-                <img src={step1} width={368} height={396} />
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-2">
-                    <div className="bg-[#F5F5F5] py-1 px-2 h-6 w-fit flex items-center justify-center rounded-lg text-[#1E293B] text-xs font-semibold">
-                      Step 1
-                    </div>
-                    <div className="text-left">
-                      <h2 className="text-[#1E293B] font-semibold text-lg">
-                        Company Profile
-                      </h2>
-                      <p className="text-[#737373] text-sm font-semibold max-w-[368px]">
-                        Easily add your business details to create a platform
-                        that’s truly yours.
-                      </p>
-                    </div>
+        </header>
+
+        <main className="pt-[180px] bg-transparent relative z-10 w-full">
+          <div className="w-full overflow-x-hidden">
+            <section className="flex flex-col gap-4 mx-auto max-w-[1140px] relative z-20 px-4 sm:px-6">
+              <div className="flex justify-center">
+                <span
+                  className="inline-block bg-gray-100/10 text-[#a0a1a2] text-sm font-medium px-3 py-1 rounded-full
++                            border border-gray-700 backdrop-blur-sm"
+                  aria-hidden="false"
+                  title="Region"
+                >
+                  Sri Lanka
+                </span>
+              </div>
+              <div className="flex flex-col gap-4 pb-4">
+                <h1 className="text-4xl sm:text-6xl font-semibold tracking-[-0.02em] text-white text-center font-Inter px-4">
+                  Discover events that bring <br className="hidden sm:block" />
+                  people together.
+                </h1>
+              </div>
+            </section>
+          </div>
+
+          <section className="max-w-[1200px] mx-auto flex flex-col gap-6 py-20">
+            <div className="flex justify-center">
+              <div className="flex overflow-x-auto gap-2 pb-3 snap-x snap-mandatory scrollbar-hide max-w-full">
+                {events.map((ev) => (
+                  <div key={ev.id} className="snap-center flex-shrink-0 overflow-visible">
+                    <EventCard event={ev} />
                   </div>
-                  <div className="flex gap-1 border border-[#E5E5E5] rounded-lg py-1 px-2 w-fit justify-center items-center">
-                    <ClockIcon size={12} color="black" />
-                    <span className="text-xs font-semibold text-[#475569]">
-                      10 Seconds
-                    </span>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="max-w-[1200px] mx-auto flex flex-col gap-8 py-10">
+            <div className="flex flex-col gap-4 pb-2">
+              <div className="flex flex-col items-center gap-4 px-4">
+                <span className="text-sm tracking-widest text-[#A1A1AA]">
+                  KNOW YOUR WORTH
+                </span>
+                <h1 className="text-3xl sm:text-6xl font-semibold tracking-[-0.02em] text-white text-center font-Instrument Sans leading-tight">
+                  <span className="block sm:hidden">
+                    Reviews about<br />third-party<br />Ticketing
+                  </span>
+                  <span className="hidden sm:block">
+                    Reviews about <br />third-party Ticketing
+                  </span>
+                </h1>
+
+              </div>
+            </div>
+            <div className="relative w-full flex flex-col items-center justify-center overflow-hidden">
+              <div className="hidden sm:flex flex-col w-full items-center justify-center">
+                <Marquee pauseOnHover className="[--duration:20s]">
+                  {firstRow.map((review) => (
+                    <div key={review.username} className="scale-90 sm:scale-100">
+                      <ReviewCard {...review} />
+                    </div>
+                  ))}
+                </Marquee>
+                <Marquee reverse pauseOnHover className="[--duration:20s]">
+                  {secondRow.map((review) => (
+                    <div key={review.username} className="scale-90 sm:scale-100">
+                      <ReviewCard {...review} />
+                    </div>
+                  ))}
+                </Marquee>
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-[500px] bg-gradient-to-r from-[#050505] to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-[500px] bg-gradient-to-l from-[#050505] to-transparent" />
+              </div>
+
+              <div className="sm:hidden w-full flex flex-col items-center justify-center gap-4 px-4 py-6">
+                <div
+                  className="w-full flex flex-col items-center justify-center gap-6"
+                  onTouchStart={(e) => e.currentTarget.classList.add("pause-marquee")}
+                  onTouchEnd={(e) => e.currentTarget.classList.remove("pause-marquee")}
+                >
+                  <div className="marquee-mobile">
+                    {[...firstRow, ...firstRow].map((review, index) => (
+                      <div key={`${review.username}-${index}`} className="mx-2 flex-shrink-0">
+                        <ReviewCard {...review} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="marquee-mobile reverse">
+                    {[...secondRow, ...secondRow].map((review, index) => (
+                      <div key={`${review.username}-${index}`} className="mx-2 flex-shrink-0">
+                        <ReviewCard {...review} />
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-4 w-fit">
-                <img src={step2} width={368} height={396} />
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-2">
-                    <div className="bg-[#F5F5F5] py-1 px-2 h-6 w-fit flex items-center justify-center rounded-lg text-[#1E293B] text-xs font-semibold">
-                      Step 2
-                    </div>
-                    <div className="text-left">
-                      <h2 className="text-[#1E293B] font-semibold text-lg">
-                        Branding
-                      </h2>
-                      <p className="text-[#737373] text-sm font-semibold max-w-[368px]">
-                        Make it yours! Customize colors, logos, and workflow to
-                        match your unique brand identity.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-1 border border-[#E5E5E5] rounded-lg py-1 px-2 w-fit justify-center items-center">
-                    <ClockIcon size={12} color="black" />
-                    <span className="text-xs font-semibold text-[#475569]">
-                      10 Seconds
-                    </span>
-                  </div>
+
+            </div>
+          </section>
+
+          <section className="max-w-[1400px] mx-auto py-30 text-center flex flex-col gap-16">
+            <div className="flex flex-col gap-4 pb-2">
+              <div className="flex flex-col items-center gap-4 px-4">
+                <span className="text-sm tracking-widest text-[#A1A1AA]">
+                  WHAT WE OFFER
+                </span>
+                <h1 className="text-3xl sm:text-6xl font-semibold tracking-[-0.02em] text-white text-center font-Instrument Sans leading-tight">
+                  <span className="block sm:hidden">
+                    Own your brand<br />and customer<br />experience.
+                  </span>
+                  <span className="hidden sm:block">
+                    Own your brand, <br />customer experience.
+                  </span>
+                </h1>
+
+              </div>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+                <img src={do1} alt="No Setup Fee" className="w-14 h-14 sm:w-17 sm:h-17" />
+                <div className="flex flex-col items-center text-center gap-1 mt-3">
+                  <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
+                    No Setup fee
+                  </h4>
+                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
+                    Start selling without any upfront costs.
+                  </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-4 w-fit">
-                <img src={step3} width={368} height={396} />
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-2">
-                    <div className="bg-[#F5F5F5] py-1 px-2 h-6 w-fit flex items-center justify-center rounded-lg text-[#1E293B] text-xs font-semibold">
-                      Step 3
-                    </div>
-                    <div className="text-left">
-                      <h2 className="text-[#1E293B] font-semibold text-lg">
-                        Billing Details
-                      </h2>
-                      <p className="text-[#737373] text-sm font-semibold max-w-[368px]">
-                        Add your payment information and you’re ready to start
-                        accepting bookings seamlessly.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex gap-1 border border-[#E5E5E5] rounded-lg py-1 px-2 w-fit justify-center items-center">
-                    <ClockIcon size={12} color="black" />
-                    <span className="text-xs font-semibold text-[#475569]">
-                      40 Seconds
-                    </span>
-                  </div>
+
+              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+                <img src={do2} alt="Build your own platform" className="w-14 h-14 sm:w-17 sm:h-17" />
+                <div className="flex flex-col items-center text-center gap-1 mt-3">
+                  <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
+                    Build your own platform
+                  </h4>
+                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
+                    Launch a fully branded booking system in 2 minutes.
+                  </p>
+                </div>
+              </div>
+
+              <div className="w-full max-w-[250px] h-[200px] py-6  sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+                <img src={do3} alt="Know your customers" className="w-14 h-14 sm:w-17 sm:h-17" />
+                <div className="flex flex-col items-center text-center gap-1 mt-3">
+                  <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
+                    Know your customers
+                  </h4>
+                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
+                    Gain insights with real-time analytics and reporting.
+                  </p>
+                </div>
+              </div>
+
+              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+                <img src={do4} alt="Get paid faster" className="w-14 h-14 sm:w-17 sm:h-17" />
+                <div className="flex flex-col items-center text-center gap-1 mt-3">
+                  <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
+                    Get paid faster
+                  </h4>
+                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
+                    Secure, seamless transactions straight to your account.
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
-          <a
-            href="#pricing"
-            className="p-4 min-w-20 w-fit mx-auto border border-[#E2E8F0] rounded-lg text-[#1E293B] text-sm font-medium leading-5"
-          >
-            Pick a plan that fits you
-          </a>
-        </section>
-        <section
-          id="features"
-          className="max-w-[1200px] mx-auto py-16 text-center gap-16 flex flex-col"
-        >
-          <div className="flex flex-col gap-4">
-            <h4 className="uppercase font-medium text-[#1E293B] text-sm">
-              Features
-            </h4>
-            <h2 className="text-6xl font-semibold tracking-[-0.02em] font-instrument text-[#1E293B] text-center">
-              Turn busy season into
-              <br />
-              profit season.
-            </h2>
-            <div className="text-[#475569] text-xl font-medium leading-9">
-              Save time. Boost revenue. Delight customers. That's our promise.
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-6">
-            <div className="p-4 border border-[#E2E8F0] rounded-2xl max-w-[700px] w-full flex flex-col gap-6">
-              <img src={feat1} alt="Feature 1" />
-              <div className="flex flex-col gap-2 px-2 text-left">
-                <h1 className="text-2xl font-semibold text-[#1E293B]">
-                  Brand Control
+          </section>
+
+          <section className="max-w-[1200px] mx-auto flex flex-col gap-8 py-10">
+            <div className="flex flex-col gap-4 pb-2">
+              <div className="flex flex-col items-center gap-4 px-4">
+                <span className="text-sm tracking-widest text-[#A1A1AA]">
+                  PRICING
+                </span>
+                <h1 className="text-3xl sm:text-6xl font-semibold tracking-[-0.02em] text-white text-center font-Instrument Sans leading-tight">
+                  <span className="block sm:hidden">
+                    Lets grow, <br />start free today.
+                  </span>
+                  <span className="hidden sm:block">
+                    Lets grow, <br />start free today.
+                  </span>
                 </h1>
-                <p className="text-lg font-normal text-[#475569]">
-                  Complete visual control. Your colors, your logo, your
-                  reputation.
-                </p>
+                <div className="w-full text-center flex flex-col justify-center text-[#737373] text-[20px] font-Inter font-medium leading-[36px]">
+                  Use Gobook for free with unlimited events and guests.
+                  <br />
+                  Upgrade for advance features.
+                </div>
               </div>
             </div>
-            <div className="p-4 border border-[#E2E8F0] rounded-2xl max-w-[476px] w-full flex flex-col gap-6">
-              <img src={feat2} alt="Feature 1" />
-              <div className="flex flex-col gap-2 px-2 text-left">
-                <h1 className="text-2xl font-semibold text-[#1E293B]">
-                  Smart Attendance
-                </h1>
-                <p className="text-lg font-normal text-[#475569]">
-                  Smart reminders, seamless sync, and fraud-proof tickets that
-                  eliminate no-shows.
-                </p>
-              </div>
-            </div>
-            <div className="p-4 border border-[#E2E8F0] rounded-2xl max-w-[534px] w-full flex flex-col gap-6">
-              <img src={feat3} alt="Feature 1" />
-              <div className="flex flex-col gap-2 px-2 text-left">
-                <h1 className="text-2xl font-semibold text-[#1E293B]">
-                  Get Paid Faster
-                </h1>
-                <p className="text-lg font-normal text-[#475569]">
-                  Multiple payment options = fewer barriers = more revenue in
-                  your pocket.
-                </p>
-              </div>
-            </div>
-            <div className="p-4 border border-[#E2E8F0] rounded-2xl max-w-[642px] w-full flex flex-col gap-6">
-              <img src={feat4} alt="Feature 1" />
-              <div className="flex flex-col gap-2 px-2 text-left">
-                <h1 className="text-2xl font-semibold text-[#1E293B]">
-                  Data That Drives Decisions
-                </h1>
-                <p className="text-lg font-normal text-[#475569]">
-                  Real-time insights that turn booking patterns into profit
-                  opportunities.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
-          id="pricing"
-          className="text-center flex flex-col py-30 gap-12 max-w-[1400px] mx-auto items-center"
-        >
-          <div className="flex flex-col gap-4">
-            <h4 className="uppercase font-medium text-[#1E293B] text-sm">
-              Pricing
-            </h4>
-            <h2 className="text-6xl font-semibold tracking-[-0.02em] font-instrument text-[#1E293B] text-center">
-              Let’s grow,
-              <br />
-              start free today.
-            </h2>
-            <div className="text-[#475569] text-xl font-medium leading-9">
-              Use Gobook for free with unlimited events and guests.
-              <br />
-              Upgrade for advance features.
-            </div>
-          </div>
-          <div className="flex gap-6">
-            <div className="p-6 h-[556px] border border-[#E2E8F0] rounded-[12px] w-[409px] justify-between text-left flex flex-col">
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row justify-center gap-6 mt-6 items-stretch px-4">
+              <div className="flex flex-col justify-between w-full sm:w-[410px] p-6 sm:p-8 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[12px] backdrop-blur-sm">
+                <div className="flex flex-col gap-4 w-full pl-4">
+                  <div className="flex justify-between items-center w-full">
                     <div className="flex flex-col gap-1">
-                      <h3 className="uppercase font-semibold text-[#1E293B] text-[16px]">
-                        Starter
+                      <h3 className="text-[#818CF8] text-[16px] font-semibold font-Inter">
+                        STARTER
                       </h3>
-                      <p className="text-[#475569] text-sm font-semibold">
+                      <p className="text-[#A3A3A3] text-[14px] leading-[21px] font-normal font-Inter">
                         For Solo Entrepreneur
                       </p>
                     </div>
-                    <div className="py-2 px-3 rounded-[12px] bg-gradient-to-r from-[#FFB969] via-[#ED8CA3] via-[#CB81DB] via-[#E99DC9] to-[#A676D7] text-sm text-[#FCFCFD] font-semibold leading-[21px]">
-                      Popular
+                    <div className="px-3 py-1 rounded-full border border-[rgba(38,38,38,0.3)] bg-[rgba(24,24,27,0.85)]">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFB969] via-[#ED8CA3] via-[#CB81DB] to-[#A676D7] text-[14px] font-semibold leading-[21px] font-Inter">
+                        Popular
+                      </span>
                     </div>
                   </div>
-                  <div className="text-5xl text-[#171717] font-semibold">
-                    Free
-                  </div>
-                </div>
-                <div className="flex flex-col gap-[7.5px]">
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} /> 1
-                    Admin
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Branding (logo, Sub domain)
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Unlimited events, guests
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Email ticket confirmation
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Basic Analytics dashboard
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Branding (logo, Sub domain)
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Payment gateway integration
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Event check in app
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Multi type tickets
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Transaction Fee: Up to 3.99%
-                  </div>
-                </div>
-              </div>
-              <a
-                className="bg-[#0F172A] py-2 px-4 text-[#F8FAFC] text-sm font-medium w-full text-center rounded-lg"
-                href="http://app.gobook.lk"
-              >
-                Get Started
-              </a>
-            </div>
 
-            <div className="h-[556px] p-6 border border-[#E2E8F0] rounded-[12px] w-[409px] text-left justify-between flex flex-col">
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-col gap-1">
-                    <h3 className="uppercase font-semibold text-[#1E293B] text-[16px]">
-                      Pro
-                    </h3>
-                    <p className="text-[#475569] text-sm font-semibold">
-                      For Businesses
-                    </p>
-                  </div>
-                  <div className="text-5xl text-[#171717] font-semibold">
-                    Coming Soon
-                  </div>
+                  <h2 className="text-[#F5F5F5] text-[48px] leading-[57.6px] font-semibold font-Inter">
+                    Free
+                  </h2>
+                  <ul className="flex flex-col gap-2 w-full mt-2">
+                    {[
+                      "Branding (logo, Sub domain)",
+                      "Unlimited events, guests",
+                      "Email ticket confirmation",
+                      "Analytics dashboard",
+                      "Payment gateway integration",
+                      "Event check in app",
+                      "Multi type tickets",
+                      "Transaction Fee: Up to 3.99%",
+                    ].map((item) => (
+                      <li key={item} className="flex items-center gap-2">
+                        <div className="w-[15px] h-[15px] flex items-center justify-center">
+                          <CheckIcon size={16} color="#A3A3A3" />
+                        </div>
+                        <span className="text-[#A3A3A3] text-[14px] font-Inter font-semibold leading-[21px]">
+                          {item}
+                        </span>
+                        {item === "Branding (logo, Sub domain)" && (
+                          <Info className="w-[12px] h-[12px] text-[#737373]" />
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="flex flex-col gap-[7.5px]">
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} /> 3
-                    Admins
+
+                <button className="w-full h-[40px] mt-6 bg-[#F8FAFC]  border rounded-[8px] text-[#1E293B] text-[14px] font-Inter font-medium leading-[20px]">
+                  Get Started
+                </button>
+              </div>
+              <div className="flex flex-col justify-between w-full sm:w-[410px] p-6 sm:p-8 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[12px] backdrop-blur-sm">
+                <div className="flex flex-col gap-6 w-full pl-4">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-1">
+                      <h3 className="text-[#FC9745] text-[16px] font-semibold font-Inter">
+                        PRO
+                      </h3>
+                      <p className="text-[#A3A3A3] text-[14px] font-normal leading-[21px] font-Inter">
+                        For Businesses
+                      </p>
+                    </div>
+
+                    <h2 className="text-[#737373] text-[48px] font-semibold leading-[57.6px] font-Inter">
+                      Coming Soon
+                    </h2>
                   </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Branding (logo, Custom domain)
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Unlimited events, guests
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Email ticket confirmation
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Advance Analytics dashboard
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Payment gateway integration
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Event check in app
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Multi type tickets
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Transaction Fee: Up to 3.49%
-                  </div>
-                  <div className="flex items-center gap-2 text-[#1E293B] text-sm font-semibold">
-                    <CheckIcon weight="regular" color="#1E293B" size={15} />
-                    Early access to premium features
-                  </div>
+                  <ul className="flex flex-col gap-2 w-full font-Inter">
+                    {[
+                      "Branding (logo, Custom domain)",
+                      "Unlimited events, guests",
+                      "Email ticket confirmation",
+                      "Advance Analytics dashboard",
+                      "Payment gateway integration",
+                      "Event check in app",
+                      "Multi type tickets",
+                      "Transaction Fee: Up to 3.49%",
+                      "Early access to premium features",
+                    ].map((item) => (
+                      <li key={item} className="flex items-center gap-2">
+                        <div className="w-[15px] h-[15px] flex items-center justify-center">
+                          <CheckIcon size={16} color="#A3A3A3" />
+                        </div>
+                        <span className="text-[#A3A3A3] text-[14px] font-Inter font-semibold leading-[21px]">
+                          {item}
+                        </span>
+                        {item === "Branding (logo, Custom domain)" && (
+                          <Info className="w-[12px] h-[12px] text-[#737373]" />
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-              <a
-                href="mailto:support@gobook.lk"
-                className="bg-white border border-[#E2E8F0] py-2 px-4 text-[#1E293B] text-sm font-medium w-full text-center rounded-lg"
-              >
-                Contact Support
-              </a>
-            </div>
-          </div>
-          <div className="border border-[#E2E8F0] rounded-[12px] p-6 max-w-[844px] w-full flex gap-12">
-            <div className="text-left flex-1 flex flex-col justify-between">
-              <div className="flex flex-col gap-6">
-                <h1 className="text-2xl font-semibold text-[#1E293B]">
-                  Hosting a large or complex event?
-                </h1>
-                <p className="text-sm font-semibold leading-[21px] text-[#1E293B]">
-                  We offer tailored plans for event pros with unique needs. Get
-                  personalised support, customised pricing, and more by
-                  partnering with our sales team.
-                </p>
-              </div>
-              <div>
-                <a
-                  href="mailto:support@gobook.lk"
-                  className="bg-white border border-[#E2E8F0] py-2 px-4 text-[#1E293B] text-sm font-medium w-fit text-center rounded-lg"
-                >
+                <button className="w-full h-[40px] mt-6 bg-[#27272A] border border-[#3F3F46] rounded-[8px] text-[#F8FAFC] text-[14px] font-Inter font-medium leading-[20px]">
                   Contact Support
-                </a>
+                </button>
               </div>
             </div>
-            <div className="flex-1">
-              <img
-                src={pricingBanner}
-                alt="Pricing Banner"
-                className="w-[374px] h-[300px]"
-              />
-            </div>
-          </div>
-        </section>
-        <section id="faq" className="text-center flex flex-col gap-12 py-12">
-          <div className="flex flex-col gap-4">
-            <h4 className="uppercase font-medium text-[#1E293B] text-sm">
-              Faq
-            </h4>
-            <h2 className="text-6xl font-semibold tracking-[-0.02em] font-instrument text-[#1E293B] text-center">
-              Early Doubts
-            </h2>
-          </div>
-          <div className="max-w-[800px] w-full mx-auto">
-            <Accordion
-              type="single"
-              collapsible
-              className="w-full flex flex-col gap-3"
-              defaultValue="item-1"
-            >
-              <AccordionItem value="item-1">
-                <AccordionTrigger>What is Gobook?</AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-left">
-                  <p>
-                    Gobook is a customizable online booking platform designed to
-                    simplify scheduling and management.
+          </section>
+
+          <section className="w-full flex justify-center mt-6 px-4">
+            <div className="w-full max-w-[844px] flex flex-col md:flex-row justify-between bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[12px] p-6 sm:p-8 gap-2 md:gap-15">
+
+              <div className="flex-1 flex flex-col justify-between gap-4 text-left order-2 md:order-1 mt-6 md:mt-0">
+                <div className="flex flex-col gap-3 p-1">
+                  <h3 className="text-white text-[22px] sm:text-[24px] font-Inter font-semibold leading-snug">
+                    Hosting a large or complex event?
+                  </h3>
+                  <p className="text-[#A3A3A3] text-[13px] sm:text-[14px] font-Inter leading-[20px]">
+                    We offer tailored plans for event pros with unique needs. Get personalised support,
+                    customised pricing, and more by partnering with our sales team.
                   </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>
-                  Can I fully brand the booking platform as my own?
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-left">
-                  <p>
-                    Yes, you can white-label Gobook to match your brand
-                    identity.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>
-                  How long does it take to get started?
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-left">
-                  <p>You can set up and start using Gobook within minutes.</p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-4">
-                <AccordionTrigger>
-                  Can I integrate payments and manage transactions?
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-left">
-                  <p>
-                    Yes, Gobook supports seamless payment integration and
-                    transaction management.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-5">
-                <AccordionTrigger>
-                  Will I be able to track bookings, customer and revenue?
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-left">
-                  <p>
-                    Absolutely, Gobook provides real-time tracking of bookings,
-                    customers, and revenue.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-6">
-                <AccordionTrigger>
-                  Is there support if I run into issues?
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-left">
-                  <p>
-                    Yes, our support team is always available to assist you.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-          <div className="text-[#475569] text-lg font-medium leading-9">
-            Still have questions? DM us on{" "}
-            <a
-              href="https://www.instagram.com/gobook.official"
-              className="font-bold"
-            >
-              Instagram
-            </a>
-          </div>
-        </section>
-        <section className="py-16 max-w-[1440px] w-full max-h-[800px] h-full text-center mx-auto">
-          <div className="py-16">
-            <div className="pb-6 flex flex-col gap-6">
-              <div className="flex justify-center">
+                </div>
+
+                <button className="w-full md:w-fit px-4 py-2 bg-[#27272A] border border-[#3F3F46] text-[#F5F5F5] text-[14px] font-Inter font-medium rounded-[8px] hover:bg-[#3F3F46] transition-all duration-200 mx-auto md:mx-0">
+                  Contact Support
+                </button>
+              </div>
+
+              <div className="flex-1 relative w-full md:w-[280px] h-[220px] md:h-[280px] rounded-[12px] overflow-hidden flex justify-center items-center bg-gradient-to-b from-[#0A0A0A] to-[#1A1A1A] order-1 md:order-2">
                 <img
-                  src={logoBlock}
-                  alt="Gobook Logo"
-                  className="w-[174px] h-[120px]"
+                  src={logo3Dback}
+                  alt="Gradient Background"
+                  className="absolute inset-0 w-full h-full object-cover rounded-[12px] opacity-20"
+                />
+                <img
+                  src={logo3D}
+                  alt="3D Ticket Logo"
+                  className="relative z-10 w-[190px] sm:w-[250px] h-auto object-contain"
                 />
               </div>
-              <div className="text-[#1E293B] font-semibold text-6xl leading-[72px] font-instrument">
-                For everyone from
-                <br />
-                entrepreneurs to enterprise
-              </div>
             </div>
-            <a
-              href="http://app.gobook.lk"
-              className="bg-[#0F172A] rounded-[8px] p-4 min-w-20 w-fit mx-auto text-[#F8FAFC] text-sm font-semibold leading-[21px] mt-4"
-            >
+          </section>
+
+          <section className="w-full flex flex-col items-center justify-center gap-12 py-20 px-6">
+            <div className="flex flex-col items-center gap-4 text-center">
+              <p className="uppercase text-[#A3A3A3] text-[14px] font-Inter font-medium tracking-[0.7px]">
+                FAQ
+              </p>
+              <h2 className="text-[#F5F5F5] text-[36px] sm:text-[60px] font-instrument font-semibold leading-[42px] sm:leading-[72px]">
+                Early Doubts
+              </h2>
+            </div>
+            <div className="max-w-[800px] w-full mx-auto">
+              <Accordion
+                type="single"
+                collapsible
+                className="w-full flex flex-col gap-3"
+                defaultValue="item-1"
+              >
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index + 1}`}>
+                    <AccordionTrigger className="text-[#A3A3A3] text-[14px] font-semibold  rounded-[10px] px-6 py-4 transition-all">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="flex flex-col gap-4 text-left px-6 pb-4 text-[#737373]">
+                      <p>{faq.answer}</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+            <div className="flex flex-col items-center justify-center text-center">
+              <span className="text-[#737373] text-[14px] font-Inter font-normal leading-[20px]">
+                Still have questions?{" "}
+                <a
+                  href="https://www.instagram.com/gobook.official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#93C5FD] text-[14px] font-Inter font-normal leading-[20px] hover:underline cursor-pointer"
+                >
+                  DM us on Instagram
+                </a>
+              </span>
+            </div>
+          </section>
+
+          <section className="w-full flex flex-col items-center justify-center text-center py-16 sm:py-20 px-4 bg-black">
+            <div className="flex flex-col items-center justify-center gap-2 sm:gap-4 mb-8">
+              <div className="flex flex-col items-center justify-center sm:hidden">
+                <img
+                  src={logoBlock}
+                  alt="Gobook icon"
+                  className="w-[174px] h-[120px] mb-2"
+                />
+              </div>
+              <img
+                src={logoBlock}
+                alt="Gobook logo"
+                className="hidden sm:block w-[174px] h-[48px] sm:h-[120px]"
+              />
+            </div>
+            <h3 className="text-white text-[40px] sm:text-[60px] font-semibold leading-tight max-w-[880px] mb-8 font-Instrument">
+              For everyone from <br className="sm:hidden" />
+              entrepreneurs to enterprise
+            </h3>
+            <button className="sm:w-auto sm:px-4 px-23 py-2 bg-white text-[#111] text-[14px] font-medium rounded-[8px] hover:bg-gray-100 transition-all duration-200">
               Get started free
-            </a>
-          </div>
-        </section>
-        <footer className="max-w-[1400px] mx-auto flex justify-between py-16">
-          <p className="text-sm font-normal leading-5 text-[#A1A1AA]">
-            Copyright © 2025 gobook
-          </p>
-          <ul className="flex gap-8">
-            <li className="text-[#A1A1AA] text-sm leading-5">
-              <a href="mailto:support@gobook.lk">Contact us</a>
-            </li>
-            <li>
+            </button>
+          </section>
+
+          <footer className="w-full bg-black text-[#A3A3A3] py-6 px-6 xl:px-80 mt-2 xl:mt-25 flex flex-col xl:flex-row items-center xl:justify-between gap-6 xl:gap-0 text-left xl:text-left max-[1200px]:flex-col max-[1200px]:gap-6 max-[1200px]:items-center max-[1200px]:justify-center">
+            <div className="flex items-center justify-center sm:justify-start text-sm text-[#A3A3A3]">
+              <a href="#" className="text-[#60A5FA] hover:underline">
+                Become a Host
+              </a>
+              <span className="mx-1.5">•</span>
+              <span>with gobook</span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-4 text-sm">
+              <a
+                href="mailto:support@gobook.lk"
+                className="hover:text-white transition-colors duration-200"
+              >
+                Contact us
+              </a>
+
               <Dialog>
-                <DialogTrigger className="text-[#A1A1AA] text-sm leading-5 cursor-pointer">
+                <DialogTrigger className="hover:text-white transition-colors duration-200 cursor-pointer">
                   Privacy Policy
                 </DialogTrigger>
                 <DialogContent
                   title="Privacy Policy"
                   subTitle=""
                   showCloseButton={false}
-                  primaryButtonLabel="Confirm"
+                  className="bg-[#0d0d0d] border border-[rgba(140,140,140,0.2)]"
                 >
                   <DialogHeader>
-                    <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto">
+                    <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto text-[#9a9b9c]">
                       <div className="flex flex-col gap-1">
-                        <div className="text-sm font-semibold text-[#1E293B]">
+                        <div className="text-sm font-semibold">
                           Effective Date: {format(Date.now(), "yyyy/MM/dd")}
                         </div>
-                        <p className="text-sm font-normal text-[#475569]">
+                        <p className="text-sm font-normal">
                           Gobook (“we,” “us,” or “our”) values your privacy and
                           is committed to protecting the personal data of all
                           users (“you”) who access our platform, including
@@ -736,30 +658,30 @@ export default function App() {
                         </p>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal">
                           1. Information We Collect
                         </span>
-                        <p className="text-[#475569]">
+                        <p>
                           We collect personal and non-personal information
                           necessary to provide our platform services, including:
                         </p>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
+                          <li>
                             <b>Personal Information:</b> Name, email, phone
                             number, billing address, and other details provided
                             when creating an account or making a booking.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             <b>Booking/Service Information:</b> Details of
                             services booked or offered, dates, times, and notes
                             shared between Tenants and Customers.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             <b>Payment Information:</b> Processed via secure
                             third-party payment providers; full payment
                             credentials are not stored by us.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             <b>Usage Data:</b> IP address, device, browser type,
                             and activity patterns collected via cookies or
                             similar technologies for analytics and improving our
@@ -768,101 +690,101 @@ export default function App() {
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal">
                           2. How We Use Your Information
                         </span>
-                        <p className="text-[#475569]">
+                        <p>
                           We use your information to:
                         </p>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
+                          <li>
                             Process bookings and manage services.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             Communicate confirmations, updates, and
                             notifications.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             Provide customer and tenant support.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             Personalize and improve the platform experience.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             Comply with legal obligations.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal">
                           3. Data Access and Sharing
                         </span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
+                          <li>
                             <b>Tenants</b> may access Customer information{" "}
                             <b>only for service delivery purposes.</b> Misuse of
                             data is prohibited.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             We may share necessary information with third-party
                             service providers (e.g., payment processors){" "}
                             <b>only to facilitate platform operations.</b>
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             We do not sell, trade, or share personal information
                             for unrelated commercial purposes.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal">
                           4. Data Security and Storage
                         </span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
+                          <li>
                             Reasonable technical, administrative, and physical
                             measures are implemented to protect data.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             Data is stored on secure servers or trusted
                             third-party cloud providers.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             No system is completely secure; use of our platform
                             is at your own risk.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal">
                           5. Retention of Data
                         </span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
+                          <li>
                             Personal information is retained while accounts are
                             active or as needed for service delivery.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             Booking and transaction data may be retained for
                             legal compliance, reporting, or operational
                             purposes.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             Users may request deletion of personal data, subject
                             to legal and contractual obligations.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal">
                           6. Cookies and Tracking
                         </span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
+                          <li>
                             Cookies and similar technologies are used to monitor
                             usage, maintain sessions, and personalize content.
                           </li>
-                          <li className="text-[#475569]">
+                          <li>
                             Users can manage or disable cookies via browser
                             settings, but some features may not function
                             correctly without them.
@@ -870,52 +792,52 @@ export default function App() {
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal">
                           7. Your Rights
                         </span>
-                        <p className="text-[#475569]">
+                        <p>
                           Depending on your jurisdiction, you may have rights
                           to:
                         </p>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
+                          <li>
                             Access and obtain a copy of your personal data.
                           </li>
-                          <li className="text-[#475569]">
+                          <li className="text-[#9a9b9c]">
                             Correct or delete your personal data.
                           </li>
-                          <li className="text-[#475569]">
+                          <li className="text-[#9a9b9c]">
                             Object to or restrict processing of your personal
                             data.
                           </li>
-                          <li className="text-[#475569]">
+                          <li className="text-[#9a9b9c]">
                             Withdraw consent for marketing communications.
                           </li>
                         </ul>
-                        <p className="text-[#475569]">
+                        <p className="text-[#9a9b9c]">
                           Contact us at support@gobook.lk to exercise your
                           rights.
                         </p>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal text-[#9a9b9c]">
                           8. Children’s Privacy
                         </span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
+                          <li className="text-[#9a9b9c]">
                             Our platform is not intended for children under 16.
                           </li>
-                          <li className="text-[#475569]">
+                          <li className="text-[#9a9b9c]">
                             We do not knowingly collect personal information
                             from minors.
                           </li>
                         </ul>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal text-[#9a9b9c]">
                           9. Changes to this Privacy Policy
                         </span>
-                        <p className="text-[#475569]">
+                        <p className="text-[#9a9b9c]">
                           We may update this Privacy Policy periodically.
                           Material changes will be communicated via the platform
                           or email. Continued use of the platform constitutes
@@ -923,10 +845,10 @@ export default function App() {
                         </p>
                       </div>
                       <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
+                        <span className="text-sm font-normal text-[#9a9b9c]">
                           10. Contact Us
                         </span>
-                        <p className="text-[#475569]">
+                        <p className="text-[#9a9b9c]">
                           For questions or concerns regarding this Privacy
                           Policy or your personal data:
                         </p>
@@ -936,329 +858,140 @@ export default function App() {
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
-            </li>
-            <li>
+
               <Dialog>
-                <DialogTrigger className="text-[#A1A1AA] text-sm leading-5 cursor-pointer">
+                <DialogTrigger className="hover:text-white transition-colors duration-200 cursor-pointer">
                   Terms & Conditions
                 </DialogTrigger>
                 <DialogContent
                   title="Terms & Conditions"
-                  subTitle="Please review and agree our Terms & Conditions to continue."
+                  subTitle=""
                   showCloseButton={false}
-                  primaryButtonLabel="Agree"
+                  className="bg-[#0d0d0d] border border-[rgba(140,140,140,0.2)]"
                 >
                   <DialogHeader>
-                    <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto">
+                    <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto text-[#9a9b9c]">
                       <div className="flex flex-col gap-1">
-                        <div className="text-sm font-semibold text-[#1E293B]">
+                        <div className="text-sm font-semibold">
                           Effective Date: {format(Date.now(), "yyyy/MM/dd")}
                         </div>
-                        <p className="text-sm font-normal text-[#475569]">
-                          By using Gobook (“we,” “us,” or “our”), you (“Tenant”
-                          ) agree to these Terms & Conditions. If you do not
-                          agree with any part of these terms, please do not use
-                          our platform or services.
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
-                          1. Use of Platform
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            Our platform enables Tenants to offer their services
-                            for booking.
-                          </li>
-                          <li className="text-[#475569]">
-                            All use of the platform must comply with applicable
-                            laws and these Terms.
-                          </li>
-                          <li className="text-[#475569]">
-                            Tenants must provide accurate and complete
-                            information when registering and managing their
-                            services.
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
-                          2. Tenant Terms
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            <b>Payment to Tenants:</b> Tenants receive the
-                            revenue generated from bookings minus platform
-                            service fee, credited to their billing account on a
-                            weekly basis.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Setup Costs:</b> We do not charge any setup fees
-                            to Tenants.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Service Fulfilment:</b> Tenants are solely
-                            responsible for fulfilling bookings and delivering
-                            the services they list on the platform.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Customer Data Access:</b> Tenants may only access
-                            customer data for internal use directly related to
-                            service delivery. Misuse of data is strictly
-                            prohibited.
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
-                          3. Fees and Billing
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            Platform service fees are deducted automatically
-                            from each transaction.
-                          </li>
-                          <li className="text-[#475569]">
-                            Tenants’ net earnings (after deduction of service
-                            fees) are credited to their billing account weekly.
-                          </li>
-                          <li className="text-[#475569]">
-                            All fees are inclusive of platform service charges.
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <span className="text-sm font-normal text-[#1E293B]">
-                          4. Purchase Policy
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            <b>Payment Methods:</b>
-                            GoBook accepts Visa, MasterCard, American Express,
-                            select Debit Cards, and Net Banking. Other payment
-                            methods may be added from time to time.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Who You Are Buying From:</b> GoBook acts as the
-                            agent on behalf of service providers (“Tenants”) who
-                            list their services on the platform. When you make a
-                            booking, GoBook handles the transaction and collects
-                            payment on behalf of the Tenant.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Pricing and Availability:</b> GoBook facilitates
-                            bookings on behalf of Tenants and does not control
-                            the inventory, availability, or pricing of the
-                            services listed.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>
-                              Internet Handling Fees and Order Processing Fees:
-                            </b>{" "}
-                            Tickets purchased on GoBook are subject to a per
-                            ticket internet handling fee and a non-refundable
-                            per order processing fee.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Order Confirmation:</b> If you do not receive a
-                            confirmation number (via a confirmation page or
-                            email) after submitting your payment information, or
-                            if you experience an error message or service
-                            interruption during the booking process, it is your
-                            responsibility to verify your booking through your
-                            booking history or by contacting our Customer
-                            Support. Only you may be aware of any issues that
-                            occur during the booking process. GoBook will not be
-                            responsible for any losses (monetary or otherwise)
-                            if you assume a booking was not placed due to not
-                            receiving confirmation.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Refunds and Exchanges:</b> Before completing your
-                            booking, please carefully review all details. GoBook
-                            is unable to process exchanges or refunds after a
-                            booking has been confirmed, or for lost, stolen,
-                            damaged, or destroyed tickets or booking
-                            confirmations.
-                          </li>
-                        </ul>
-                      </div>
-
-                      {/* 5. Cancellation Policy */}
-                      <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          5. Cancellation Policy
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            <b>Tenant-Initiated Cancellations:</b> If a Tenant
-                            cancels a booking or event, the customer is entitled
-                            to a full refund of the booking amount. The Tenant
-                            is responsible for any transaction fees or costs
-                            incurred during the refund process. GoBook will
-                            facilitate the refund on behalf of the Tenant but
-                            shall not be liable for such cancellations.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Customer-Initiated Cancellations:</b> Refunds for
-                            customer cancellations will be subject to the
-                            Tenant’s individual cancellation policy. If no
-                            policy is provided, bookings will be considered
-                            non-refundable.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Force Majeure Events:</b> In cases of events
-                            beyond reasonable control (natural disasters,
-                            restrictions, strikes, pandemics), GoBook and the
-                            Tenant are not liable for non-performance. Refunds
-                            or credits depend on the Tenant’s policy.
-                          </li>
-                          <li className="text-[#475569]">
-                            <b>Transaction Fees:</b> Transaction fees charged by
-                            third-party processors are generally non-refundable.
-                            For Tenant cancellations, Tenants bear the cost so
-                            customers receive a full refund.
-                          </li>
-                        </ul>
-                      </div>
-
-                      {/* 6. Billing Information Verification */}
-                      <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          6. Billing Information Verification
-                        </span>
-                        <p className="text-[#475569]">
-                          Some bookings may be processed only after your billing
-                          address and other billing information have been
-                          verified. Incorrect billing details can delay
-                          processing. If we cannot reach you, GoBook may cancel
-                          the booking and allow another customer to book the
-                          service.
+                        <p className="text-sm font-normal">
+                          By using Gobook (“we,” “us,” or “our”), you (“Tenant”) agree to these Terms & Conditions.
+                          If you do not agree with any part of these terms, please do not use our platform or services.
                         </p>
                       </div>
 
-                      {/* 7. Delivery */}
                       <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          7. Delivery
-                        </span>
-                        <p className="text-[#475569]">
-                          GoBook offers multiple delivery options, which may
-                          vary depending on the service or event. Currently:
-                        </p>
+                        <span className="text-sm font-normal">1. Use of Platform</span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            <b>Email Confirmation:</b> Booking confirmation will
-                            be sent via email.
-                          </li>
+                          <li>Our platform enables Tenants to offer their services for booking.</li>
+                          <li>All use of the platform must comply with applicable laws and these Terms.</li>
+                          <li>Tenants must provide accurate and complete information when registering and managing their services.</li>
                         </ul>
                       </div>
 
-                      {/* 8. Cancelled/Postponed Events */}
                       <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          8. Cancelled / Postponed Events
-                        </span>
-                        <p className="text-[#475569]">
-                          Occasionally, services may be canceled or postponed by
-                          the Tenant. The Tenant is fully responsible for
-                          refunds as per their own policy. GoBook facilitates
-                          the refund process but does not assume liability.
-                        </p>
-                      </div>
-
-                      {/* 9. Data Use and Privacy */}
-                      <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          9. Data Use and Privacy
-                        </span>
+                        <span className="text-sm font-normal">2. Tenant Terms</span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            Personal information is collected and processed in
-                            accordance with our Privacy Policy.
-                          </li>
-                          <li className="text-[#475569]">
-                            Tenants must comply with data protection rules and
-                            may not use customer data outside service delivery.
-                          </li>
-                          <li className="text-[#475569]">
-                            Misuse of personal data may result in suspension or
-                            termination of access.
-                          </li>
+                          <li><b>Payment to Tenants:</b> Tenants receive revenue generated from bookings minus platform service fee, credited weekly.</li>
+                          <li><b>Setup Costs:</b> We do not charge any setup fees to Tenants.</li>
+                          <li><b>Service Fulfilment:</b> Tenants are solely responsible for fulfilling bookings and delivering services.</li>
+                          <li><b>Customer Data Access:</b> Tenants may only access customer data for internal use directly related to service delivery. Misuse is strictly prohibited.</li>
                         </ul>
                       </div>
 
-                      {/* 10. Limitation of Liability */}
                       <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          10. Limitation of Liability
-                        </span>
+                        <span className="text-sm font-normal">3. Fees and Billing</span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            The platform acts solely as a facilitator; we do not
-                            provide services directly.
-                          </li>
-                          <li className="text-[#475569]">
-                            We are not liable for any loss, damage, or disputes
-                            from services offered by Tenants.
-                          </li>
-                          <li className="text-[#475569]">
-                            Use of the platform is at your own risk.
-                          </li>
+                          <li>Platform service fees are deducted automatically from each transaction.</li>
+                          <li>Tenants’ net earnings are credited to their billing account weekly.</li>
+                          <li>All fees are inclusive of platform service charges.</li>
                         </ul>
                       </div>
 
-                      {/* 11. Termination */}
                       <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          11. Termination
-                        </span>
+                        <span className="text-sm font-normal">4. Purchase Policy</span>
                         <ul className="list-disc pl-5">
-                          <li className="text-[#475569]">
-                            We reserve the right to suspend or terminate Tenant
-                            accounts for violations of these Terms.
-                          </li>
-                          <li className="text-[#475569]">
-                            Termination does not relieve Tenants of outstanding
-                            fees.
-                          </li>
+                          <li><b>Payment Methods:</b> GoBook accepts Visa, MasterCard, American Express, select Debit Cards, and Net Banking.</li>
+                          <li><b>Who You Are Buying From:</b> GoBook acts as an agent on behalf of service providers (“Tenants”).</li>
+                          <li><b>Pricing and Availability:</b> GoBook does not control the inventory or pricing of services listed.</li>
+                          <li><b>Internet Handling Fees and Order Processing Fees:</b> Bookings may include applicable fees per order or per ticket.</li>
+                          <li><b>Order Confirmation:</b> If you do not receive confirmation, verify via booking history or contact support.</li>
+                          <li><b>Refunds and Exchanges:</b> Bookings are final once confirmed. No refunds or exchanges for lost or damaged tickets.</li>
                         </ul>
                       </div>
 
-                      {/* 12. Changes to Terms */}
                       <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          12. Changes to Terms
-                        </span>
-                        <p className="text-[#475569]">
-                          We may update these Terms from time to time. Material
-                          changes will be communicated via the platform or
-                          email. Continued use of the platform constitutes
-                          acceptance of the updated Terms.
-                        </p>
+                        <span className="text-sm font-normal">5. Cancellation Policy</span>
+                        <ul className="list-disc pl-5">
+                          <li><b>Tenant-Initiated:</b> Customers receive full refunds. Tenants bear any transaction costs.</li>
+                          <li><b>Customer-Initiated:</b> Refunds depend on Tenant’s cancellation policy.</li>
+                          <li><b>Force Majeure:</b> Neither party is liable for events beyond reasonable control.</li>
+                          <li><b>Transaction Fees:</b> Third-party transaction fees are generally non-refundable.</li>
+                        </ul>
                       </div>
 
-                      {/* 13. Governing Law */}
                       <div>
-                        <span className="text-sm font-semibold text-[#1E293B]">
-                          13. Governing Law
-                        </span>
-                        <p className="text-[#475569]">
-                          These Terms are governed by and construed in
-                          accordance with the laws of the Democratic Socialist
-                          Republic of Sri Lanka. Any disputes shall be subject
-                          to the exclusive jurisdiction of the courts of
-                          Colombo, Sri Lanka.
-                        </p>
+                        <span className="text-sm font-normal">6. Billing Information Verification</span>
+                        <p>Bookings may require verified billing details. Incorrect data can lead to cancellation.</p>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-normal">7. Delivery</span>
+                        <ul className="list-disc pl-5">
+                          <li><b>Email Confirmation:</b> Booking confirmations will be sent via email.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-normal">8. Cancelled / Postponed Events</span>
+                        <p>Tenants are fully responsible for refunds as per their own policy. GoBook facilitates but is not liable.</p>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-normal">9. Data Use and Privacy</span>
+                        <ul className="list-disc pl-5">
+                          <li>Personal information is handled according to our Privacy Policy.</li>
+                          <li>Tenants must comply with data protection rules and may not misuse customer data.</li>
+                          <li>Misuse may lead to suspension or termination.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-normal">10. Limitation of Liability</span>
+                        <ul className="list-disc pl-5">
+                          <li>The platform acts solely as a facilitator.</li>
+                          <li>We are not liable for any damages from services offered by Tenants.</li>
+                          <li>Use of the platform is at your own risk.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-normal">11. Termination</span>
+                        <ul className="list-disc pl-5">
+                          <li>We may suspend or terminate Tenant accounts for violations.</li>
+                          <li>Termination does not relieve outstanding fees.</li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-normal">12. Changes to Terms</span>
+                        <p>We may update these Terms periodically. Continued use means acceptance of the updated Terms.</p>
+                      </div>
+
+                      <div>
+                        <span className="text-sm font-normal">13. Governing Law</span>
+                        <p>These Terms are governed by the laws of the Democratic Socialist Republic of Sri Lanka.
+                          Disputes fall under the jurisdiction of Colombo courts.</p>
                       </div>
                     </DialogDescription>
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
-            </li>
-          </ul>
-        </footer>
-      </main>
+            </div>
+          </footer>
+        </main>
+      </div>
     </>
   );
 }
