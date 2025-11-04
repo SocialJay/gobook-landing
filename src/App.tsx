@@ -41,30 +41,37 @@ function EventCard({ event }: { event: EventItem }) {
   return (
     <div
       tabIndex={0}
-      className="p-2 cursor-pointer transform-gpu will-change-transform transition-transform duration-500 ease-in-out origin-center bg-transparent hover:bg-gray-100/10 active:bg-gray-100/10 rounded-md transition-colors"
+      className="group w-[243px] h-[385px] p-1 cursor-pointer rounded-[10px]
+                 transition-all duration-500 ease-in-out bg-transparent 
+                 hover:bg-gray-100/10 active:bg-gray-100/10"
     >
-      <div className="inline-flex flex-col w-full max-w-[240px]">
-        <div className="flex flex-col gap-3">
-          <div className="h-[311px] overflow-hidden rounded-md bg-[#111] flex items-center justify-center">
-            <img
-              src={event.image}
-              alt={event.title}
-              className="w-[235px] h-[311px] object-cover transition-transform duration-500 ease-in-out hover:scale-105 active:scale-105"
-            />
+      <div className="w-full h-full flex flex-col gap-3">
+        <div
+          className="relative overflow-hidden rounded-[4px] bg-[#111] flex items-center justify-center 
+                    transition-all duration-500 ease-in-out group-hover:rounded-[10px]"
+        >
+          <img
+            src={event.image}
+            alt={event.title}
+            className="object-cover w-full h-[311px] transition-all duration-700 ease-out origin-center 
+                      group-hover:scale-105 group-hover:rounded-[10px]"
+          />
+        </div>
+
+        <div className="h-[46px] px-3 flex flex-col justify-center ">
+          <div className="text-[white] text-[18px] font-inter font-medium break-words">
+            {event.title}
           </div>
-          <div className="px-0">
-            <div className="text-white text-lg font-semibold leading-tight">
-              {event.title}
-            </div>
-            <div className="text-gray-400 text-sm font-semibold mt-1">
-              {event.venue}, {event.date}
-            </div>
+          <div className="text-[#737373] text-[12px] font-inter font-normal leading-[20px] break-words">
+            {event.venue}, {event.date}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+
 
 function ReviewCard({
   name,
@@ -229,14 +236,37 @@ export default function App() {
           <div className="w-full overflow-x-hidden">
             <section className="flex flex-col gap-4 mx-auto max-w-[1140px] relative z-20 px-4 sm:px-6">
               <div className="flex justify-center">
-                <span
-                  className="inline-block bg-gray-100/10 text-[#a0a1a2] text-sm font-medium px-3 py-1 rounded-full
-+                            border border-gray-700 backdrop-blur-sm"
-                  aria-hidden="false"
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    gap: 4,
+                    padding: "4px 12px",
+                    background: "var(--Surface-Container-Foreground, #171717)",
+                    borderRadius: 999,
+                    outline: "1px solid var(--Surface-Border-Default, #3F3F46)",
+                    outlineOffset: -1,
+                    width: "auto",
+                    height: "auto",
+                  }}
+                  aria-hidden={false}
                   title="Region"
                 >
-                  Sri Lanka
-                </span>
+                  <div
+                    style={{
+                      color: "rgba(115, 115, 115, 1)",
+                      fontSize: 14,
+                      fontFamily:
+                        'Inter',
+                      fontWeight: 600,
+                      lineHeight: "21px",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    Sri Lanka
+                  </div>
+                </div>
               </div>
               <div className="flex flex-col gap-4 pb-4">
                 <h1 className="text-4xl sm:text-6xl font-semibold tracking-[-0.02em] text-white text-center font-Inter px-4">
@@ -247,9 +277,9 @@ export default function App() {
             </section>
           </div>
 
-          <section className="max-w-[1200px] mx-auto flex flex-col gap-6 py-20">
-            <div className="flex justify-center">
-              <div className="flex overflow-x-auto gap-2 pb-3 snap-x snap-mandatory scrollbar-hide max-w-full">
+          <section className="max-w-[1200px] mx-auto flex flex-col gap-6 py-20 pl-[80px] pr-[80px]">
+            <div className="flex justify-center max-w-[1020px] h-[385px]">
+              <div className="flex overflow-x-auto gap-4 pb-3 snap-x snap-mandatory scrollbar-hide max-w-full">
                 {events.map((ev) => (
                   <div key={ev.id} className="snap-center flex-shrink-0 overflow-visible">
                     <EventCard event={ev} />
