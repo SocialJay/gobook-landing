@@ -71,8 +71,6 @@ function EventCard({ event }: { event: EventItem }) {
   );
 }
 
-
-
 function ReviewCard({
   name,
   username,
