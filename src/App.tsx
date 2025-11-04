@@ -41,25 +41,25 @@ function EventCard({ event }: { event: EventItem }) {
   return (
     <div
       tabIndex={0}
-      className="group w-[243px] h-[385px] p-1 cursor-pointer rounded-[10px]
-                 transition-all duration-500 ease-in-out bg-transparent 
-                 hover:bg-gray-100/10 active:bg-gray-100/10"
+      className="group w-[243px] sm:w-[220px] md:w-[243px] h-[385px] p-1 cursor-pointer 
+                 rounded-[10px] transition-all duration-500 ease-in-out bg-transparent 
+                 hover:bg-gray-100/10 active:bg-gray-100/10 focus:bg-gray-100/10"
     >
       <div className="w-full h-full flex flex-col gap-3">
         <div
           className="relative overflow-hidden rounded-[4px] bg-[#111] flex items-center justify-center 
-                    transition-all duration-500 ease-in-out group-hover:rounded-[10px]"
+                     transition-all duration-500 ease-in-out group-hover:rounded-[10px]"
         >
           <img
             src={event.image}
             alt={event.title}
             className="object-cover w-full h-[311px] transition-all duration-700 ease-out origin-center 
-                      group-hover:scale-105 group-hover:rounded-[10px]"
+                       group-hover:scale-105 group-hover:rounded-[10px]"
           />
         </div>
 
-        <div className="h-[46px] px-3 flex flex-col justify-center ">
-          <div className="text-[white] text-[18px] font-inter font-medium break-words">
+        <div className="h-[46px] px-3 flex flex-col justify-center">
+          <div className="text-white text-[18px] font-inter font-medium break-words">
             {event.title}
           </div>
           <div className="text-[#737373] text-[12px] font-inter font-normal leading-[20px] break-words">
