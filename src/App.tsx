@@ -19,11 +19,8 @@ import logoBlock from "./assets/logo-block.png";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
   DialogTrigger,
 } from "./components/ui/Dialog";
-import { format } from "date-fns";
 import stadium from "./assets/marketplace/hero.png";
 import { FiMenu } from "react-icons/fi";
 import { events } from "./sampleData/Events";
@@ -716,361 +713,218 @@ export default function App() {
               </a>
 
               <Dialog>
-                <DialogTrigger className="hover:text-white transition-colors duration-200 cursor-pointer">
-                  Privacy Policy
+                <DialogTrigger asChild>
+                  <button className="hover:text-white transition-colors duration-200">
+                    Privacy Policy
+                  </button>
                 </DialogTrigger>
                 <DialogContent
                   title="Privacy Policy"
                   subTitle=""
-                  showCloseButton={false}
-                  className="bg-[#0d0d0d] border border-[rgba(140,140,140,0.2)]"
+                  showCloseButton={true}
+                  className="max-w-[600px] w-full"
+                  primaryButtonLabel="Confirm"
                 >
-                  <DialogHeader>
-                    <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto text-[#9a9b9c]">
-                      <div className="flex flex-col gap-1">
-                        <div className="text-sm font-semibold">
-                          Effective Date: {format(Date.now(), "yyyy/MM/dd")}
-                        </div>
-                        <p className="text-sm font-normal">
-                          Gobook (“we,” “us,” or “our”) values your privacy and
-                          is committed to protecting the personal data of all
-                          users (“you”) who access our platform, including
-                          Tenants offering services and Customers booking
-                          services. This Privacy Policy explains how we collect,
-                          use, store, and share your information, and your
-                          rights regarding that data. By using our platform, you
-                          agree to the practices described herein.
-                        </p>
+                  <div className="h-full overflow-y-auto flex flex-col gap-4 scrollbar-hide pb-2">
+                    <div className="flex flex-col gap-1">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-semibold leading-[21px]">
+                        Effective Date: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                       </div>
-                      <div>
-                        <span className="text-sm font-normal">
-                          1. Information We Collect
-                        </span>
-                        <p>
-                          We collect personal and non-personal information
-                          necessary to provide our platform services, including:
-                        </p>
-                        <ul className="list-disc pl-5">
-                          <li>
-                            <b>Personal Information:</b> Name, email, phone
-                            number, billing address, and other details provided
-                            when creating an account or making a booking.
-                          </li>
-                          <li>
-                            <b>Booking/Service Information:</b> Details of
-                            services booked or offered, dates, times, and notes
-                            shared between Tenants and Customers.
-                          </li>
-                          <li>
-                            <b>Payment Information:</b> Processed via secure
-                            third-party payment providers; full payment
-                            credentials are not stored by us.
-                          </li>
-                          <li>
-                            <b>Usage Data:</b> IP address, device, browser type,
-                            and activity patterns collected via cookies or
-                            similar technologies for analytics and improving our
-                            platform.
-                          </li>
-                        </ul>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        By using Gobook ("we," "us," or "our"), you ("Tenant" or "Customer") agree to these Terms & Conditions. If you do not agree with any part of these terms, please do not use our platform or services.
                       </div>
-                      <div>
-                        <span className="text-sm font-normal">
-                          2. How We Use Your Information
-                        </span>
-                        <p>
-                          We use your information to:
-                        </p>
-                        <ul className="list-disc pl-5">
-                          <li>
-                            Process bookings and manage services.
-                          </li>
-                          <li>
-                            Communicate confirmations, updates, and
-                            notifications.
-                          </li>
-                          <li>
-                            Provide customer and tenant support.
-                          </li>
-                          <li>
-                            Personalize and improve the platform experience.
-                          </li>
-                          <li>
-                            Comply with legal obligations.
-                          </li>
-                        </ul>
+                    </div>
+
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        1. Information We Collect
                       </div>
-                      <div>
-                        <span className="text-sm font-normal">
-                          3. Data Access and Sharing
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li>
-                            <b>Tenants</b> may access Customer information{" "}
-                            <b>only for service delivery purposes.</b> Misuse of
-                            data is prohibited.
-                          </li>
-                          <li>
-                            We may share necessary information with third-party
-                            service providers (e.g., payment processors){" "}
-                            <b>only to facilitate platform operations.</b>
-                          </li>
-                          <li>
-                            We do not sell, trade, or share personal information
-                            for unrelated commercial purposes.
-                          </li>
-                        </ul>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        • Our platform allows Customers to book services provided by Tenants.<br />
+                        • All use of the platform must comply with applicable laws and these Terms.<br />
+                        • Users must provide accurate and complete information when registering and making bookings.
                       </div>
-                      <div>
-                        <span className="text-sm font-normal">
-                          4. Data Security and Storage
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li>
-                            Reasonable technical, administrative, and physical
-                            measures are implemented to protect data.
-                          </li>
-                          <li>
-                            Data is stored on secure servers or trusted
-                            third-party cloud providers.
-                          </li>
-                          <li>
-                            No system is completely secure; use of our platform
-                            is at your own risk.
-                          </li>
-                        </ul>
+                    </div>
+
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        2. How We Use Your Information
                       </div>
-                      <div>
-                        <span className="text-sm font-normal">
-                          5. Retention of Data
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li>
-                            Personal information is retained while accounts are
-                            active or as needed for service delivery.
-                          </li>
-                          <li>
-                            Booking and transaction data may be retained for
-                            legal compliance, reporting, or operational
-                            purposes.
-                          </li>
-                          <li>
-                            Users may request deletion of personal data, subject
-                            to legal and contractual obligations.
-                          </li>
-                        </ul>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        We use your information to:<br />
+                        • Process bookings and manage services.<br />
+                        • Communicate confirmations, updates, and notifications.<br />
+                        • Provide customer and tenant support.<br />
+                        • Personalize and improve the platform experience.<br />
+                        • Comply with legal obligations.
                       </div>
-                      <div>
-                        <span className="text-sm font-normal">
-                          6. Cookies and Tracking
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li>
-                            Cookies and similar technologies are used to monitor
-                            usage, maintain sessions, and personalize content.
-                          </li>
-                          <li>
-                            Users can manage or disable cookies via browser
-                            settings, but some features may not function
-                            correctly without them.
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <span className="text-sm font-normal">
-                          7. Your Rights
-                        </span>
-                        <p>
-                          Depending on your jurisdiction, you may have rights
-                          to:
-                        </p>
-                        <ul className="list-disc pl-5">
-                          <li>
-                            Access and obtain a copy of your personal data.
-                          </li>
-                          <li className="text-[#9a9b9c]">
-                            Correct or delete your personal data.
-                          </li>
-                          <li className="text-[#9a9b9c]">
-                            Object to or restrict processing of your personal
-                            data.
-                          </li>
-                          <li className="text-[#9a9b9c]">
-                            Withdraw consent for marketing communications.
-                          </li>
-                        </ul>
-                        <p className="text-[#9a9b9c]">
-                          Contact us at support@gobook.lk to exercise your
-                          rights.
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-sm font-normal text-[#9a9b9c]">
-                          8. Children’s Privacy
-                        </span>
-                        <ul className="list-disc pl-5">
-                          <li className="text-[#9a9b9c]">
-                            Our platform is not intended for children under 16.
-                          </li>
-                          <li className="text-[#9a9b9c]">
-                            We do not knowingly collect personal information
-                            from minors.
-                          </li>
-                        </ul>
-                      </div>
-                      <div>
-                        <span className="text-sm font-normal text-[#9a9b9c]">
-                          9. Changes to this Privacy Policy
-                        </span>
-                        <p className="text-[#9a9b9c]">
-                          We may update this Privacy Policy periodically.
-                          Material changes will be communicated via the platform
-                          or email. Continued use of the platform constitutes
-                          acceptance of the updated policy.
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-sm font-normal text-[#9a9b9c]">
-                          10. Contact Us
-                        </span>
-                        <p className="text-[#9a9b9c]">
-                          For questions or concerns regarding this Privacy
-                          Policy or your personal data:
-                        </p>
-                        <b>Gobook Email:</b> support@gobook.lk
-                      </div>
-                    </DialogDescription>
-                  </DialogHeader>
+                    </div>
+                  </div>
                 </DialogContent>
               </Dialog>
 
               <Dialog>
-                <DialogTrigger className="hover:text-white transition-colors duration-200 cursor-pointer">
-                  Terms & Conditions
+                <DialogTrigger asChild>
+                  <button className="hover:text-white transition-colors duration-200">
+                    Terms & Conditions
+                  </button>
                 </DialogTrigger>
                 <DialogContent
                   title="Terms & Conditions"
                   subTitle=""
-                  showCloseButton={false}
-                  className="bg-[#0d0d0d] border border-[rgba(140,140,140,0.2)]"
+                  showCloseButton={true}
+                  className="max-w-[600px] w-full"
+                  primaryButtonLabel="Agree"
                 >
-                  <DialogHeader>
-                    <DialogDescription className="flex flex-col gap-4 h-[497px] overflow-y-auto text-[#9a9b9c]">
-                      <div className="flex flex-col gap-1">
-                        <div className="text-sm font-semibold">
-                          Effective Date: {format(Date.now(), "yyyy/MM/dd")}
-                        </div>
-                        <p className="text-sm font-normal">
-                          By using Gobook (“we,” “us,” or “our”), you (“Tenant”) agree to these Terms & Conditions.
-                          If you do not agree with any part of these terms, please do not use our platform or services.
-                        </p>
+                  <div className="h-full overflow-y-auto flex flex-col gap-4 scrollbar-hide pb-2">
+                    <div className="flex flex-col gap-1">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-semibold leading-[21px]">
+                        Effective Date: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        By using Gobook ("we," "us," or "our"), you ("Tenant") agree to these Terms & Conditions.
+                        If you do not agree with any part of these terms, please do not use our platform or services.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">1. Use of Platform</span>
-                        <ul className="list-disc pl-5">
-                          <li>Our platform enables Tenants to offer their services for booking.</li>
-                          <li>All use of the platform must comply with applicable laws and these Terms.</li>
-                          <li>Tenants must provide accurate and complete information when registering and managing their services.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        1. Use of Platform
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        • Our platform enables Tenants to offer their services for booking.<br />
+                        • All use of the platform must comply with applicable laws and these Terms.<br />
+                        • Tenants must provide accurate and complete information when registering and managing their services.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">2. Tenant Terms</span>
-                        <ul className="list-disc pl-5">
-                          <li><b>Payment to Tenants:</b> Tenants receive revenue generated from bookings minus platform service fee, credited weekly.</li>
-                          <li><b>Setup Costs:</b> We do not charge any setup fees to Tenants.</li>
-                          <li><b>Service Fulfilment:</b> Tenants are solely responsible for fulfilling bookings and delivering services.</li>
-                          <li><b>Customer Data Access:</b> Tenants may only access customer data for internal use directly related to service delivery. Misuse is strictly prohibited.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        2. Tenant Terms
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        • <span className="font-semibold">Payment to Tenants:</span> Tenants receive revenue generated from bookings minus platform service fee, credited weekly.<br />
+                        • <span className="font-semibold">Setup Costs:</span> We do not charge any setup fees to Tenants.<br />
+                        • <span className="font-semibold">Service Fulfilment:</span> Tenants are solely responsible for fulfilling bookings and delivering services.<br />
+                        • <span className="font-semibold">Customer Data Access:</span> Tenants may only access customer data for internal use directly related to service delivery. Misuse is strictly prohibited.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">3. Fees and Billing</span>
-                        <ul className="list-disc pl-5">
-                          <li>Platform service fees are deducted automatically from each transaction.</li>
-                          <li>Tenants’ net earnings are credited to their billing account weekly.</li>
-                          <li>All fees are inclusive of platform service charges.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        3. Fees and Billing
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        • Platform service fees are deducted automatically from each transaction.<br />
+                        • Tenants' net earnings are credited to their billing account weekly.<br />
+                        • All fees are inclusive of platform service charges.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">4. Purchase Policy</span>
-                        <ul className="list-disc pl-5">
-                          <li><b>Payment Methods:</b> GoBook accepts Visa, MasterCard, American Express, select Debit Cards, and Net Banking.</li>
-                          <li><b>Who You Are Buying From:</b> GoBook acts as an agent on behalf of service providers (“Tenants”).</li>
-                          <li><b>Pricing and Availability:</b> GoBook does not control the inventory or pricing of services listed.</li>
-                          <li><b>Internet Handling Fees and Order Processing Fees:</b> Bookings may include applicable fees per order or per ticket.</li>
-                          <li><b>Order Confirmation:</b> If you do not receive confirmation, verify via booking history or contact support.</li>
-                          <li><b>Refunds and Exchanges:</b> Bookings are final once confirmed. No refunds or exchanges for lost or damaged tickets.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        4. Purchase Policy
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                         <span className="font-semibold">Payment Methods:</span> GoBook accepts Visa, MasterCard, American Express, select Debit Cards, and Net Banking.<br />
+                         <span className="font-semibold">Who You Are Buying From:</span> GoBook acts as an agent on behalf of service providers ("Tenants").<br />
+                         <span className="font-semibold">Pricing and Availability:</span> GoBook does not control the inventory or pricing of services listed.<br />
+                         <span className="font-semibold">Internet Handling Fees and Order Processing Fees:</span> Bookings may include applicable fees per order or per ticket.<br />
+                         <span className="font-semibold">Order Confirmation:</span> If you do not receive confirmation, verify via booking history or contact support.<br />
+                         <span className="font-semibold">Refunds and Exchanges:</span> Bookings are final once confirmed. No refunds or exchanges for lost or damaged tickets.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">5. Cancellation Policy</span>
-                        <ul className="list-disc pl-5">
-                          <li><b>Tenant-Initiated:</b> Customers receive full refunds. Tenants bear any transaction costs.</li>
-                          <li><b>Customer-Initiated:</b> Refunds depend on Tenant’s cancellation policy.</li>
-                          <li><b>Force Majeure:</b> Neither party is liable for events beyond reasonable control.</li>
-                          <li><b>Transaction Fees:</b> Third-party transaction fees are generally non-refundable.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        5. Cancellation Policy
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                         <span className="font-semibold">Tenant-Initiated:</span> Customers receive full refunds. Tenants bear any transaction costs.<br />
+                         <span className="font-semibold">Customer-Initiated:</span> Refunds depend on Tenant's cancellation policy.<br />
+                         <span className="font-semibold">Force Majeure:</span> Neither party is liable for events beyond reasonable control.<br />
+                         <span className="font-semibold">Transaction Fees:</span> Third-party transaction fees are generally non-refundable.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">6. Billing Information Verification</span>
-                        <p>Bookings may require verified billing details. Incorrect data can lead to cancellation.</p>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        6. Billing Information Verification
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        Bookings may require verified billing details. Incorrect data can lead to cancellation.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">7. Delivery</span>
-                        <ul className="list-disc pl-5">
-                          <li><b>Email Confirmation:</b> Booking confirmations will be sent via email.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        7. Delivery
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                         <span className="font-semibold">Email Confirmation:</span> Booking confirmations will be sent via email.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">8. Cancelled / Postponed Events</span>
-                        <p>Tenants are fully responsible for refunds as per their own policy. GoBook facilitates but is not liable.</p>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        8. Cancelled / Postponed Events
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        Tenants are fully responsible for refunds as per their own policy. GoBook facilitates but is not liable.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">9. Data Use and Privacy</span>
-                        <ul className="list-disc pl-5">
-                          <li>Personal information is handled according to our Privacy Policy.</li>
-                          <li>Tenants must comply with data protection rules and may not misuse customer data.</li>
-                          <li>Misuse may lead to suspension or termination.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        9. Data Use and Privacy
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                         Personal information is handled according to our Privacy Policy.<br />
+                         Tenants must comply with data protection rules and may not misuse customer data.<br />
+                         Misuse may lead to suspension or termination.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">10. Limitation of Liability</span>
-                        <ul className="list-disc pl-5">
-                          <li>The platform acts solely as a facilitator.</li>
-                          <li>We are not liable for any damages from services offered by Tenants.</li>
-                          <li>Use of the platform is at your own risk.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        10. Limitation of Liability
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                         The platform acts solely as a facilitator.<br />
+                         We are not liable for any damages from services offered by Tenants.<br />
+                         Use of the platform is at your own risk.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">11. Termination</span>
-                        <ul className="list-disc pl-5">
-                          <li>We may suspend or terminate Tenant accounts for violations.</li>
-                          <li>Termination does not relieve outstanding fees.</li>
-                        </ul>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        11. Termination
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                         We may suspend or terminate Tenant accounts for violations.<br />
+                         Termination does not relieve outstanding fees.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">12. Changes to Terms</span>
-                        <p>We may update these Terms periodically. Continued use means acceptance of the updated Terms.</p>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        12. Changes to Terms
                       </div>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        We may update these Terms periodically. Continued use means acceptance of the updated Terms.
+                      </div>
+                    </div>
 
-                      <div>
-                        <span className="text-sm font-normal">13. Governing Law</span>
-                        <p>These Terms are governed by the laws of the Democratic Socialist Republic of Sri Lanka.
-                          Disputes fall under the jurisdiction of Colombo courts.</p>
+                    <div className="flex flex-col">
+                      <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
+                        13. Governing Law
                       </div>
-                    </DialogDescription>
-                  </DialogHeader>
+                      <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
+                        These Terms are governed by the laws of the Democratic Socialist Republic of Sri Lanka.
+                        Disputes fall under the jurisdiction of Colombo courts.
+                      </div>
+                    </div>
+                  </div>
                 </DialogContent>
               </Dialog>
             </div>
@@ -1080,3 +934,4 @@ export default function App() {
     </>
   );
 }
+
