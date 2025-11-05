@@ -367,52 +367,64 @@ export default function App() {
 
               </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
-              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
-                <img src={do1} alt="No Setup Fee" className="w-14 h-14 sm:w-17 sm:h-17" />
-                <div className="flex flex-col items-center text-center gap-1 mt-3">
-                  <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
-                    No Setup fee
-                  </h4>
-                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
-                    Start selling without any upfront costs.
-                  </p>
+            <div className="w-full flex justify-center items-center">
+              <div
+                  className="flex flex-col sm:flex-row justify-center items-center sm:items-stretch gap-4 sm:gap-4 sm:w-[1020px] px-4"
+              >                
+                <div className="w-full sm:w-[243px] py-4 px-5 sm:py-6 sm:px-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+                  <div className="w-[112px] h-[64px] flex items-center justify-center">
+                    <img src={do1} alt="No Setup Fee" className="w-[64px] h-[64px] sm:w-[64px] sm:h-[64px]" />
+                  </div>
+                  <div className="flex flex-col items-center text-center gap-1">
+                    <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold w-[195px] font-Inter">
+                      No Setup fee
+                    </h4>
+                    <p className="text-[#A3A3A3] text-[14px] leading-[21px] font-inter font-normal text-center w-[195px]">
+                      Start selling without any upfront costs.
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
-                <img src={do2} alt="Build your own platform" className="w-14 h-14 sm:w-17 sm:h-17" />
-                <div className="flex flex-col items-center text-center gap-1 mt-3">
-                  <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
-                    Build your own platform
-                  </h4>
-                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
-                    Launch a fully branded booking system in 2 minutes.
-                  </p>
+                <div className="w-full sm:w-[243px] py-4 px-5 sm:py-6 sm:px-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+                  <div className="w-[112px] h-[64px] flex items-center justify-center">
+                    <img src={do2} alt="Build your own platform" className="w-[64px] h-[64px] sm:w-[64px] sm:h-[64px]" />
+                  </div>
+                  <div className="flex flex-col items-center text-center gap-1">
+                    <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold w-[195px] font-Inter">
+                      Build your own platform
+                    </h4>
+                    <p className="text-[#A3A3A3] text-[14px] leading-[21px] font-inter font-normal text-center w-[195px]">
+                      Launch a fully branded booking system in 2 minutes.
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="w-full max-w-[250px] h-[200px] py-6  sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
-                <img src={do3} alt="Know your customers" className="w-14 h-14 sm:w-17 sm:h-17" />
-                <div className="flex flex-col items-center text-center gap-1 mt-3">
-                  <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
-                    Know your customers
-                  </h4>
-                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
-                    Gain insights with real-time analytics and reporting.
-                  </p>
+                <div className="w-full sm:w-[243px] py-4 px-5 sm:py-6 sm:px-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+                  <div className="w-[112px] h-[64px] flex items-center justify-center">
+                    <img src={do3} alt="Know your customers" className="w-[64px] h-[64px] sm:w-[64px] sm:h-[64px]" />
+                  </div>
+                  <div className="flex flex-col items-center text-center gap-1">
+                    <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold w-[195px] font-Inter">
+                      Know your customers
+                    </h4>
+                    <p className="text-[#A3A3A3] text-[14px] leading-[21px] font-inter font-normal text-center w-[195px]">
+                      Gain insights with real-time analytics and reporting.
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="w-full max-w-[250px] h-[200px] py-6 sm:h-[250px] p-4 sm:p-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
-                <img src={do4} alt="Get paid faster" className="w-14 h-14 sm:w-17 sm:h-17" />
-                <div className="flex flex-col items-center text-center gap-1 mt-3">
-                  <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold font-Inter">
-                    Get paid faster
-                  </h4>
-                  <p className="text-[#A3A3A3] text-xs sm:text-sm font-normal leading-[18px] font-Inter mt-2">
-                    Secure, seamless transactions straight to your account.
-                  </p>
+                <div className="w-full sm:w-[243px] py-4 px-5 sm:py-6 sm:px-6 flex flex-col items-center justify-start gap-4 bg-[rgba(43,43,43,0.3)] border border-[rgba(140,140,140,0.12)] rounded-[16px] backdrop-blur-sm">
+                  <div className="w-[112px] h-[64px] flex items-center justify-center">
+                    <img src={do4} alt="Get paid faster" className="w-[64px] h-[64px] sm:w-[64px] sm:h-[64px]" />
+                  </div>
+                  <div className="flex flex-col items-center text-center gap-2 px-2">
+                    <h4 className="text-[#F5F5F5] text-md sm:text-lg font-semibold w-[195px] font-Inter">
+                      Get paid faster
+                    </h4>
+                    <p className="text-[#A3A3A3] text-[14px] leading-[21px] font-inter font-normal text-center w-[195px]">
+                      Secure, seamless transactions straight to your account.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -482,6 +494,7 @@ export default function App() {
                         {item === "Branding (logo, Sub domain)" && (
                           <Info className="w-[12px] h-[12px] text-[#737373]" />
                         )}
+                        
                       </li>
                     ))}
                   </ul>
@@ -534,7 +547,11 @@ export default function App() {
                   </ul>
                 </div>
                 <button className="w-full h-[40px] mt-6 bg-[#27272A] border border-[#3F3F46] rounded-[8px] text-[#F8FAFC] text-[14px] font-Inter font-medium leading-[20px]">
-                  Contact Support
+                  <a
+                    href="mailto:support@gobook.lk"
+                  >
+                    Contact Support
+                  </a>
                 </button>
               </div>
             </div>
@@ -555,7 +572,11 @@ export default function App() {
                 </div>
 
                 <button className="w-full md:w-fit px-4 py-2 bg-[#27272A] border border-[#3F3F46] text-[#F5F5F5] text-[14px] font-Inter font-medium rounded-[8px] hover:bg-[#3F3F46] transition-all duration-200 mx-auto md:mx-0">
-                  Contact Support
+                  <a
+                    href="mailto:support@gobook.lk"
+                  >
+                    Contact Support
+                  </a>
                 </button>
               </div>
 
