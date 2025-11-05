@@ -116,6 +116,39 @@ function ReviewCard({
   );
 }
 
+function TooltipInfo({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <div className="relative inline-block">
+      <button
+        type="button"
+        onClick={() => setOpen((s) => !s)}
+        onBlur={() => setOpen(false)}
+        aria-haspopup="true"
+        aria-expanded={open}
+        className="w-4 h-4 flex items-center justify-center"
+      >
+        <Info className="w-[12px] h-[12px] text-[#737373]" />
+      </button>
+
+      <div
+        role="tooltip"
+        aria-hidden={!open}
+        className={
+          (open ? "flex " : "hidden ") +
+          "absolute z-50 left-1/2 top-full mt-2 -translate-x-1/2 flex-col w-[160px] p-3 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[8px] text-[#A3A3A3] text-sm shadow-md hover:flex focus:flex"
+        }
+      >
+        <div className="text-[13px]">{children}</div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const reviews = [
     {
@@ -492,9 +525,10 @@ export default function App() {
                           {item}
                         </span>
                         {item === "Branding (logo, Sub domain)" && (
-                          <Info className="w-[12px] h-[12px] text-[#737373]" />
+                          <TooltipInfo>
+                            Use your logo and a personalized link.
+                          </TooltipInfo>
                         )}
-                        
                       </li>
                     ))}
                   </ul>
@@ -540,7 +574,9 @@ export default function App() {
                           {item}
                         </span>
                         {item === "Branding (logo, Custom domain)" && (
-                          <Info className="w-[12px] h-[12px] text-[#737373]" />
+                          <TooltipInfo>
+                            Use your logo and your own website link.
+                          </TooltipInfo>
                         )}
                       </li>
                     ))}
