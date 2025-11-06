@@ -159,25 +159,25 @@ export default function App() {
       name: "Pravien Mahalingam",
       username: "Blaze Entertainment",
       body: "Our biggest concern was always the attendee experience.",
-      avatar: avatar2,
+      avatar: avatar4,
     },
     {
       name: "Abithaaran",
       username: "247 Moments",
       body: "Other platforms limited flexibility and delayed payments.",
-      avatar: avatar3,
+      avatar: avatar2
     },
     {
       name: "Pravien Mahalingam",
       username: "Blaze Entertainment",
       body: "Our biggest concern was always the attendee experience.",
-      avatar: avatar2,
+      avatar: avatar4,
     },
     {
       name: "Abithaaran",
       username: "247 Moments",
       body: "Other platforms limited flexibility and delayed payments.",
-      avatar: avatar3,
+      avatar: avatar2,
     },
     {
       name: "Shobian",
@@ -189,7 +189,7 @@ export default function App() {
       name: "Dineth Gunasekare",
       username: "Plan Bee by SUSA",
       body: "Third Party Platforms are High fees, poor marketing, and unreliable ticket links, not worth the hassle.",
-      avatar: avatar4,
+      avatar: avatar3,
     },
   ];
   const firstRow = reviews.slice(0, reviews.length / 2);
