@@ -1,5 +1,4 @@
-import logo from "./assets/navigation/logo.svg";
-import gobook from "./assets/navigation/gobook.svg";
+import logo from "./assets/navigation/Logo.webp";
 import avatarUser from "./assets/navigation/avatar.png"
 import do1 from "./assets/whatwedo/1.svg";
 import do2 from "./assets/whatwedo/2.svg";
@@ -229,10 +228,9 @@ export default function App() {
             <a
               href="/"
               aria-label="Home"
-              className="w-[120px] sm:w-auto flex items-center gap-2"
+              className="sm:w-auto flex items-center gap-2"
             >
-              <img src={logo} alt="logo" className="w-6 h-6 object-contain" />
-              <img src={gobook} alt="Gobook" className="h-5 object-contain" />
+              <img src={logo} alt="logo" className="w-[130px] h-[31px] object-contain" />
             </a>
 
             <div className="flex items-center">
