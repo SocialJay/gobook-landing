@@ -224,13 +224,13 @@ export default function App() {
               : "bg-transparent backdrop-blur-[0px] border-b-0"
           )}
         >
-          <div className="max-w-[1140px] mx-auto flex items-center justify-between px-4 sm:px-6 py-1">
+          <div className="max-w-[1020px] mx-auto flex items-center justify-between p-2 sm:py-2 sm:px-0">
             <a
               href="/"
               aria-label="Home"
               className="sm:w-auto flex items-center gap-2"
             >
-              <img src={logo} alt="logo" className="w-[130px] h-[31px] object-contain" />
+              <img src={logo} alt="logo" className="w-[132px] h-[32px] object-contain" />
             </a>
 
             <div className="flex items-center">
@@ -242,7 +242,7 @@ export default function App() {
               </a>
               <button
                 aria-label="Account"
-                className="w-8 h-8 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-white/10"
+                className="w-[24px] h-[24px] rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-white/10"
               >
                 <img
                   src={avatarUser}
@@ -252,7 +252,7 @@ export default function App() {
               </button>
 
               <button aria-label="Menu" className="p-2 rounded-md hover:bg-white/5">
-                <FiMenu className="w-6 h-6 sm:w-7 sm:h-7 text-[#A1A1AA]" />
+                <FiMenu className="w-[24px] h-[24px] sm:w-[24px] sm:h-[24px] text-[#A1A1AA]" />
               </button>
             </div>
           </div>
