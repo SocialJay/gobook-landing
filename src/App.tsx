@@ -235,10 +235,10 @@ export default function App() {
               <img src={gobook} alt="Gobook" className="h-5 object-contain" />
             </a>
 
-            <div className="flex items-center gap-3 sm:gap-6">
+            <div className="flex items-center">
               <a
                 href="http://app.gobook.lk"
-                className="text-sm text-[white] font-medium hidden sm:inline-block"
+                className="text-sm text-[white] font-medium hidden sm:inline-block mr-8"
               >
                 Host your Event
               </a>
