@@ -2,7 +2,6 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "./Button";
 
 function Dialog({
   ...props
@@ -32,7 +31,7 @@ function DialogOverlay({
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80 backdrop-blur-sm",
         className
       )}
       {...props}
@@ -49,7 +48,7 @@ function DialogContent({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
-  subTitle: string;
+  subTitle?: string;
   primaryButtonLabel?: string;
 }) {
   return (
@@ -58,23 +57,38 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-white data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[600px] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border-[rgba(203,213,225,1)] p-6 shadow-[0px_2px_14.1px_0px_rgba(0,0,0,0.08)] duration-200",
+          "bg-[#050505] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed z-50 flex flex-col overflow-hidden",
+          "left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]",
+          "max-sm:w-[calc(100vw-2rem)] max-sm:max-h-[85vh]",
+          "sm:w-full sm:max-w-[600px] sm:max-h-[85vh]",
+          "rounded-[12px] border border-[#171717] shadow-[0px_2px_14.1px_0px_rgba(0,0,0,0.08)]",
+          "duration-200",
           className
         )}
         {...props}
       >
-        <DialogTitle>
-          <h2 className="text-lg font-semibold text-[#ffffff]">{title}</h2>
-          <p className="text-sm font-normal text-[#b2b3b3]">{subTitle}</p>
-        </DialogTitle>
-        {children}
+        <div className="p-4 flex flex-col gap-2">
+          <DialogTitle>
+            <h2 className="text-[18px] font-inter font-semibold text-[#F5F5F5]">{title}</h2>
+            {subTitle && <p className="text-sm font-normal text-[#b2b3b3]">{subTitle}</p>}
+          </DialogTitle>
+        </div>
+        
+        <div className="px-4 flex-1 overflow-y-auto min-h-0 scrollbar-hide">
+          {children}
+        </div>
+
         {primaryButtonLabel && (
-        <DialogFooter className="w-full flex justify-between">
-            <DialogClose>
-              <Button hierarchy="secondary" className="w-fit">Back</Button>
+          <DialogFooter className="h-[68px] px-4 sm:px-6 py-4 flex justify-between items-center mt-10">
+            <DialogClose asChild>
+              <button className="h-9 min-w-[80px] px-4 py-2 bg-[rgba(255,255,255,0.10)] border border-[rgba(255,255,255,0.20)] rounded-[8px] text-[#F8FAFC] text-[14px] font-inter font-medium leading-5 hover:bg-[rgba(255,255,255,0.15)] transition-colors">
+                Back
+              </button>
             </DialogClose>
-            <DialogClose>
-              <Button hierarchy="primary" className="w-fit">{primaryButtonLabel}</Button>
+            <DialogClose asChild>
+              <button className="h-10 min-w-[80px] px-4 py-2 bg-[#F8FAFC] rounded-[8px] text-[#1E293B] text-[14px] font-inter font-medium leading-5 hover:bg-[#E2E8F0] transition-colors">
+                {primaryButtonLabel}
+              </button>
             </DialogClose>
           </DialogFooter>
         )}
@@ -82,7 +96,7 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close
             data-slot="dialog-close"
-            className="ring-offset-white focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+            className="ring-offset-white focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 text-white"
           >
             <XIcon />
             <span className="sr-only">Close</span>
