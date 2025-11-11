@@ -639,15 +639,15 @@ export default function App() {
               <Accordion
                 type="single"
                 collapsible
-                className="w-full flex flex-col gap-3"
+                className="w-full flex flex-col gap-3 p-1"
                 defaultValue="item-1"
               >
                 {faqs.map((faq, index) => (
                   <AccordionItem key={index} value={`item-${index + 1}`}>
-                    <AccordionTrigger className="text-[#A3A3A3] text-[14px] font-semibold  rounded-[10px] px-6 py-4 transition-all">
-                      {faq.question}
+                    <AccordionTrigger className="text-[#A3A3A3] text-[14px] h-[53px] font-semibold rounded-[10px]  transition-all items-center">
+                      <div className="flex-1 text-left">{faq.question}</div>
                     </AccordionTrigger>
-                    <AccordionContent className="flex flex-col gap-4 text-left px-6 pb-4 text-[#737373]">
+                    <AccordionContent className="flex flex-col gap-4 text-left  text-[#737373]">
                       <p>{faq.answer}</p>
                     </AccordionContent>
                   </AccordionItem>
