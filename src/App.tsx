@@ -126,9 +126,9 @@ function TooltipInfo({
         onBlur={() => setOpen(false)}
         aria-haspopup="true"
         aria-expanded={open}
-        className="w-4 h-4 flex items-center justify-center"
+        className="w-4 h-4 flex items-center justify-center color-[#D4D4D4]"
       >
-        <Info className="w-[12px] h-[12px] text-[#737373]" />
+        <Info className="w-[12px] h-[12px] text-[#D4D4D4]" />
       </button>
 
       <div
@@ -136,7 +136,7 @@ function TooltipInfo({
         aria-hidden={!open}
         className={
           (open ? "flex " : "hidden ") +
-          "absolute z-50 left-1/2 top-full mt-2 -translate-x-1/2 flex-col w-[160px] p-3 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[8px] text-[#A3A3A3] text-sm shadow-md hover:flex focus:flex"
+          "absolute z-50 left-1/2 top-full mt-2 -translate-x-1/2 flex-col w-[160px] p-3 bg-[#0d0d0d] border border-[rgba(140,140,140,0.12)] rounded-[8px] text-[#D4D4D4] text-sm shadow-md hover:flex focus:flex"
         }
       >
         <div className="text-[13px]">{children}</div>
@@ -487,7 +487,7 @@ export default function App() {
                       <h3 className="text-[#818CF8] text-[16px] font-semibold font-Inter">
                         STARTER
                       </h3>
-                      <p className="text-[#A3A3A3] text-[14px] leading-[21px] font-normal font-Inter">
+                      <p className="text-[#D4D4D4] text-[14px]  font-normal font-Inter">
                         For Solo Entrepreneur
                       </p>
                     </div>
@@ -514,9 +514,9 @@ export default function App() {
                     ].map((item) => (
                       <li key={item} className="flex items-center gap-2">
                         <div className="w-[15px] h-[15px] flex items-center justify-center">
-                          <CheckIcon size={16} color="#A3A3A3" />
+                          <CheckIcon size={16} color="#D4D4D4" weight="bold" />
                         </div>
-                        <span className="text-[#A3A3A3] text-[14px] font-Inter font-semibold leading-[21px]">
+                        <span className="text-[#D4D4D4] text-[14px] font-Inter font-semibold leading-[21px]">
                           {item}
                         </span>
                         {item === "Branding (logo, Sub domain)" && (
@@ -540,7 +540,7 @@ export default function App() {
                       <h3 className="text-[#FC9745] text-[16px] font-semibold font-Inter">
                         PRO
                       </h3>
-                      <p className="text-[#A3A3A3] text-[14px] font-normal leading-[21px] font-Inter">
+                      <p className="text-[#D4D4D4] text-[14px] font-normal font-Inter">
                         For Businesses
                       </p>
                     </div>
@@ -563,9 +563,9 @@ export default function App() {
                     ].map((item) => (
                       <li key={item} className="flex items-center gap-2">
                         <div className="w-[15px] h-[15px] flex items-center justify-center">
-                          <CheckIcon size={16} color="#A3A3A3" />
+                          <CheckIcon size={16} color="#D4D4D4" weight="bold" />
                         </div>
-                        <span className="text-[#A3A3A3] text-[14px] font-Inter font-semibold leading-[21px]">
+                        <span className="text-[#D4D4D4] text-[14px] font-Inter font-semibold leading-[21px]">
                           {item}
                         </span>
                         {item === "Branding (logo, Custom domain)" && (
