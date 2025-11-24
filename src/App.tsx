@@ -307,9 +307,9 @@ export default function App() {
             <div className="flex justify-center max-w-[1020px] h-[385px]">
               <div className="flex overflow-x-auto gap-4 pb-3 snap-x snap-mandatory scrollbar-hide max-w-full">
                 {events.map((ev) => (
-                  <div key={ev.id} className="snap-center flex-shrink-0 overflow-visible">
+                  <a key={ev.id} href={`https://app.gobook.lk/org/event/${ev.id}`} className="snap-center flex-shrink-0 overflow-visible">
                     <EventCard event={ev} />
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
