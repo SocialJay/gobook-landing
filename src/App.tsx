@@ -738,7 +738,7 @@ export default function App() {
                         1. Information We Collect
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                        • Our platform allows Customers to book services provided by Tenants.<br />
+                        • Our platform allows Customers to book services provided by Businesses.<br />
                         • All use of the platform must comply with applicable laws and these Terms.<br />
                         • Users must provide accurate and complete information when registering and making bookings.
                       </div>
@@ -780,7 +780,7 @@ export default function App() {
                         Effective Date: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                        By using Gobook ("we," "us," or "our"), you ("Tenant") agree to these Terms & Conditions.
+                        By using Gobook ("we," "us," or "our"), you ("Business") agree to these Terms & Conditions.
                         If you do not agree with any part of these terms, please do not use our platform or services.
                       </div>
                     </div>
@@ -790,21 +790,21 @@ export default function App() {
                         1. Use of Platform
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                        • Our platform enables Tenants to offer their services for booking.<br />
+                        • Our platform enables Businesses to offer their services for booking.<br />
                         • All use of the platform must comply with applicable laws and these Terms.<br />
-                        • Tenants must provide accurate and complete information when registering and managing their services.
+                        • Businesses must provide accurate and complete information when registering and managing their services.
                       </div>
                     </div>
 
                     <div className="flex flex-col">
                       <div className="text-[#F5F5F5] text-[14px] font-inter font-normal leading-[21px]">
-                        2. Tenant Terms
+                        2. Business Terms
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                        • <span className="font-semibold">Payment to Tenants:</span> Tenants receive revenue generated from bookings minus platform service fee, credited weekly.<br />
-                        • <span className="font-semibold">Setup Costs:</span> We do not charge any setup fees to Tenants.<br />
-                        • <span className="font-semibold">Service Fulfilment:</span> Tenants are solely responsible for fulfilling bookings and delivering services.<br />
-                        • <span className="font-semibold">Customer Data Access:</span> Tenants may only access customer data for internal use directly related to service delivery. Misuse is strictly prohibited.
+                        • <span className="font-semibold">Payment to Businesses:</span> Businesses receive revenue generated from bookings minus platform service fee, credited weekly.<br />
+                        • <span className="font-semibold">Setup Costs:</span> We do not charge any setup fees to Businesses.<br />
+                        • <span className="font-semibold">Service Fulfilment:</span> Businesses are solely responsible for fulfilling bookings and delivering services.<br />
+                        • <span className="font-semibold">Customer Data Access:</span> Businesses may only access customer data for internal use directly related to service delivery. Misuse is strictly prohibited.
                       </div>
                     </div>
 
@@ -814,7 +814,7 @@ export default function App() {
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
                         • Platform service fees are deducted automatically from each transaction.<br />
-                        • Tenants' net earnings are credited to their billing account weekly.<br />
+                        • Businesses' net earnings are credited to their billing account weekly.<br />
                         • All fees are inclusive of platform service charges.
                       </div>
                     </div>
@@ -825,7 +825,7 @@ export default function App() {
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
                          <span className="font-semibold">Payment Methods:</span> GoBook accepts Visa, MasterCard, American Express, select Debit Cards, and Net Banking.<br />
-                         <span className="font-semibold">Who You Are Buying From:</span> GoBook acts as an agent on behalf of service providers ("Tenants").<br />
+                         <span className="font-semibold">Who You Are Buying From:</span> GoBook acts as an agent on behalf of service providers ("Businesses").<br />
                          <span className="font-semibold">Pricing and Availability:</span> GoBook does not control the inventory or pricing of services listed.<br />
                          <span className="font-semibold">Internet Handling Fees and Order Processing Fees:</span> Bookings may include applicable fees per order or per ticket.<br />
                          <span className="font-semibold">Order Confirmation:</span> If you do not receive confirmation, verify via booking history or contact support.<br />
@@ -838,7 +838,7 @@ export default function App() {
                         5. Cancellation Policy
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                         <span className="font-semibold">Tenant-Initiated:</span> Customers receive full refunds. Tenants bear any transaction costs.<br />
+                         <span className="font-semibold">Tenant-Initiated:</span> Customers receive full refunds. Business bear any transaction costs.<br />
                          <span className="font-semibold">Customer-Initiated:</span> Refunds depend on Tenant's cancellation policy.<br />
                          <span className="font-semibold">Force Majeure:</span> Neither party is liable for events beyond reasonable control.<br />
                          <span className="font-semibold">Transaction Fees:</span> Third-party transaction fees are generally non-refundable.
@@ -868,7 +868,7 @@ export default function App() {
                         8. Cancelled / Postponed Events
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                        Tenants are fully responsible for refunds as per their own policy. GoBook facilitates but is not liable.
+                        Businesses are fully responsible for refunds as per their own policy. GoBook facilitates but is not liable.
                       </div>
                     </div>
 
@@ -878,7 +878,7 @@ export default function App() {
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
                          Personal information is handled according to our Privacy Policy.<br />
-                         Tenants must comply with data protection rules and may not misuse customer data.<br />
+                         Businesses must comply with data protection rules and may not misuse customer data.<br />
                          Misuse may lead to suspension or termination.
                       </div>
                     </div>
@@ -889,7 +889,7 @@ export default function App() {
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
                          The platform acts solely as a facilitator.<br />
-                         We are not liable for any damages from services offered by Tenants.<br />
+                         We are not liable for any damages from services offered by Businesses.<br />
                          Use of the platform is at your own risk.
                       </div>
                     </div>
