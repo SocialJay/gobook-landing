@@ -729,7 +729,7 @@ export default function App() {
                         Effective Date: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                        By using Gobook ("we," "us," or "our"), you ("Tenant" or "Customer") agree to these Terms & Conditions. If you do not agree with any part of these terms, please do not use our platform or services.
+                        By using Gobook ("we," "us," or "our"), you ("Business" or "Customer") agree to these Terms & Conditions. If you do not agree with any part of these terms, please do not use our platform or services.
                       </div>
                     </div>
 
@@ -752,7 +752,7 @@ export default function App() {
                         We use your information to:<br />
                         • Process bookings and manage services.<br />
                         • Communicate confirmations, updates, and notifications.<br />
-                        • Provide customer and tenant support.<br />
+                        • Provide customer and business support.<br />
                         • Personalize and improve the platform experience.<br />
                         • Comply with legal obligations.
                       </div>
@@ -838,8 +838,8 @@ export default function App() {
                         5. Cancellation Policy
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                         <span className="font-semibold">Tenant-Initiated:</span> Customers receive full refunds. Business bear any transaction costs.<br />
-                         <span className="font-semibold">Customer-Initiated:</span> Refunds depend on Tenant's cancellation policy.<br />
+                         <span className="font-semibold">Business-Initiated:</span> Customers receive full refunds. Business bear any transaction costs.<br />
+                         <span className="font-semibold">Customer-Initiated:</span> Refunds depend on Business's cancellation policy.<br />
                          <span className="font-semibold">Force Majeure:</span> Neither party is liable for events beyond reasonable control.<br />
                          <span className="font-semibold">Transaction Fees:</span> Third-party transaction fees are generally non-refundable.
                       </div>
@@ -899,7 +899,7 @@ export default function App() {
                         11. Termination
                       </div>
                       <div className="text-[#A3A3A3] text-[14px] font-inter font-normal leading-[21px]">
-                         We may suspend or terminate Tenant accounts for violations.<br />
+                         We may suspend or terminate Business accounts for violations.<br />
                          Termination does not relieve outstanding fees.
                       </div>
                     </div>
