@@ -1,8 +1,3 @@
-import Event1 from "../assets/marketplace/EventCards/Event1.png";
-import Event2 from "../assets/marketplace/EventCards/Event2.png";
-import Event3 from "../assets/marketplace/EventCards/Event3.png";
-import Event4 from "../assets/marketplace/EventCards/Event4.png";
-
 export type EventItem = {
     id: string;
     title: string;
