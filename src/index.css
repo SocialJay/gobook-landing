@@ -3,6 +3,9 @@
 
 @import "tailwindcss";
 
+@import "./primitives.css";
+@import "./tokens.css";
+
 @theme {
   --font-instrument: "Instrument Sans", sans-serif;
 
@@ -81,4 +84,19 @@ body {
   animation-play-state: paused;
 }
 
+.primary-body-label {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  font-style: normal;
+}
+
+.web-footnote {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  font-style: normal;
+}
 
