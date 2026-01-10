@@ -9,9 +9,13 @@ export default function HeroSection() {
           <div>
             <img src={HeroSectionLogo} alt="Hero logo" />
           </div>
-          <div className="web-display-2">Build your</div>
-          <div className="web-display-2 web-display-2-gradient">Booking</div>
-          <div className="web-callout">
+          <div className="web-display-2">
+            Build your
+            <br />
+            <div className="web-display-2 web-display-2-gradient">Booking</div>
+          </div>
+
+          <div className="web-body text-[#A3A3A3]">
             Set up a booking platform, sell faster.
             <br />
             Host a memorable experience.
