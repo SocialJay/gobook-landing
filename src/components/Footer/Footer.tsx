@@ -7,7 +7,7 @@ import PricingModal from "../PricingModal/PricingModal";
 
 export default function Footer() {
     return (
-        <div className="flex flex-col md:flex-row w-[343px] md:w-[864px] lg:w-[864px] xl:w-[784px] h-[107px] md:h-[52px] gap-10 md:gap-4 justify-between items-center pb-5 md:pb-0">
+        <div className="flex flex-col md:flex-row w-full h-[107px] md:h-[52px] gap-10 md:gap-4 justify-between items-center pb-5 md:pb-0">
           <div className="flex items-center w-full md:w-auto justify-between md:gap-[55px] web-callout">
             <div>
               <TermsAndConditionsModal />
