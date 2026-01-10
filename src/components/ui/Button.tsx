@@ -8,10 +8,14 @@ const buttonVariants = cva(
   {
     variants: {
         hierarchy: {
-            primary: "flex items-center justify-center text-center h-[36px] min-w-7 w-full min-h-[36px] text-nowrap rounded-3 border py-3 px-4 bg-[rgba(30,41,59,1)] text-[rgba(255,255,255,1)] font-medium text-sm",
-            secondary: "flex items-center justify-center text-center h-[36px] min-w-7 w-full min-h-[36px] text-nowrap rounded-3 border py-3 px-4 border-[rgba(203,213,225,1)] bg-[rgba(255,255,255,1)] text-[rgba(30,41,59,1)]",
-            linkDefault: "flex items-center justify-center text-center text-[#1D4ED8] text-sm font-medium"
-        }
+            primary: "flex items-center justify-center text-center h-[48px] min-w-7 w-auto min-h-[48px] text-nowrap rounded-full gap-2 py-3 px-5 bg-[#FFFFFF] text-[rgba(30,41,59,1)] font-medium text-sm border-0",
+            secondary: "flex items-center justify-center text-center h-[48px] min-w-7 w-auto min-h-[48px] text-nowrap rounded-full gap-2 py-3 px-5 bg-[#171717] text-[rgba(255,255,255,1)] font-medium text-sm",
+            linkDefault: "flex items-center justify-center text-center text-[#1D4ED8] text-sm font-medium",
+            linkOnColor: "flex items-center justify-center text-center text-[#525252] text-sm font-medium hover:text-[#FFFFFF]",
+            special: "relative flex items-center justify-center gap-2 rounded-full min-w-[184px] w-fit h-[64px] bg-white text-black font-medium text-[17px] border-2 border-transparent bg-clip-padding before:absolute before:inset-0 before:-z-10 before:m-[-2px] before:rounded-full before:bg-[linear-gradient(90deg,#FBD3A7_0%,#FB7185_25%,#EC4899_50%,#C026D3_75%,#9333EA_100%)]",
+        },
+        
+   
     }
   }
 )

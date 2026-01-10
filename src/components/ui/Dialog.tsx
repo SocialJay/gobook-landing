@@ -2,6 +2,7 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "./Button";
 
 function Dialog({
   ...props
@@ -44,12 +45,12 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
-  primaryButtonLabel,
+  showDefaultFooter = true,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
   subTitle?: string;
-  primaryButtonLabel?: string;
+  showDefaultFooter?: boolean;
 }) {
   return (
     <DialogPortal data-slot="dialog-portal">
@@ -57,7 +58,7 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-[#050505] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed z-50 flex flex-col overflow-hidden",
+          "bg-[#171717] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed z-50 flex flex-col overflow-hidden",
           "left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]",
           "max-sm:w-[calc(100vw-2rem)] max-sm:max-h-[85vh]",
           "sm:w-full sm:max-w-[600px] sm:max-h-[85vh]",
@@ -67,10 +68,10 @@ function DialogContent({
         )}
         {...props}
       >
-        <div className="p-4 flex flex-col gap-2">
+        <div className="p-4 flex flex-col gap-1">
           <DialogTitle>
-            <h2 className="text-[18px] font-inter font-semibold text-[#F5F5F5]">{title}</h2>
-            {subTitle && <p className="text-sm font-normal text-[#b2b3b3]">{subTitle}</p>}
+            <h2 className="m-0 text-[18px] font-inter font-semibold text-[#F5F5F5]">{title}</h2>
+            {subTitle && <p className="m-0 text-sm font-normal text-[#b2b3b3]">{subTitle}</p>}
           </DialogTitle>
         </div>
         
@@ -78,17 +79,13 @@ function DialogContent({
           {children}
         </div>
 
-        {primaryButtonLabel && (
-          <DialogFooter className="h-[68px] px-4 sm:px-6 py-4 flex justify-between items-center mt-10">
-            <DialogClose asChild>
-              <button className="h-9 min-w-[80px] px-4 py-2 bg-[rgba(255,255,255,0.10)] border border-[rgba(255,255,255,0.20)] rounded-[8px] text-[#F8FAFC] text-[14px] font-inter font-medium leading-5 hover:bg-[rgba(255,255,255,0.15)] transition-colors">
-                Back
-              </button>
+        {showDefaultFooter && (
+          <DialogFooter className="w-full flex justify-between items-center px-4 py-4">
+            <DialogClose>
+              <Button hierarchy="secondary" className="w-fit">Cancel</Button>
             </DialogClose>
-            <DialogClose asChild>
-              <button className="h-10 min-w-[80px] px-4 py-2 bg-[#F8FAFC] rounded-[8px] text-[#1E293B] text-[14px] font-inter font-medium leading-5 hover:bg-[#E2E8F0] transition-colors">
-                {primaryButtonLabel}
-              </button>
+            <DialogClose>
+              <Button hierarchy="primary" className="w-fit">Agree</Button>
             </DialogClose>
           </DialogFooter>
         )}
@@ -133,7 +130,7 @@ function DialogTitle({
   return (
     <div
       data-slot="dialog-title"
-      className={cn("flex flex-col gap-3", className)}
+      className={cn("flex flex-col gap-1", className)}
       {...props}
     />
   );
