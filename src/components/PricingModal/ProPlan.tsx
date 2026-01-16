@@ -106,7 +106,13 @@ export default function StarterPlan() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <Button hierarchy="secondary" className="w-full">Contact Support</Button>
+                  <Button 
+                    hierarchy="secondary" 
+                    className="w-full"
+                    onClick={() => (window.location.href = "mailto:support@gobook.lk")}
+                  >
+                    Contact Support
+                  </Button>
                 </div>
               </div>
           </div>
