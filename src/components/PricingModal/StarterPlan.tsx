@@ -96,7 +96,15 @@ export default function StarterPlan() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <Button hierarchy="primary" className="w-full">Get Started</Button>
+                  <Button 
+                    hierarchy="primary" 
+                    className="w-full"
+                    onClick={() =>
+                      (window.location.href = "https://app.gobook.lk/auth")
+                    }
+                  >
+                    Get Started
+                  </Button>
                 </div>
               </div>
           </div>
