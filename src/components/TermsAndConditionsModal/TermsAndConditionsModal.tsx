@@ -16,7 +16,7 @@ export default function TermsAndConditionsModal({ children }: { children?: React
               </Button>
             )}
           </DialogTrigger>
-          <DialogContent title="Terms and Conditions" subTitle="This information will be deleted from this page">
+          <DialogContent title="Terms and Conditions">
             <div className="flex flex-col gap-6">
               <DialogTitle />
               <div className="flex flex-col gap-[10px] web-callout">
