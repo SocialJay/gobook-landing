@@ -16,7 +16,7 @@ export default function PrivacyPolicyModal({ children }: { children?: React.Reac
               </Button>
             )}
           </DialogTrigger>
-          <DialogContent title="Privacy Policy">
+          <DialogContent title="Privacy Policy" requireScrollToAgree>
             <div className="flex flex-col gap-6">
               <DialogTitle />
               <div className="flex flex-col gap-[10px] web-callout">

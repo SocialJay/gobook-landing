@@ -16,7 +16,7 @@ export default function TermsAndConditionsModal({ children }: { children?: React
               </Button>
             )}
           </DialogTrigger>
-          <DialogContent title="Terms and Conditions">
+          <DialogContent title="Terms and Conditions" requireScrollToAgree>
             <div className="flex flex-col gap-6">
               <DialogTitle />
               <div className="flex flex-col gap-[10px] web-callout">

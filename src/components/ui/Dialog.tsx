@@ -46,12 +46,38 @@ function DialogContent({
   children,
   showCloseButton = true,
   showDefaultFooter = true,
+  requireScrollToAgree = false,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean;
   subTitle?: string;
   showDefaultFooter?: boolean;
+  requireScrollToAgree?: boolean;
+
 }) {
+  const [canAgree, setCanAgree] = React.useState(!requireScrollToAgree);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (!requireScrollToAgree) return;
+
+    const element = scrollRef.current;
+    if (!element) return;
+
+    if (element.scrollTop + element.clientHeight >= element.scrollHeight - 5) {
+      setCanAgree(true);
+    }
+  };
+
+  React.useEffect(() => {
+    if (!requireScrollToAgree) return;
+
+    const el = scrollRef.current;
+    if (el && el.scrollHeight <= el.clientHeight) {
+      setCanAgree(true);
+    }
+  }, [requireScrollToAgree]);
+
   return (
     <DialogPortal data-slot="dialog-portal">
       <DialogOverlay />
@@ -75,17 +101,21 @@ function DialogContent({
           </DialogTitle>
         </div>
         
-        <div className="px-4 flex-1 overflow-y-auto min-h-0 scrollbar-hide">
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="px-4 flex-1 overflow-y-auto min-h-0 scrollbar-hide"
+        >
           {children}
         </div>
 
         {showDefaultFooter && (
           <DialogFooter className="w-full flex justify-between items-center px-4 py-4">
-            <DialogClose>
+            <DialogClose asChild>
               <Button hierarchy="secondary" className="w-fit">Cancel</Button>
             </DialogClose>
-            <DialogClose>
-              <Button hierarchy="primary" className="w-fit">Agree</Button>
+            <DialogClose asChild>
+              <Button hierarchy="primary" disabled={!canAgree}>Agree</Button>
             </DialogClose>
           </DialogFooter>
         )}
