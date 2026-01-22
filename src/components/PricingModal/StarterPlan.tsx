@@ -29,7 +29,7 @@ export default function StarterPlan() {
 
                       </div>
                       <div className="web-callout">
-                        Unlimited events, guests
+                        Unlimited bookings, guests
                       </div>
                     </div>
                     <div className="flex gap-2 items-center">
