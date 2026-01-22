@@ -8,7 +8,7 @@ export default function StarterPlan() {
                 <div className="flex flex-col gap-5">
                   <div className="flex flex-col gap-0">
                     <div className="font-semi-bold text-[15px] text-[#FBBF24]">PRO</div>
-                    <div className="web-title-1">FREE</div>
+                    <div className="web-title-1">TBD</div>
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex gap-2 items-center">

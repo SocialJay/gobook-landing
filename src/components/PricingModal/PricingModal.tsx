@@ -20,7 +20,7 @@ export default function PricingModal({ children }: { children?: React.ReactNode 
           <div className="flex flex-col">
             <DialogTitle />
               <DialogDescription>
-                <div className="flex gap-4">
+                <div className="flex flex-col gap-4 lg:flex-row">
                     <div className="flex-1 border rounded-5 border-[#172554]">
                       <StarterPlan />
                     </div>
