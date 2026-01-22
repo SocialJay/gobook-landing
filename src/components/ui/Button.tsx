@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "cursor-pointer",
+  "cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
   {
     variants: {
         hierarchy: {
