@@ -45,14 +45,11 @@ function EventCard({ event }: { event: EventItem }) {
         />
       </div>
       <div className="flex flex-col items-start w-full">
-        <p className="web-callout text-text-label w-full">
-          {format(new Date(event.startAt), "EEE, d MMMM")}
-        </p>
         <p className="web-subheadline text-text-primary-default overflow-hidden text-ellipsis w-full">
           {event.name}
         </p>
-        <p className="web-footnote text-text-subtle w-full">
-          {event.location?.city}, {event.location?.country}
+        <p className="web-callout text-text-label w-full">
+          {format(new Date(event.startAt), "EEE, d MMMM")}
         </p>
       </div>
     </a>
