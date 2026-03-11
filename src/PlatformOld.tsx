@@ -171,14 +171,15 @@ export default function Platform() {
         : `${monthlyStats.sampleAttendeeName ?? "Someone"} and ${monthlyStats.attendeeCount - 1} others are attending ${monthlyStats.eventCount} event${monthlyStats.eventCount !== 1 ? "s" : ""} near you.`;
 
   return (
-    <div className="flex flex-col gap-2 min-h-screen bg-surface-container-background items-center">
-      <div className="flex flex-col gap-9 w-full">
-        <div className="flex flex-col max-h-8 py-2 px-4 items-center">
-          <div className="flex justify-between w-full xl:w-[1200px] lg:w-[864px] md:w-[671px]">
+    <div className="min-h-screen bg-surface-container-background flex flex-col gap-8 items-center justify-between">
+      <div className="lg:w-[864px] md:w-[664px] xl:w-[998px] flex flex-col max-sm:px-4">
+        <div className="fixed top-0 left-0 w-full bg-surface-container-background z-50">
+          <div className="py-2 mx-auto flex justify-between items-center lg:w-[864px] md:w-[664px] xl:w-[998px] max-sm:px-4">
             <div className="flex items-center gap-2">
               <img src={LogoTicket} alt="" />
               <img src={Logo} alt="" className="w-[117px]" />
             </div>
+
             <div className="flex items-center gap-2">
               {isMobile === true ? (
                 <Button
@@ -294,81 +295,84 @@ export default function Platform() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-8 items-center w-full">
-          <div className="flex flex-col gap-9 w-full items-center">
-            <HeroSection
-              events={heroEvents}
-              subtitle={heroSubtitle}
-              isLoading={loading}
-              onExplore={() =>
-                discoverRef.current?.scrollIntoView({ behavior: "smooth" })
-              }
-              onCreateBooking={() =>
-                window.location.replace(
-                  `${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/auth`,
-                )
-              }
-            />    
-            <div ref={discoverRef} className="flex flex-col gap-5 max-sm:px-4 xl:w-[1200px] lg:w-[864px] md:w-[671px]">
-              <div className="flex flex-col gap-1">
-                <h1 className="web-title-2 text-text-primary-default">
-                  Discover events
-                </h1>
-                {/* <p className="web-body text-text-label">
-                  Abishek and 99 others are attending 3 events in Colombo
-                </p> */}
-              </div>
+
+        <div className="flex flex-col gap-9 pt-[112px]">
+          <HeroSection
+            events={heroEvents}
+            subtitle={heroSubtitle}
+            isLoading={loading}
+            onExplore={() =>
+              discoverRef.current?.scrollIntoView({ behavior: "smooth" })
+            }
+            onCreateBooking={() =>
+              window.location.replace(
+                `${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/auth`,
+              )
+            }
+          />
           
-              {loading ? (
-                <div className="flex flex-wrap gap-x-4 gap-y-6">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div key={i} className="flex flex-col gap-2 max-w-[204px]">
-                      <div className="w-[204px] h-[204px] rounded-4 bg-surface-container-foreground animate-pulse" />
-                      <div className="flex flex-col gap-1">
-                        <div className="h-[22px] w-24 rounded bg-surface-container-foreground animate-pulse" />
-                        <div className="h-[22px] w-40 rounded bg-surface-container-foreground animate-pulse" />
-                        <div className="h-[20px] w-28 rounded bg-surface-container-foreground animate-pulse" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : events.length === 0 ? (
-                <div className="flex items-center justify-center py-20">
-                  <p className="web-body text-text-subtle">
-                    No events available right now
-                  </p>
-                </div>
-              ) : (
-                <div className="grid lg:grid-cols-4 gap-x-4 gap-y-5 md:grid-cols-3 max:grid-cols-1">
-                  {events.map((event, index) => (
-                    <EventCard key={index} event={event} />
-                  ))}
-                </div>
-              )}
+          <div ref={discoverRef} className="flex flex-col gap-5">
+            <div className="flex flex-col gap-1">
+              <h1 className="web-title-2 text-text-primary-default">
+                Discover events
+              </h1>
+              {/* <p className="web-body text-text-label">
+                Abishek and 99 others are attending 3 events in Colombo
+              </p> */}
             </div>
-          </div>
-          <div className="w-full lg:w-[864px] md:w-[671px] xl:w-[1200px] py-4 gap-4 mx-auto max-sm:px-4 flex flex-col">
-            <Footer />
-            <a
-              href="https://www.gobook.lk/"
-              target="_blank"
-              aria-label="Host with Gobook"
-              rel="noreferrer"
-            >
-              <div className="sm:web-subheadline mobile-subheadline flex items-center gap-2">
-                <span className="text-text-label">Host with </span>
-                <div className="flex items-center gap-1">
-                  <img
-                    src={AppIcon}
-                    alt="Gobook app icon"
-                    className="h-4 w-4 object-contain"
-                  />{" "}
-                  <span className="text-text-primary-default">Gobook</span>
+          
+
+          {loading ? (
+            <div className="flex flex-wrap gap-x-4 gap-y-6">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div key={i} className="flex flex-col gap-2 max-w-[204px]">
+                  <div className="w-[204px] h-[204px] rounded-4 bg-surface-container-foreground animate-pulse" />
+                  <div className="flex flex-col gap-1">
+                    <div className="h-[22px] w-24 rounded bg-surface-container-foreground animate-pulse" />
+                    <div className="h-[22px] w-40 rounded bg-surface-container-foreground animate-pulse" />
+                    <div className="h-[20px] w-28 rounded bg-surface-container-foreground animate-pulse" />
+                  </div>
                 </div>
-              </div>
-            </a>
+              ))}
+            </div>
+          ) : events.length === 0 ? (
+            <div className="flex items-center justify-center py-20">
+              <p className="web-body text-text-subtle">
+                No events available right now
+              </p>
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-4 gap-x-4 gap-y-5 md:grid-cols-3 max:grid-cols-1">
+              {events.map((event, index) => (
+                <EventCard key={index} event={event} />
+              ))}
+            </div>
+          )}
           </div>
         </div>
+      </div>
+      
+      <div className="w-full lg:w-[864px] md:w-[664px] xl:w-[998px] py-4 gap-4 mx-auto max-sm:px-4 flex flex-col">
+        <Footer />
+
+        <a
+          href="https://www.gobook.lk/"
+          target="_blank"
+          aria-label="Host with Gobook"
+          rel="noreferrer"
+        >
+          <div className="sm:web-subheadline mobile-subheadline flex items-center gap-2">
+            <span className="text-text-label">Host with </span>
+            <div className="flex items-center gap-1">
+              <img
+                src={AppIcon}
+                alt="Gobook app icon"
+                className="h-4 w-4 object-contain"
+              />{" "}
+              <span className="text-text-primary-default">Gobook</span>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   );
