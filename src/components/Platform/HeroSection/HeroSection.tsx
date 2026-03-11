@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { Button } from "@/lib/components/Button/Button";
 import { Add } from "@/lib/icon";
 
@@ -14,7 +14,7 @@ type HeroEvent = {
 
 type HeroSectionProps = {
   events: HeroEvent[];
-  subtitle: string;
+  subtitle: ReactNode;
   onExplore: () => void;
   onCreateBooking: () => void;
   isLoading?: boolean;

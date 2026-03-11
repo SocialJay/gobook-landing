@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { format } from "date-fns";
 import Avatar from "boring-avatars";
+import NumberFlow from "@number-flow/react";
 import Logo from "@/assets/logo-name.png";
 import LogoTicket from "@/assets/logo-ticket.svg";
 import { Button } from "./lib/components/Button/Button";
@@ -72,6 +73,7 @@ export default function Platform() {
   const [monthlyStatsLoading, setMonthlyStatsLoading] = useState(true);
   const [user, setUser] = useState<UserProfile | null>(null);
   const [open, setOpen] = useState(false);
+  const [numbersMounted, setNumbersMounted] = useState(false);
   const isMobile = useIsMobile();
   const discoverRef = useRef<HTMLDivElement | null>(null);
 
@@ -162,13 +164,20 @@ export default function Platform() {
 
   document.documentElement.classList.add("dark");
 
+  useEffect(() => {
+    if (!monthlyStatsLoading && monthlyStats && monthlyStats.attendeeCount > 0) {
+      const id = requestAnimationFrame(() => setNumbersMounted(true));
+      return () => cancelAnimationFrame(id);
+    }
+  }, [monthlyStatsLoading, monthlyStats]);
+
   const heroSubtitle = monthlyStatsLoading
     ? "Loading attendee info..."
     : !monthlyStats || monthlyStats.attendeeCount === 0
       ? "Be the first to book on Gobook."
       : monthlyStats.attendeeCount === 1
-        ? `${monthlyStats.sampleAttendeeName ?? "Someone"} is attending ${monthlyStats.eventCount} event${monthlyStats.eventCount !== 1 ? "s" : ""} near you.`
-        : `${monthlyStats.sampleAttendeeName ?? "Someone"} and ${monthlyStats.attendeeCount - 1} others are attending ${monthlyStats.eventCount} event${monthlyStats.eventCount !== 1 ? "s" : ""} near you.`;
+        ? <>{monthlyStats.sampleAttendeeName ?? "Someone"} is attending <NumberFlow value={numbersMounted ? monthlyStats.eventCount : 0} trend={1} /> event{monthlyStats.eventCount !== 1 ? "s" : ""} near you.</>
+        : <>{monthlyStats.sampleAttendeeName ?? "Someone"} and <NumberFlow value={numbersMounted ? monthlyStats.attendeeCount - 1 : 0} trend={1} /> others are attending <NumberFlow value={numbersMounted ? monthlyStats.eventCount : 0} trend={1} /> event{monthlyStats.eventCount !== 1 ? "s" : ""} near you.</>;
 
   return (
     <div className="flex flex-col gap-2 min-h-screen bg-surface-container-background items-center">
