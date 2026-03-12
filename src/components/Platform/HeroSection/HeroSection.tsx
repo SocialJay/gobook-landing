@@ -1,11 +1,10 @@
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { Button } from "@/lib/components/Button/Button";
-import { Add } from "@/lib/icon";
+import { Plus } from "@/lib/icon";
 
 type HeroEvent = {
   id: string;
   name: string;
-  banner: string;
   startAt: string;
   tenantId?: string;
   tenantName?: string;
@@ -121,18 +120,11 @@ export default function HeroSection({
                     }}
                     aria-label={event.tenantName ?? event.name}
                   >
-                    {event.tenantLogo ? (
+                    {event.tenantLogo && (
                       <img
                         src={event.tenantLogo}
                         alt={event.tenantName ?? event.name}
                         className="absolute inset-0  object-cover sm:w-full sm:h-full w-[64px] h-[64px]"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <img
-                        src={event.banner}
-                        alt={event.name}
-                        className="absolute inset-0 h-full w-full object-cover"
                         loading="lazy"
                       />
                     )}
@@ -167,7 +159,7 @@ export default function HeroSection({
             </Button>
             <Button
               hierarchy="secondary"
-              leadingIcon={<Add className="fill-icon-background-primary" />}
+              leadingIcon={<Plus className="size-4" />}
               onClick={onCreateBooking}
               className="w-fit"
             >
