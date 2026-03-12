@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect, useMemo, useState } from "react";
 import { Button } from "@/lib/components/Button/Button";
 import { Plus } from "@/lib/icon";
+import { useIsMobile } from "@/lib/hooks/useMobile";
 
 type HeroEvent = {
   id: string;
@@ -31,6 +32,9 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInstant, setIsInstant] = useState(false);
+  const isMobile = useIsMobile();
+
+  const CARD_SIZE = isMobile ? 64 : 100;
 
   const baseEvents = useMemo(() => events, [events]);
   const loopEvents = useMemo(
@@ -71,7 +75,6 @@ export default function HeroSection({
     return () => window.clearTimeout(timeoutId);
   }, [activeIndex, baseEvents.length]);
 
-  const CARD_SIZE = 100;
   const GAP_SIZE = 16;
   const VISIBLE_COUNT = 3;
   const viewportWidth = CARD_SIZE * VISIBLE_COUNT + GAP_SIZE * (VISIBLE_COUNT - 1);
@@ -82,7 +85,7 @@ export default function HeroSection({
 
   return (
     <section className="flex items-center justify-center h-[600px] overflow-hidden w-[323px] sm:w-full text-center">
-      <div className="flex flex-col gap-10 items-center w-[390px] max-w-full">
+      <div className="flex flex-col gap-7 sm:gap-10 items-center w-[390px] max-w-full">
         <div className="w-full flex justify-center">
           {isLoading ? (
             <div className="flex items-center gap-4">
@@ -124,7 +127,7 @@ export default function HeroSection({
                       <img
                         src={event.tenantLogo}
                         alt={event.tenantName ?? event.name}
-                        className="absolute inset-0  object-cover sm:w-full sm:h-full w-[64px] h-[64px]"
+                        className="absolute inset-0 object-cover w-full h-full"
                         loading="lazy"
                       />
                     )}
