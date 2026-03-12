@@ -84,7 +84,7 @@ export default function HeroSection({
     loopEvents.length > 0 ? loopEvents.length * stepSize - GAP_SIZE : 0;
 
   return (
-    <section className="flex items-center justify-center h-[600px] overflow-hidden w-[323px] sm:w-full text-center">
+    <section className="flex items-center justify-center h-[600px] overflow-hidden w-full px-4 sm:px-0 text-center">
       <div className="flex flex-col gap-7 sm:gap-10 items-center w-[390px] max-w-full">
         <div className="w-full flex justify-center">
           {isLoading ? (
@@ -152,7 +152,7 @@ export default function HeroSection({
             <p className="web-body text-text-label max-w-[390px]">{subtitle}</p>
           </div>
 
-          <div className="flex items-center gap-2 w-[323px]">
+          <div className="flex items-center gap-2 w-full max-w-[323px]">
             <Button 
               hierarchy="primary" 
               onClick={onExplore}
