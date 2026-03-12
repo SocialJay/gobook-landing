@@ -97,7 +97,7 @@ export default function HeroSection({
             </div>
           ) : loopEvents.length === 0 ? (
             <div className="web-caption text-text-subtle">
-              No events available right now
+              No tenants right now
             </div>
           ) : (
             <div className="relative mx-auto overflow-hidden" style={{ width: viewportWidth }}>
@@ -125,7 +125,7 @@ export default function HeroSection({
                       <img
                         src={event.tenantLogo}
                         alt={event.tenantName ?? event.name}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0  object-cover sm:w-full sm:h-full w-[64px] h-[64px]"
                         loading="lazy"
                       />
                     ) : (
