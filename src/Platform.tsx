@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { format } from "date-fns";
 import Avatar from "boring-avatars";
 import NumberFlow from "@number-flow/react";
 import Logo from "@/assets/logo-name.png";
@@ -9,7 +8,9 @@ import { Add, Close, SignOut } from "./lib/icon";
 import Footer from "./components/Footer/Footer";
 import AppIcon from "./assets/AppIcon.webp";
 import { useIsMobile } from "./lib/hooks/useMobile";
+import EventCard from "./components/Platform/EventCard/EventCard";
 import HeroSection from "./components/Platform/HeroSection/HeroSection";
+import WeekendEventsCarousel from "./components/Platform/WeekendEventsCarousel/WeekendEventsCarousel";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,31 +36,6 @@ type UserProfile = {
   profileImage: string | null;
   email: string;
 };
-
-function EventCard({ event }: { event: EventItem }) {
-  return (
-    <a
-      href={`${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/customer/event/${encodeURIComponent(event.id)}`}
-      className="flex flex-col gap-2 group"
-    >
-      <div className="overflow-hidden rounded-4">
-        <img
-          src={event.banner}
-          alt={event.name}
-          className="object-cover rounded-4 aspect-square w-full"
-        />
-      </div>
-      <div className="flex flex-col items-start w-full">
-        <p className="web-subheadline text-text-primary-default overflow-hidden text-ellipsis w-full">
-          {event.name}
-        </p>
-        <p className="web-callout text-text-label w-full">
-          {format(new Date(event.startAt), "EEE, d MMMM")}
-        </p>
-      </div>
-    </a>
-  );
-}
 
 export default function Platform() {
   const [events, setEvents] = useState<EventItem[]>([]);
@@ -350,11 +326,12 @@ export default function Platform() {
               ) : (
                 <div className="grid lg:grid-cols-4 gap-x-4 gap-y-5 md:grid-cols-3 max:grid-cols-1">
                   {events.map((event, index) => (
-                    <EventCard key={index} event={event} />
+                    <EventCard key={index} event={event} className="flex-shrink-0"  />
                   ))}
                 </div>
               )}
             </div>
+            <WeekendEventsCarousel events={events} isLoading={loading} />
           </div>
           <div className="w-full lg:w-[864px] md:w-[671px] xl:w-[1200px] py-4 gap-4 mx-auto max-sm:px-4 flex flex-col">
             <Footer />
