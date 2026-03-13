@@ -23,6 +23,23 @@ type HeroSectionProps = {
 const AUTO_SCROLL_INTERVAL_MS = 3600;
 const TRANSITION_MS = 700;
 
+const FADE_UP_STYLE = `
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+`;
+
 export default function HeroSection({
   events,
   subtitle,
@@ -84,93 +101,127 @@ export default function HeroSection({
     loopEvents.length > 0 ? loopEvents.length * stepSize - GAP_SIZE : 0;
 
   return (
-    <section className="flex items-center justify-center h-[600px] overflow-hidden w-full px-4 sm:px-0 text-center">
-      <div className="flex flex-col gap-7 sm:gap-10 items-center w-[390px] max-w-full">
-        <div className="w-full flex justify-center">
-          {isLoading ? (
-            <div className="flex items-center gap-4">
-              {Array.from({ length: VISIBLE_COUNT }).map((_, index) => (
-                <div
-                  key={index}
-                  className="rounded-5 bg-surface-container-foreground animate-pulse shrink-0"
-                  style={{ width: CARD_SIZE, height: CARD_SIZE }}
-                />
-              ))}
-            </div>
-          ) : loopEvents.length === 0 ? (
-            <div className="web-caption text-text-subtle">
-              No tenants right now
-            </div>
-          ) : (
-            <div className="relative mx-auto overflow-hidden" style={{ width: viewportWidth }}>
-              <div className="absolute left-0 top-0 h-full w-[101px] bg-gradient-to-r from-[#0c0a09] to-transparent z-10 pointer-events-none" />
-              <div className="absolute right-0 top-0 h-full w-[101px] bg-gradient-to-l from-[#0c0a09] to-transparent z-10 pointer-events-none" />
-              <div
-                className={`flex items-center gap-4 ${isInstant ? "" : "transition-transform duration-700 ease-in-out"}`}
-                style={{
-                  width: trackWidth,
-                  transform: `translateX(-${offset}px)`,
-                }}
-              >
-                {loopEvents.map((event, index) => (
-                  <a
-                    key={`${event.id}-${index}`}
-                    href={`${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/customer/event/${encodeURIComponent(event.id)}`}
-                    className="relative shrink-0 rounded-5 overflow-hidden bg-surface-container-foreground flex items-center justify-center"
-                    style={{
-                      width: CARD_SIZE,
-                      height: CARD_SIZE,
-                    }}
-                    aria-label={event.tenantName ?? event.name}
-                  >
-                    {event.tenantLogo && (
-                      <img
-                        src={event.tenantLogo}
-                        alt={event.tenantName ?? event.name}
-                        className="absolute inset-0 object-cover w-full h-full"
-                        loading="lazy"
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/20 rounded-5" />
-                    <div className="absolute inset-[-0.5px] rounded-5 shadow-[inset_0px_-4px_4px_0px_rgba(255,255,255,0.25)] pointer-events-none" />
-                  </a>
+    <>
+      <style>{FADE_UP_STYLE}</style>
+
+      <section className="flex items-center justify-center h-[600px] overflow-hidden w-full px-4 sm:px-0 text-center">
+        <div className="flex flex-col gap-7 sm:gap-10 items-center w-[390px] max-w-full">
+
+          <div
+            className="fade-up w-full flex justify-center"
+            style={{ animationDelay: "0ms" }}
+          >
+            {isLoading ? (
+              <div className="flex items-center gap-4">
+                {Array.from({ length: VISIBLE_COUNT }).map((_, index) => (
+                  <div
+                    key={index}
+                    className="rounded-5 bg-surface-container-foreground animate-pulse shrink-0"
+                    style={{ width: CARD_SIZE, height: CARD_SIZE }}
+                  />
                 ))}
               </div>
+            ) : loopEvents.length === 0 ? (
+              <div className="web-caption text-text-subtle">
+                No tenants right now
+              </div>
+            ) : (
+              <div className="relative mx-auto overflow-hidden" style={{ width: viewportWidth }}>
+                <div className="absolute left-0 top-0 h-full w-[101px] bg-gradient-to-r from-[#0c0a09] to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 h-full w-[101px] bg-gradient-to-l from-[#0c0a09] to-transparent z-10 pointer-events-none" />
+                <div
+                  className={`flex items-center gap-4 ${isInstant ? "" : "transition-transform duration-700 ease-in-out"}`}
+                  style={{
+                    width: trackWidth,
+                    transform: `translateX(-${offset}px)`,
+                  }}
+                >
+                  {loopEvents.map((event, index) => (
+                    <a
+                      key={`${event.id}-${index}`}
+                      href={`${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/customer/event/${encodeURIComponent(event.id)}`}
+                      className="relative shrink-0 overflow-hidden bg-surface-container-foreground flex items-center justify-center"
+                      style={{
+                        width: CARD_SIZE,
+                        height: CARD_SIZE,
+                        borderRadius: `calc(var(--spacing) * 4)`,
+                        border: "1px solid transparent",
+                        backgroundImage: `
+                          linear-gradient(var(--surface-container-foreground), var(--surface-container-foreground)),
+                          linear-gradient(to bottom, transparent 0%, transparent 70%, rgba(212,212,212,1) 100%)
+                        `,
+                        backgroundOrigin: "border-box",
+                        backgroundClip: "padding-box, border-box",
+                      }}
+                      aria-label={event.tenantName ?? event.name}
+                    >
+                      {event.tenantLogo && (
+                        <img
+                          src={event.tenantLogo}
+                          alt={event.tenantName ?? event.name}
+                          className="absolute inset-0 object-cover w-full h-full"
+                          style={{
+                            borderRadius: "16px",
+                            background: "linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.20) 100%)",
+                            outline: "1px solid rgba(228.99, 228.99, 228.99, 0.50)",
+                            outlineOffset: "-0.5px",
+                          }}
+                          loading="lazy"
+                        />
+                      )}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-8 items-center w-full">
+            <div className="flex flex-col gap-4 items-center text-center w-full">
+
+              <h1
+                className="fade-up web-display-2 text-text-primary-default"
+                style={{ animationDelay: "250ms" }}
+              >
+                Your next
+                <br />
+                experience
+                <br />
+                starts here
+              </h1>
+
+              <p
+                className="fade-up web-body text-text-label max-w-[390px]"
+                style={{ animationDelay: "450ms" }}
+              >
+                {subtitle}
+              </p>
             </div>
-          )}
-        </div>
 
-        <div className="flex flex-col gap-8 items-center w-full">
-          <div className="flex flex-col gap-4 items-center text-center w-full">
-            <h1 className="web-display-2 text-text-primary-default">
-              Your next
-              <br />
-              experience
-              <br />
-              starts here
-            </h1>
-            <p className="web-body text-text-label max-w-[390px]">{subtitle}</p>
+            <div
+              className="fade-up flex items-center gap-2 w-full max-w-[323px]"
+              style={{ animationDelay: "620ms" }}
+            >
+              <Button
+                hierarchy="primary"
+                onClick={onExplore}
+                className="w-fit"
+              >
+                Explore Experience
+              </Button>
+              <Button
+                hierarchy="secondary"
+                leadingIcon={<Plus className="size-4" />}
+                onClick={onCreateBooking}
+                className="w-fit"
+              >
+                Create Booking
+              </Button>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2 w-full max-w-[323px]">
-            <Button 
-              hierarchy="primary" 
-              onClick={onExplore}
-              className="w-fit"
-            >
-              Explore Experience
-            </Button>
-            <Button
-              hierarchy="secondary"
-              leadingIcon={<Plus className="size-4" />}
-              onClick={onCreateBooking}
-              className="w-fit"
-            >
-              Create Booking
-            </Button>
-          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
