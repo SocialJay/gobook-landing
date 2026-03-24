@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
 
 @import "tailwindcss";
 
@@ -10,164 +9,42 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-instrument: "Instrument Sans", sans-serif;
-
-  --radius-0: 0px;
-  --radius-1: 2px;
-  --radius-2: 4px;
-  --radius-3: 8px;
-  --radius-4: 12px;
-  --radius-5: 16px;
-  --radius-6: 24px;
-  --radius-7: 32px;
-  --radius-circle: 999px;
-}
-
-@theme {
   --breakpoint-xl: 90rem;
 }
 
 body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
-  background-color: #0C0A09;
-  color: #ffffff;
 }
 
-@theme inline {
-  --animate-marquee: marquee var(--duration) infinite linear;
-  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
-  }
-
-  @keyframes marquee-vertical {
-    from {
-      transform: translateY(0);
-    }
-
-    to {
-      transform: translateY(calc(-100% - var(--gap)));
-    }
-  }
+body.dark {
+  background: #050505;
 }
 
-@layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-@keyframes scroll-marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-.marquee-mobile {
-  display: flex;
-  flex-wrap: nowrap;
-  width: max-content;
-  animation: scroll-marquee 25s linear infinite;
-  will-change: transform;
-  transform: translateZ(0);
-}
-
-.marquee-mobile.reverse {
-  animation: scroll-marquee 25s linear infinite reverse;
-}
-
-.pause-marquee .marquee-mobile {
-  animation-play-state: paused;
-}
-
-.web-display-2 {
-  font-family: "Google Sans Flex", "Inter", system-ui, -apple-system, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 500;
-  font-style: medium;
-  font-size: 60px;
-  line-height: 64px;
-  letter-spacing: -0.02em;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-kerning: normal;
-}
-
-.web-display-2-gradient {
-  background-image: linear-gradient(90deg,
-      #fbd3a7 0%,
-      #fb7185 25%,
-      #ec4899 50%,
-      #c026d3 75%,
-      #9333ea 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  background-size: 100% 100%;
-  background-position: left center;
-}
-
-.web-callout {
-  font-family: "Inter";
-  font-weight: 400;
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
   font-style: normal;
-  font-size: 14px;
-  line-height: 23px;
-  letter-spacing: 0;
-  color: #a3a3a3;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 }
 
-.web-title-1 {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 35px;
-  letter-spacing: 0;
-  color: #ffffff;
-  vertical-align: middle;
-}
-
-.web-headline {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 17px;
-  line-height: 100%;
-  letter-spacing: 0;
-  text-align: center;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-kerning: normal;
-}
-
-.web-caption {
-  font-family: "Inter", sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
-}
-
+/* v1 - Typography Utilities */
 @utility web-headline {
   font-family: "Inter", sans-serif;
   font-size: 16px !important;
@@ -229,34 +106,6 @@ body {
   letter-spacing: 0;
 }
 
-.web-body-gradient {
-  background-image: linear-gradient(90deg,
-      #fbd3a7 0%,
-      #fb7185 25%,
-      #ec4899 50%,
-      #c026d3 75%,
-      #9333ea 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  background-size: 500% 1%;
-  background-position: left center;
-}
-
-.gradient-border {
-  border-radius: var(--radius-circle);
-  border: 2px solid transparent;
-  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(90deg,
-      #fbd3a7 0%,
-      #fb7185 25%,
-      #ec4899 50%,
-      #c026d3 75%,
-      #9333ea 100%);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-}
-
 @utility web-caption {
   font-family: "Inter", sans-serif;
   font-size: 12px;
@@ -296,7 +145,7 @@ body {
   font-weight: 600;
   font-style: normal;
   font-size: 60px;
-  line-height: 72px;
+  line-height: 60px;
   letter-spacing: -0.04em;
 }
 
@@ -450,4 +299,40 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+input#default-checkbox {
+  accent-color: #0f172a !important;
+  color: #0f172a !important;
+  border-color: #0f172a !important;
+}
+
+body.dark input:-webkit-autofill,
+body.dark textarea:-webkit-autofill,
+body.dark select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #171717 inset !important;
+  box-shadow: 0 0 0px 1000px #171717 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+body.dark input:-webkit-autofill::first-line {
+  color: #ffffff !important;
+}
+
+body.dark input:-webkit-autofill:focus,
+body.dark textarea:-webkit-autofill:focus,
+body.dark select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #171717 inset !important;
+  box-shadow: 0 0 0px 1000px #171717 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.dark input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px #171717 inset !important;
+  -moz-text-fill-color: #ffffff !important;
+}
+
+.build-trigger {
+  display: none;
 }

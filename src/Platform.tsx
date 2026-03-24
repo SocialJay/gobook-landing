@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { format } from "date-fns";
 import Avatar from "boring-avatars";
 import NumberFlow from "@number-flow/react";
-import Logo from "@/assets/logo-name.png";
+// import Logo from "@/assets/logo-name.png";
 import LogoTicket from "@/assets/logo-ticket.svg";
 import { Button } from "./lib/components/Button/Button";
-import { Add, Close, SignOut } from "./lib/icon";
+import { Close, GobookName, Plus, SignOut } from "./lib/icon";
 import Footer from "./components/Footer/Footer";
 import AppIcon from "./assets/AppIcon.webp";
 import { useIsMobile } from "./lib/hooks/useMobile";
@@ -186,39 +186,22 @@ export default function Platform() {
           <div className="flex justify-between w-full xl:w-[1200px] lg:w-[864px] md:w-[671px]">
             <div className="flex items-center gap-2">
               <img src={LogoTicket} alt="" />
-              <img src={Logo} alt="" className="w-[117px]" />
+              <GobookName />
             </div>
             <div className="flex items-center gap-2">
-              {isMobile === true ? (
-                <Button
-                  hierarchy="primary"
-                  size="small"
-                  buttonType="icon"
-                  className="size-6"
-                  onClick={() =>
-                    window.location.replace(
-                      `${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/auth`,
-                    )
-                  }
-                >
-                  <Add className="size-4 fill-icon-background-secondary" />
-                </Button>
-              ) : (
-                <Button
-                  hierarchy="primary"
-                  size="small"
-                  leadingIcon={
-                    <Add className="size-4 fill-icon-background-secondary" />
-                  }
-                  onClick={() =>
-                    window.location.replace(
-                      `${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/auth`,
-                    )
-                  }
-                >
-                  Create Booking
-                </Button>
-              )}
+              <Button
+                hierarchy="tertiary"
+                size="small"
+                buttonType={isMobile === true ? "icon" : undefined}
+                leadingIcon={<Plus className="size-4" />}
+                onClick={() =>
+                  window.location.replace(
+                    `${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/auth`,
+                  )
+                }
+              >
+                {isMobile === true ? null : "Create Booking"}
+              </Button>
 
               {user ? (
                 <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
@@ -260,7 +243,7 @@ export default function Platform() {
                             />
                           ) : (
                             <Avatar
-                              size={40}
+                              size={32}
                               variant="beam"
                               name={user?.email || user?.firstName || "Customer"}
                             />
