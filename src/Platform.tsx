@@ -1,22 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import Avatar from "boring-avatars";
 import NumberFlow from "@number-flow/react";
-// import Logo from "@/assets/logo-name.png";
-import LogoTicket from "@/assets/logo-ticket.svg";
 import { Button } from "./lib/components/Button/Button";
-import { Close, GobookName, Plus, SignOut } from "./lib/icon";
+import { Plus } from "./lib/icon";
 import Footer from "./components/Footer/Footer";
 import AppIcon from "./assets/AppIcon.webp";
 import { useIsMobile } from "./lib/hooks/useMobile";
 import EventCard from "./components/Platform/EventCard/EventCard";
 import HeroSection from "./components/Platform/HeroSection/HeroSection";
 import WeekendEventsCarousel from "./components/Platform/WeekendEventsCarousel/WeekendEventsCarousel";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./lib/components/DropdownMenu";
+import Header from "./components/Header/Header";
 
 type EventItem = {
   id: string;
@@ -30,13 +22,6 @@ type EventItem = {
   tenantLogo?: string;
 };
 
-type UserProfile = {
-  id: string;
-  firstName: string;
-  profileImage: string | null;
-  email: string;
-};
-
 export default function Platform() {
   const [events, setEvents] = useState<EventItem[]>([]);
   const [heroEvents, setHeroEvents] = useState<EventItem[]>([]);
@@ -47,13 +32,9 @@ export default function Platform() {
     sampleAttendeeName: string | null;
   } | null>(null);
   const [monthlyStatsLoading, setMonthlyStatsLoading] = useState(true);
-  const [user, setUser] = useState<UserProfile | null>(null);
-  const [open, setOpen] = useState(false);
   const [numbersMounted, setNumbersMounted] = useState(false);
   const isMobile = useIsMobile();
   const discoverRef = useRef<HTMLDivElement | null>(null);
-
-  const loginRedirectUrl = `${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/customer/auth/signin?redirect_url=${encodeURIComponent(`${window.location.origin}/auth/callback`)}`;
 
   useEffect(() => {
     async function fetchEvents() {
@@ -107,36 +88,6 @@ export default function Platform() {
     fetchMonthlyStats();
   }, []);
 
-  useEffect(() => {
-    async function fetchUser() {
-      const token = localStorage.getItem("access_token");
-      if (token) {
-        try {
-          const res = await fetch(
-            `${import.meta.env.VITE_GOBOOK_API_URL}/api/user/profile`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            },
-          );
-          if (res.ok) {
-            const data = await res.json();
-            setUser(data.user);
-          }
-        } catch (err) {
-          console.error("Failed to fetch user", err);
-        }
-      }
-    }
-    fetchUser();
-  }, []);
-
-  const handleLogOut = () => {
-    localStorage.removeItem("access_token");
-    setUser(null);
-    setOpen(false);
-  };
 
   document.documentElement.classList.add("dark");
 
@@ -158,110 +109,21 @@ export default function Platform() {
   return (
     <div className="flex flex-col gap-2 min-h-screen bg-surface-container-background items-center">
       <div className="flex flex-col gap-9 w-full">
-        <div className="flex flex-col max-h-8 py-2 px-4 items-center">
-          <div className="flex justify-between w-full xl:w-[1200px] lg:w-[864px] md:w-[671px]">
-            <div className="flex items-center gap-2">
-              <img src={LogoTicket} alt="" />
-              <GobookName />
-            </div>
-            <div className="flex items-center gap-2">
-              <Button
-                hierarchy="tertiary"
-                size="small"
-                buttonType={isMobile === true ? "icon" : undefined}
-                leadingIcon={<Plus className="size-4" />}
-                onClick={() =>
-                  window.location.replace(
-                    `${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/auth`,
-                  )
-                }
-              >
-                {isMobile === true ? null : "Create Booking"}
-              </Button>
-
-              {user ? (
-                <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
-                  <DropdownMenuTrigger asChild>
-                    <button
-                      aria-label="Customer profile"
-                      className="flex size-6 items-center justify-center overflow-hidden rounded-full ring-0 outline-none"
-                    >
-                      {user?.profileImage ? (
-                        <img
-                          src={user.profileImage}
-                          alt="profile"
-                          className="size-6 cursor-pointer object-cover"
-                        />
-                      ) : (
-                        <Avatar
-                          size={24}
-                          variant="beam"
-                          name={user?.email || user?.firstName || "Customer"}
-                        />
-                      )}
-                    </button>
-                  </DropdownMenuTrigger>
-
-                  <DropdownMenuContent
-                    side="top"
-                    align="end"
-                    sideOffset={-35}
-                    className="W-[264px] w-[280px] bg-[#171717] shadow-[0px_4px_6px_-1px_#000000] backdrop-blur-[6px] border border-[#262626]"
-                  >
-                    <div className="flex items-center justify-between gap-2 px-2 pt-1 pb-2">
-                      <div className="flex items-center justify-start gap-2">
-                        <div className="h-6 w-6 overflow-hidden rounded-full bg-[#171717]">
-                          {user?.profileImage ? (
-                            <img
-                              src={user.profileImage}
-                              alt="profile"
-                              className="h-full w-full object-cover"
-                            />
-                          ) : (
-                            <Avatar
-                              size={32}
-                              variant="beam"
-                              name={user?.email || user?.firstName || "Customer"}
-                            />
-                          )}
-                        </div>
-                        <div className="flex flex-col">
-                          <div className="web-subheadline text-[#FFFFFF]">
-                            {user?.firstName}
-                          </div>
-                          <div className="web-caption text-[#A3A3A3]">
-                            {user?.email}
-                          </div>
-                        </div>
-                      </div>
-                      <Button
-                        hierarchy="label"
-                        size="small"
-                        onClick={() => setOpen(false)}
-                      >
-                        <Close />
-                      </Button>
-                    </div>
-                    <div className="flex flex-col">
-                      <DropdownMenuItem onSelect={handleLogOut}>
-                        <SignOut />
-                        <span>Sign Out</span>
-                      </DropdownMenuItem>
-                    </div>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <Button
-                  hierarchy="secondary"
-                  size="small"
-                  onClick={() => window.location.replace(loginRedirectUrl)}
-                >
-                  Login
-                </Button>
-              )}
-            </div>
-          </div>
-        </div>
+        <Header>
+          <Button
+            hierarchy="tertiary"
+            size="small"
+            buttonType={isMobile === true ? "icon" : undefined}
+            leadingIcon={<Plus className="size-4" />}
+            onClick={() =>
+              window.location.replace(
+                `${import.meta.env.VITE_GOBOOK_FRONTEND_URL}/auth`,
+              )
+            }
+          >
+            {isMobile === true ? null : "Create Booking"}
+          </Button>
+        </Header>
         <div className="flex flex-col gap-8 items-center w-full">
           <div className="flex flex-col gap-9 w-full items-center">
             <HeroSection
