@@ -5,9 +5,9 @@ import { Plus } from "./lib/icon";
 import Footer from "./components/Footer/Footer";
 import AppIcon from "./assets/AppIcon.webp";
 import { useIsMobile } from "./lib/hooks/useMobile";
-import EventCard from "./components/Platform/EventCard/EventCard";
 import HeroSection from "./components/Platform/HeroSection/HeroSection";
 import WeekendEventsCarousel from "./components/Platform/WeekendEventsCarousel/WeekendEventsCarousel";
+import DiscoverEventsCarousel from "./components/Platform/DiscoverEventsCarousel/DiscoverEventsCarousel";
 import Header from "./components/Header/Header";
 import CommunityArroundYou from "./components/Platform/CommunittyArroundYou/CommunityArroundYou";
 
@@ -140,43 +140,7 @@ export default function Platform() {
                 )
               }
             />    
-            <div ref={discoverRef} className="flex flex-col gap-5 max-sm:px-4 xl:w-[1200px] lg:w-[864px] md:w-[671px]">
-              <div className="flex flex-col gap-1">
-                <h1 className="web-title-2 text-text-primary-default">
-                  Discover events
-                </h1>
-                {/* <p className="web-body text-text-label">
-                  Abishek and 99 others are attending 3 events in Colombo
-                </p> */}
-              </div>
-          
-              {loading ? (
-                <div className="flex flex-wrap gap-x-4 gap-y-6">
-                  {Array.from({ length: 8 }).map((_, i) => (
-                    <div key={i} className="flex flex-col gap-2 max-w-[204px]">
-                      <div className="w-[204px] h-[204px] rounded-4 bg-surface-container-foreground animate-pulse" />
-                      <div className="flex flex-col gap-1">
-                        <div className="h-[22px] w-24 rounded bg-surface-container-foreground animate-pulse" />
-                        <div className="h-[22px] w-40 rounded bg-surface-container-foreground animate-pulse" />
-                        <div className="h-[20px] w-28 rounded bg-surface-container-foreground animate-pulse" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : events.length === 0 ? (
-                <div className="flex items-center justify-center py-20">
-                  <p className="web-body text-text-subtle">
-                    No events available right now
-                  </p>
-                </div>
-              ) : (
-                <div className="grid lg:grid-cols-4 gap-x-4 gap-y-5 md:grid-cols-3 max:grid-cols-1">
-                  {events.map((event, index) => (
-                    <EventCard key={index} event={event} className="flex-shrink-0"  />
-                  ))}
-                </div>
-              )}
-            </div>
+            <DiscoverEventsCarousel ref={discoverRef} events={events} isLoading={loading} />
             <CommunityArroundYou />
             <WeekendEventsCarousel events={events} isLoading={loading} />
           </div>
