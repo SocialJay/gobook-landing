@@ -9,6 +9,7 @@ import HeroSection from "./components/Platform/HeroSection/HeroSection";
 import WeekendEventsCarousel from "./components/Platform/WeekendEventsCarousel/WeekendEventsCarousel";
 import DiscoverEventsCarousel from "./components/Platform/DiscoverEventsCarousel/DiscoverEventsCarousel";
 import Header from "./components/Header/Header";
+import CommunityArroundYou from "./components/Platform/CommunittyArroundYou/CommunityArroundYou";
 
 type EventItem = {
   id: string;
@@ -140,6 +141,7 @@ export default function Platform() {
               }
             />    
             <DiscoverEventsCarousel ref={discoverRef} events={events} isLoading={loading} />
+            <CommunityArroundYou />
             <WeekendEventsCarousel events={events} isLoading={loading} />
           </div>
           <div className="w-full lg:w-[864px] md:w-[671px] xl:w-[1200px] py-4 gap-4 mx-auto max-sm:px-4 flex flex-col">
