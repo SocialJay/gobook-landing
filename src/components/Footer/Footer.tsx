@@ -7,7 +7,6 @@ export default function Footer() {
     <div className="flex md:flex-row w-full sm:gap-10 md:gap-4 justify-between items-center md:pb-0">
       <div className="flex items-center w-full md:w-auto sm:justify-between gap-5 web-callout">
         <div>
-          {/* <TermsAndConditionsModal /> */}
           <Button hierarchy="linkOnColor">
             <a href="/terms-of-service" aria-label="Terms of Service">
               Terms of Service
@@ -15,7 +14,6 @@ export default function Footer() {
           </Button>
         </div>
         <div>
-          {/* <PrivacyPolicyModal /> */}
           <Button hierarchy="linkOnColor">
             <a href="/privacy-policy" aria-label="Privacy Policy">
               Privacy Policy
